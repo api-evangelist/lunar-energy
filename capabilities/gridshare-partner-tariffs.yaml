@@ -1,0 +1,126 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gridshare Partner API — Tariffs
+  description: 'Gridshare Partner API — Periodical and Dynamic Tariff management for retailer pricing programs.'
+  tags:
+    - Lunar Energy
+    - Gridshare
+    - Partner
+    - Tariffs
+    - Pricing
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      GRIDSHARE_ACCESS_TOKEN: GRIDSHARE_ACCESS_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: partner-tariffs
+      baseUri: https://developer-api.partner.us.mygridshare.com
+      description: Gridshare Partner Periodical and Dynamic Tariffs.
+      resources:
+        - name: periodicaltariffs
+          path: /api/v1/periodicaltariffs
+          operations:
+            - name: listperiodicaltariffs
+              method: GET
+              description: List Periodical Tariffs
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: createperiodicaltariff
+              method: POST
+              description: Create Periodical Tariff
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: periodicaltariffs-tariffid
+          path: /api/v1/periodicaltariffs/{tariffId}
+          operations:
+            - name: getperiodicaltariff
+              method: GET
+              description: Get Periodical Tariff
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: updateperiodicaltariff
+              method: PATCH
+              description: Update Periodical Tariff
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: dynamictariffs
+          path: /api/v1/dynamictariffs
+          operations:
+            - name: listdynamictariffs
+              method: GET
+              description: List Dynamic Tariffs
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: createdynamictariff
+              method: POST
+              description: Create Dynamic Tariff
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: dynamictariffs-tariffid
+          path: /api/v1/dynamictariffs/{tariffId}
+          operations:
+            - name: getdynamictariff
+              method: GET
+              description: Get Dynamic Tariff
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: updatedynamictariff
+              method: PATCH
+              description: Update Dynamic Tariff
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+      authentication:
+        type: bearer
+        value: '{{env.GRIDSHARE_ACCESS_TOKEN}}'
+        placement: header
+  exposes:
+    - type: mcp
+      namespace: partner-tariffs-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Gridshare Partner Tariffs.
+      tools:
+        - name: gridshare-partner-list-periodical-tariffs
+          description: List Periodical Tariffs
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-tariffs.listperiodicaltariffs
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-create-periodical-tariff
+          description: Create Periodical Tariff
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-tariffs.createperiodicaltariff
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-get-periodical-tariff
+          description: Get Periodical Tariff
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-tariffs.getperiodicaltariff
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-update-periodical-tariff
+          description: Update Periodical Tariff
+          hints: { readOnly: false, destructive: true, idempotent: true }
+          call: partner-tariffs.updateperiodicaltariff
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-list-dynamic-tariffs
+          description: List Dynamic Tariffs
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-tariffs.listdynamictariffs
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-create-dynamic-tariff
+          description: Create Dynamic Tariff
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-tariffs.createdynamictariff
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-get-dynamic-tariff
+          description: Get Dynamic Tariff
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-tariffs.getdynamictariff
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-update-dynamic-tariff
+          description: Update Dynamic Tariff
+          hints: { readOnly: false, destructive: true, idempotent: true }
+          call: partner-tariffs.updatedynamictariff
+          outputParameters: [{ type: object, mapping: $. }]

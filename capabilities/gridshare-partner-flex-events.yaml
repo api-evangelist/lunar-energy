@@ -1,0 +1,149 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gridshare Partner API — Flex Events
+  description: 'Gridshare Partner API — Flex Events, Flex Dispatch opt-outs, Prognoses, and Prognosis Diff Requests/Orders for coordinated VPP execution.'
+  tags:
+    - Lunar Energy
+    - Gridshare
+    - Partner
+    - Flex Events
+    - Prognoses
+    - Virtual Power Plant
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      GRIDSHARE_ACCESS_TOKEN: GRIDSHARE_ACCESS_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: partner-flex-events
+      baseUri: https://developer-api.partner.us.mygridshare.com
+      description: Gridshare Partner Flex Events and Prognoses.
+      resources:
+        - name: flexevent
+          path: /api/v1/flexevent
+          operations:
+            - name: listflexevents
+              method: GET
+              description: List Flex Events
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: createflexevent
+              method: POST
+              description: Create Flex Event
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexevents-flexeventid
+          path: /api/v1/flexevents/{flexEventId}
+          operations:
+            - name: updateflexevent
+              method: PATCH
+              description: Update Flex Event
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexdispatches-flexdispatchid-optout
+          path: /api/v1/flexdispatches/{flexDispatchId}/optout
+          operations:
+            - name: optoutflexdispatch
+              method: POST
+              description: Opt Out Of Flex Dispatch
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexgroups-flexgroupid-prognoses
+          path: /api/v1/flexgroups/{flexGroupId}/prognoses
+          operations:
+            - name: listprognoses
+              method: GET
+              description: List Prognoses
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: prognoses-prognosisid-diffrequests
+          path: /api/v1/prognoses/{prognosisId}/prognosisdiffrequests
+          operations:
+            - name: createprognosisdiffrequest
+              method: POST
+              description: Create Prognosis Diff Request
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: prognosisdiffrequests-id
+          path: /api/v1/prognosisdiffrequests/{prognosisDiffRequestId}
+          operations:
+            - name: getprognosisdiffrequest
+              method: GET
+              description: Get Prognosis Diff Request
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: prognosisdiffrequests-id-difforders
+          path: /api/v1/prognosisdiffrequests/{prognosisDiffRequestId}/prognosisdifforders
+          operations:
+            - name: createprognosisdifforder
+              method: POST
+              description: Create Prognosis Diff Order
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: prognosisdifforders-id
+          path: /api/v1/prognosisdifforders/{prognosisDiffOrderId}
+          operations:
+            - name: getprognosisdifforder
+              method: GET
+              description: Get Prognosis Diff Order
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+      authentication:
+        type: bearer
+        value: '{{env.GRIDSHARE_ACCESS_TOKEN}}'
+        placement: header
+  exposes:
+    - type: mcp
+      namespace: partner-flex-events-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Gridshare Partner Flex Events.
+      tools:
+        - name: gridshare-partner-list-flex-events
+          description: List Flex Events
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-flex-events.listflexevents
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-create-flex-event
+          description: Create Flex Event
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-flex-events.createflexevent
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-update-flex-event
+          description: Update Flex Event
+          hints: { readOnly: false, destructive: true, idempotent: true }
+          call: partner-flex-events.updateflexevent
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-opt-out-flex-dispatch
+          description: Opt Out Of Flex Dispatch
+          hints: { readOnly: false, destructive: true, idempotent: true }
+          call: partner-flex-events.optoutflexdispatch
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-list-prognoses
+          description: List Prognoses
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-flex-events.listprognoses
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-create-prognosis-diff-request
+          description: Create Prognosis Diff Request
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-flex-events.createprognosisdiffrequest
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-get-prognosis-diff-request
+          description: Get Prognosis Diff Request
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-flex-events.getprognosisdiffrequest
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-create-prognosis-diff-order
+          description: Create Prognosis Diff Order
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-flex-events.createprognosisdifforder
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-get-prognosis-diff-order
+          description: Get Prognosis Diff Order
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-flex-events.getprognosisdifforder
+          outputParameters: [{ type: object, mapping: $. }]

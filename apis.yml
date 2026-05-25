@@ -1,0 +1,254 @@
+aid: lunar-energy
+name: Lunar Energy
+description: >-
+  Lunar Energy is a Mountain View, California-based residential clean-energy
+  company founded in August 2020 by former Tesla Energy executive Kunal
+  Girotra. The company designs and manufactures the Lunar System — a
+  modular home battery (15–30 kWh, 9.6 kW continuous / 15 kW peak), Lunar
+  Inverter, Lunar Maximizers (module-level power optimizers), Lunar Bridge
+  meter socket adapter, and Eaton AbleEdge smart-breaker integration —
+  controlled by the Lunar App with Lunar AI optimization. Its Gridshare
+  platform is a grid-edge DERMS (Distributed Energy Resource Management
+  System) and virtual power plant engine that manages 130,000+ residential
+  distributed energy resources representing 1.2 GWh of connected storage
+  across multiple manufacturers and third-party operators. Gridshare powers
+  utility demand response and VPP programs through flex groups, flex
+  dispatches, prognoses, dynamic and periodical tariffs, and per-device
+  remote operation-mode control. Lunar Energy is backed by SunPower and
+  Sunrun partnerships; SoftBank Energy is a major investor. The Gridshare
+  Partner API and Customer API are gated behind business onboarding —
+  credentials are issued by Lunar Energy after contacting
+  developers@gridshare.com.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Energy
+  - Home Battery
+  - Solar
+  - Virtual Power Plant
+  - DERMS
+  - Distributed Energy Resources
+  - Grid Services
+  - Demand Response
+  - Storage
+  - Inverter
+  - Smart Home
+  - Energy Management
+  - Tariffs
+  - Telemetry
+  - VPP
+  - Flex Events
+url: https://raw.githubusercontent.com/api-evangelist/lunar-energy/refs/heads/main/apis.yml
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.20'
+apis:
+  - aid: lunar-energy:gridshare-partner-api
+    name: Gridshare Partner API
+    tags:
+      - Partner
+      - Fleet Management
+      - Virtual Power Plant
+      - Flex Groups
+      - Flex Events
+      - Tariffs
+      - Devices
+      - Sites
+    humanURL: https://developers.gridshare.com/reference/authentication
+    properties:
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/authentication
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/fleet-management
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/vpp
+      - type: OpenAPI
+        url: openapi/gridshare-partner-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-partner-sites.yaml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-partner-devices.yaml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-partner-flex-groups.yaml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-partner-flex-events.yaml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-partner-tariffs.yaml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-partner-visits.yaml
+    description: >-
+      The Gridshare Partner API is the operator-facing surface for utilities,
+      DER aggregators, and energy retailers to manage residential distributed
+      energy resources at fleet scale. v1 endpoints cover Sites, Devices,
+      Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
+      Tariffs, Flex Groups (participants and bulk membership), Flex Events
+      and Flex Dispatch opt-outs, Prognoses with Diff Requests and Diff
+      Orders, Counterfactuals, and on-site Visits. Authenticated via OAuth
+      2.0 client-credentials against Amazon Cognito; tokens expire after 1
+      hour. Regional production servers are
+      developer-api.partner.us.mygridshare.com (US) and
+      developer-api.partner.mygridshare.com (rest of world).
+  - aid: lunar-energy:gridshare-customer-api
+    name: Gridshare Customer API
+    tags:
+      - Customer
+      - Home Energy Management
+      - Devices
+      - Telemetry
+      - Topology
+      - Operation Mode
+      - Overlay Plans
+    humanURL: https://developers.gridshare.com/reference/authentication-customer
+    properties:
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/authentication-customer
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/topology-key-concepts
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/telemetry-key-concepts
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/energy-management
+      - type: OpenAPI
+        url: openapi/gridshare-customer-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-customer-devices.yaml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-customer-sites.yaml
+      - type: NaftikoCapability
+        url: capabilities/gridshare-customer-plans.yaml
+    description: >-
+      The Gridshare Customer API is the homeowner-delegated surface for
+      partners that need to read or control devices on behalf of a specific
+      Lunar Energy customer. It implements OAuth 2.0 Authorization Code
+      flow against the lunar-customer Amazon Cognito user pool with four
+      scopes — `lunar/device.read`, `lunar/device.write`, `lunar/plan.read`,
+      `lunar/plan.write`. v2 endpoints expose lightweight Site listing,
+      Site Topology (a sensor tree usable to drive telemetry queries),
+      Device listing and retrieval, Telemetry (per-sensor time-bucketed
+      readings with energy_Wh_increment / energy_Wh_decrement when
+      include=energy), Operation Mode (Simple / Schedule / Smart),
+      Overlay Plans for short-term device control, and partial device
+      updates. Production servers
+      developer-api.customer.mygridshare.com.
+  - aid: lunar-energy:gridshare-remote-mcp
+    name: Gridshare Remote MCP Server
+    tags:
+      - MCP
+      - Model Context Protocol
+      - Remote MCP
+      - AI Agents
+      - Customer
+    humanURL: https://developers.gridshare.com/reference/customer-remote-mcp
+    properties:
+      - type: Documentation
+        url: https://developers.gridshare.com/reference/customer-remote-mcp
+    description: >-
+      Gridshare publishes a remote Model Context Protocol (MCP) server
+      that exposes the Customer API as MCP tools for AI agents. Authenticated
+      with the same Cognito-issued bearer tokens as the Customer API.
+common:
+  - type: Website
+    url: https://www.lunarenergy.com
+  - type: Portal
+    url: https://www.gridshare.com
+  - type: Portal
+    name: Gridshare Developer Portal
+    url: https://developers.gridshare.com
+  - type: Documentation
+    url: https://developers.gridshare.com/reference
+  - type: GettingStarted
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Product
+    name: Lunar System (Home Battery)
+    url: https://www.lunarenergy.com/lunar-system
+  - type: Product
+    name: Gridshare DERMS / VPP
+    url: https://www.gridshare.com
+  - type: Documentation
+    name: Installer Hub
+    url: https://installerhub.lunarenergy.com
+  - type: Documentation
+    name: Telemetry Key Concepts
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    name: Topology Key Concepts
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    name: Fleet Management
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    name: Home Energy Management
+    url: https://developers.gridshare.com/reference/energy-management
+  - type: Documentation
+    name: Virtual Power Plants
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    name: WebSocket Connections
+    url: https://developers.gridshare.com/reference/websocket-connection
+  - type: Documentation
+    name: Remote MCP
+    url: https://developers.gridshare.com/reference/customer-remote-mcp
+  - type: Support
+    name: developers@gridshare.com
+    url: mailto:developers@gridshare.com
+  - type: Support
+    name: business@lunarenergy.com
+    url: mailto:business@lunarenergy.com
+  - type: Contact
+    url: https://www.lunarenergy.com/contact
+  - type: Careers
+    url: https://www.lunarenergy.com/careers
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/lunar-energy
+  - type: Twitter
+    url: https://twitter.com/Lunar_Energy
+  - type: YouTube
+    url: https://www.youtube.com/@lunar_energy
+  - type: GitHubOrganization
+    url: https://github.com/lunarenergy
+  - type: Features
+    data:
+      - Lunar System home battery — 15–30 kWh modular wall-mounted tower
+      - 9.6 kW continuous / 15 kW peak (5s) per battery; 12.5-year warranty
+      - Lunar Inverter and Lunar Maximizers (650 W module-level power optimizers)
+      - Lunar Bridge (200 A meter socket adapter) connects the home to the grid
+      - Eaton AbleEdge smart breakers for automatic load-shedding during outages
+      - Lunar App for real-time monitoring and control
+      - Lunar AI generates daily energy plans from utility rates, weather, and home patterns
+      - Solar-ready — Maximizers attach to existing panels without relocation
+      - Virtual Power Plant participation — earn revenue by sharing storage with the grid
+      - Gridshare DERMS manages 130,000+ residential DERs and 1.2 GWh of storage
+      - Multi-vendor support — Gridshare manages devices from different manufacturers and 3rd-party operators
+      - Partner API for fleet operators (utilities, retailers, DER aggregators)
+      - Customer API for app developers acting on behalf of homeowners
+      - OAuth 2.0 — client-credentials for Partner, Authorization Code for Customer
+      - Per-device Operation Mode — Simple, Schedule, Smart (AI-optimized), Unknown
+      - Overlay Plans for short-term device dispatch
+      - Periodical Tariffs and Dynamic Tariffs (7-day pagination windows)
+      - Flex Groups, Flex Events, Flex Dispatches, and Flex Dispatch opt-outs
+      - Prognoses, Prognosis Diff Requests, and Diff Orders for coordinated network flex
+      - Counterfactual telemetry — what the device would have done un-managed
+      - WebSocket telemetry streams
+      - Remote MCP server exposes the Customer API as agent tools
+      - Octopus Energy partnership — battery electricity plans in Texas
+      - Sunrun and SunPower installer Okta SSO
+    sources:
+      - https://www.lunarenergy.com
+      - https://www.gridshare.com
+      - https://developers.gridshare.com
+      - https://www.lunarenergy.com/lunar-system
+      - https://developers.gridshare.com/llms.txt
+    updated: '2026-05-25'
+  - type: Plans
+    url: plans/lunar-energy-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/lunar-energy-rate-limits.yml
+  - type: FinOps
+    url: finops/lunar-energy-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com

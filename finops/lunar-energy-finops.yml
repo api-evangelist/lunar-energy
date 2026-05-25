@@ -1,0 +1,77 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Lunar Energy
+providerId: lunar-energy
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - FinOps
+  - Energy
+  - DERMS
+  - Hardware
+  - VPP
+description: >-
+  FOCUS-aligned FinOps definition for Lunar Energy. Combines a one-time
+  hardware purchase model (Lunar System) with an enterprise contract
+  charge model for Gridshare Partner / Customer API access and a
+  program-specific revenue-share model for Virtual Power Plant
+  participation. No usage-metered API price list is published.
+sources:
+  - https://www.lunarenergy.com
+  - https://www.lunarenergy.com/lunar-system
+  - https://www.gridshare.com
+  - https://developers.gridshare.com
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Lunar Energy
+serviceCategory: Energy and Distributed Resources
+billingModel:
+  pricingCategory: Hybrid
+  pricingComponents:
+    - One-time hardware purchase
+    - Enterprise contract (API access)
+    - Revenue share (VPP participation)
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Purchase
+    - Usage
+    - Credit
+    - Tax
+    - Adjustment
+  primaryUnit: project
+  secondaryUnits:
+    - device
+    - kWh
+    - event
+    - api-call
+costAttribution:
+  partner: client_id
+  customer: cognito-sub
+  site: siteId
+  device: synthId
+  flexGroup: flexGroupId
+  flexEvent: flexEventId
+revenueStreams:
+  - name: Hardware Sales
+    type: Purchase
+    description: One-time sale of Lunar System battery + inverter + maximizers + bridge, installed by Lunar Partners.
+  - name: Software & API Contracts
+    type: Usage
+    description: Enterprise contract revenue from utilities, retailers, and DER aggregators using the Gridshare Partner API.
+  - name: VPP Revenue
+    type: Usage
+    description: Grid services revenue from utility-program participation, shared back to homeowners.
+  - name: Installer Network Fees
+    type: Usage
+    description: Lunar Partner program fees and certifications.
+notes:
+  - Hardware purchase costs are typically eligible for federal ITC and state/utility rebates; FOCUS adjustment entries should reflect these.
+  - VPP program payouts are revenue to the homeowner and a cost to the dispatching utility; both flow through Gridshare settlement.
+  - Counterfactual telemetry on the Partner API is the foundation for measurement and verification (M&V) of program performance.

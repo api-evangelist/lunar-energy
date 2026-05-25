@@ -1,0 +1,69 @@
+extends:
+  - spectral:oas
+rules:
+  gridshare-info-contact:
+    description: Gridshare OpenAPI documents must declare a Lunar Energy / Gridshare contact.
+    severity: error
+    given: $.info.contact
+    then:
+      - field: email
+        function: pattern
+        functionOptions:
+          match: "@(gridshare|lunarenergy)\\.com$"
+  gridshare-server-base-url:
+    description: Servers must point at developer-api.{partner,customer}.[dev0.]{us.,}mygridshare.com.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://developer-api\\.(partner|customer)(\\.dev0)?(\\.us)?\\.mygridshare\\.com$"
+  gridshare-bearer-only:
+    description: All Gridshare endpoints use OAuth 2.0 bearer tokens — no API keys.
+    severity: error
+    given: $.components.securitySchemes[*]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - properties: { type: { const: http }, scheme: { const: bearer } }
+              required: [type, scheme]
+            - properties: { type: { const: oauth2 } }
+              required: [type, flows]
+  gridshare-tag-title-case:
+    description: Tags must be Title Case (e.g. Flex Groups, Operation Mode).
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9]*( [A-Z][A-Za-z0-9]*)*$"
+  gridshare-operation-summary-title-case:
+    description: Operation summaries must be Title Case.
+    severity: warn
+    given: $.paths[*][*].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][A-Za-z0-9]*)( ([A-Z][A-Za-z0-9]*|[A-Z]+))*$"
+  gridshare-synthid-parameter-name:
+    description: Device path parameter must be named synthId (synthetic identifier).
+    severity: error
+    given: $.paths[?(@property =~ /\\{synthId\\}/)]
+    then:
+      function: truthy
+  gridshare-energy-fields-opt-in:
+    description: Telemetry endpoints must document the include query parameter so energy_Wh fields can be requested.
+    severity: warn
+    given: $.paths[?(@property =~ /telemetry/)].get.parameters[?(@.name == 'include')]
+    then:
+      function: truthy
+  gridshare-error-shape:
+    description: Error responses (400/401/403/422) reference the documented {message, code} shape.
+    severity: warn
+    given: $.paths[*][*].responses['400','401','403','422'].content.application/json.schema.$ref
+    then:
+      function: pattern
+      functionOptions:
+        match: "Response$"

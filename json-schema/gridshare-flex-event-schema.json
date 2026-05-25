@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lunar-energy/main/json-schema/gridshare-flex-event-schema.json",
+  "title": "Gridshare Flex Event",
+  "description": "A coordinated dispatch action targeting a Gridshare flex group. The flat-dispatch type holds the aggregate power profile flat across a window; ramp types follow a defined profile.",
+  "type": "object",
+  "required": ["flexGroupId", "start", "end"],
+  "properties": {
+    "flexEventId": { "type": "string" },
+    "flexGroupId": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["flatDispatch", "ramp"],
+      "description": "Dispatch shape."
+    },
+    "start": { "type": "string", "format": "date-time" },
+    "end": { "type": "string", "format": "date-time" },
+    "powerProfile_W": {
+      "type": "number",
+      "description": "Target aggregate power for flatDispatch, in watts."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "scheduled", "active", "completed", "cancelled"]
+    },
+    "cancelledReason": { "type": "string" }
+  }
+}

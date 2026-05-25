@@ -1,0 +1,124 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Lunar Energy
+providerId: lunar-energy
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Energy
+  - VPP
+  - DERMS
+  - Home Battery
+  - Grid Services
+description: >-
+  Lunar Energy and Gridshare do not publish public, self-service pricing.
+  Hardware (Lunar System battery, Inverter, Maximizers, Bridge) is sold and
+  installed through the Lunar Partner installer network with regional
+  utility-rebate stacking. Gridshare Partner API and Customer API access
+  is gated behind a business onboarding conversation with the Lunar Energy
+  / Gridshare team. The plans below capture the public-facing commercial
+  surface; pricing is "contact for quote" pending direct disclosure.
+sources:
+  - https://www.lunarenergy.com
+  - https://www.lunarenergy.com/lunar-system
+  - https://www.gridshare.com
+  - https://developers.gridshare.com/reference/authentication
+plans:
+  - id: lunar-system-hardware
+    name: Lunar System Hardware
+    type: one-time
+    description: >-
+      Lunar System home battery installation — modular 15–30 kWh tower,
+      Lunar Inverter, Lunar Maximizers, Lunar Bridge meter socket adapter,
+      and Eaton AbleEdge smart breakers. Sold and installed by Lunar
+      Partners.
+    entries:
+      - label: Installed system
+        name: installation
+        type: one-time
+        metric: project
+        limit: -1
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: 'Contact for quote'
+        userMultiplied: false
+    elements:
+      - name: 15–30 kWh modular battery (9.6 kW continuous, 15 kW peak)
+      - name: Lunar Inverter and Maximizers
+      - name: Lunar Bridge (200 A) meter socket adapter
+      - name: Eaton AbleEdge smart breakers
+      - name: 12.5-year battery warranty
+      - name: Lunar App + Lunar AI software included
+  - id: gridshare-partner-api
+    name: Gridshare Partner API
+    type: enterprise
+    description: >-
+      Fleet-operator access to the Gridshare DERMS platform for utilities,
+      retailers, and DER aggregators. Includes Sites, Devices, Telemetry,
+      Operation Mode, Overlay Plans, Tariffs, Flex Groups, Flex Events,
+      Prognoses, Counterfactuals, and Visits APIs. Onboarding via
+      developers@gridshare.com.
+    entries:
+      - label: Enterprise license
+        name: enterprise
+        type: contract
+        metric: contract
+        limit: -1
+        timeFrame: annual
+        geo: global
+        unit: 1
+        price: 'Contact for quote'
+        userMultiplied: false
+    elements:
+      - name: Full Partner API surface
+      - name: WebSocket telemetry streams
+      - name: Production (US + RoW) and Development (US + RoW) environments
+      - name: OAuth 2.0 client-credentials authentication
+      - name: Counterfactual telemetry on request
+  - id: gridshare-customer-api
+    name: Gridshare Customer API
+    type: enterprise
+    description: >-
+      Homeowner-delegated access via OAuth Authorization Code flow for
+      partner apps. Customer API v2 + Remote MCP server. Onboarding via
+      developers@gridshare.com.
+    entries:
+      - label: Partner agreement
+        name: partner
+        type: contract
+        metric: contract
+        limit: -1
+        timeFrame: annual
+        geo: global
+        unit: 1
+        price: 'Contact for quote'
+        userMultiplied: false
+    elements:
+      - name: Customer API v2 (Sites, Devices, Telemetry, Operation Mode, Plans)
+      - name: Remote MCP server
+      - name: OAuth scopes — lunar/device.read, lunar/device.write, lunar/plan.read, lunar/plan.write
+  - id: vpp-revenue-share
+    name: Virtual Power Plant Revenue Share
+    type: revenue-share
+    description: >-
+      Homeowners participating in Lunar's Virtual Power Plant earn revenue
+      by allowing Gridshare to dispatch their stored energy during grid
+      events. Revenue share terms are program-specific and depend on the
+      utility partner (e.g. Octopus Energy in Texas).
+    entries:
+      - label: Per-event payout
+        name: payout
+        type: revenue-share
+        metric: event
+        limit: -1
+        timeFrame: per-event
+        geo: US
+        unit: 1
+        price: 'Program-specific'
+        userMultiplied: false
+    elements:
+      - name: Earn money by sharing stored energy with the grid during peak demand
+      - name: Optional per-event opt-out via Customer or Partner API

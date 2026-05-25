@@ -1,0 +1,96 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "gridshare": "https://developers.gridshare.com/reference/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "unit": "http://qudt.org/vocab/unit/",
+
+    "Site": {
+      "@id": "gridshare:Site",
+      "@context": {
+        "siteId": { "@id": "gridshare:Site/siteId", "@type": "xsd:string" },
+        "name": { "@id": "gridshare:Site/name", "@type": "xsd:string" },
+        "timezone": { "@id": "gridshare:Site/timezone", "@type": "xsd:string" },
+        "address": { "@id": "schema:address" }
+      }
+    },
+
+    "Device": {
+      "@id": "gridshare:Device",
+      "@context": {
+        "synthId": { "@id": "gridshare:Device/synthId", "@type": "xsd:string" },
+        "kind": { "@id": "gridshare:Device/kind", "@type": "xsd:string" },
+        "siteId": { "@id": "gridshare:Device/siteId", "@type": "xsd:string" },
+        "manufacturer": { "@id": "schema:manufacturer" },
+        "model": { "@id": "schema:model" },
+        "serialNumber": { "@id": "schema:serialNumber" }
+      }
+    },
+
+    "Telemetry": {
+      "@id": "gridshare:Telemetry",
+      "@context": {
+        "timestamp": { "@id": "gridshare:Telemetry/timestamp", "@type": "xsd:dateTime" },
+        "power_W": { "@id": "gridshare:Telemetry/power", "@type": "qudt:QuantityValue" },
+        "voltage_V": { "@id": "gridshare:Telemetry/voltage", "@type": "qudt:QuantityValue" },
+        "current_A": { "@id": "gridshare:Telemetry/current", "@type": "qudt:QuantityValue" },
+        "stateOfCharge_pct": { "@id": "gridshare:Telemetry/stateOfCharge", "@type": "xsd:decimal" },
+        "energy_Wh_increment": { "@id": "gridshare:Telemetry/energyIn", "@type": "qudt:QuantityValue" },
+        "energy_Wh_decrement": { "@id": "gridshare:Telemetry/energyOut", "@type": "qudt:QuantityValue" }
+      }
+    },
+
+    "FlexGroup": {
+      "@id": "gridshare:FlexGroup",
+      "@context": {
+        "flexGroupId": { "@id": "gridshare:FlexGroup/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "settlementPoint": { "@id": "gridshare:FlexGroup/settlementPoint", "@type": "xsd:string" }
+      }
+    },
+
+    "FlexEvent": {
+      "@id": "gridshare:FlexEvent",
+      "@context": {
+        "flexEventId": { "@id": "gridshare:FlexEvent/id", "@type": "xsd:string" },
+        "flexGroupId": { "@id": "gridshare:FlexEvent/flexGroupId", "@type": "xsd:string" },
+        "type": { "@id": "gridshare:FlexEvent/type", "@type": "xsd:string" },
+        "start": { "@id": "schema:startTime", "@type": "xsd:dateTime" },
+        "end": { "@id": "schema:endTime", "@type": "xsd:dateTime" },
+        "powerProfile_W": { "@id": "gridshare:FlexEvent/powerProfile", "@type": "qudt:QuantityValue" },
+        "status": { "@id": "gridshare:FlexEvent/status", "@type": "xsd:string" }
+      }
+    },
+
+    "Prognosis": {
+      "@id": "gridshare:Prognosis",
+      "@context": {
+        "prognosisId": { "@id": "gridshare:Prognosis/id", "@type": "xsd:string" },
+        "flexGroupId": { "@id": "gridshare:Prognosis/flexGroupId", "@type": "xsd:string" },
+        "generatedAt": { "@id": "schema:dateCreated", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "Tariff": {
+      "@id": "gridshare:Tariff",
+      "@context": {
+        "tariffId": { "@id": "gridshare:Tariff/id", "@type": "xsd:string" },
+        "name": { "@id": "schema:name" },
+        "currency": { "@id": "schema:priceCurrency", "@type": "xsd:string" }
+      }
+    },
+
+    "OperationMode": {
+      "@id": "gridshare:OperationMode",
+      "@context": {
+        "mode": {
+          "@id": "gridshare:OperationMode/value",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}

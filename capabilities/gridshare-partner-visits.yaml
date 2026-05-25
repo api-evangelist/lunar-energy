@@ -1,0 +1,69 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gridshare Partner API — Visits
+  description: 'Gridshare Partner API — Site Visits for installation, service, or commissioning records.'
+  tags:
+    - Lunar Energy
+    - Gridshare
+    - Partner
+    - Visits
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      GRIDSHARE_ACCESS_TOKEN: GRIDSHARE_ACCESS_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: partner-visits
+      baseUri: https://developer-api.partner.us.mygridshare.com
+      description: Gridshare Partner Visits.
+      resources:
+        - name: visits
+          path: /api/v1/visits
+          operations:
+            - name: listvisits
+              method: GET
+              description: List Visits
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: createvisit
+              method: POST
+              description: Create Visit
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: visits-visitid
+          path: /api/v1/visits/{visitId}
+          operations:
+            - name: getvisit
+              method: GET
+              description: Get Visit
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+      authentication:
+        type: bearer
+        value: '{{env.GRIDSHARE_ACCESS_TOKEN}}'
+        placement: header
+  exposes:
+    - type: mcp
+      namespace: partner-visits-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Gridshare Partner Visits.
+      tools:
+        - name: gridshare-partner-list-visits
+          description: List Visits
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-visits.listvisits
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-get-visit
+          description: Get Visit
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-visits.getvisit
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-create-visit
+          description: Create Visit
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-visits.createvisit
+          outputParameters: [{ type: object, mapping: $. }]

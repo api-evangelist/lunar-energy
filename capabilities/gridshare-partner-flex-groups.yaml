@@ -1,0 +1,132 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gridshare Partner API — Flex Groups
+  description: 'Gridshare Partner API — Flex Groups, participants, and bulk membership operations for VPP cohorts.'
+  tags:
+    - Lunar Energy
+    - Gridshare
+    - Partner
+    - Flex Groups
+    - Virtual Power Plant
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      GRIDSHARE_ACCESS_TOKEN: GRIDSHARE_ACCESS_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: partner-flex-groups
+      baseUri: https://developer-api.partner.us.mygridshare.com
+      description: Gridshare Partner Flex Groups resource family.
+      resources:
+        - name: flexgroups
+          path: /api/v1/flexgroups
+          operations:
+            - name: listflexgroups
+              method: GET
+              description: List Flex Groups
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: createflexgroup
+              method: POST
+              description: Create Flex Group
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexgroups-flexgroupid
+          path: /api/v1/flexgroups/{flexGroupId}
+          operations:
+            - name: getflexgroup
+              method: GET
+              description: Get Flex Group
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexgroups-flexgroupid-participants
+          path: /api/v1/flexgroups/{flexGroupId}/participants
+          operations:
+            - name: listparticipants
+              method: GET
+              description: List Flex Group Participants
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: addparticipant
+              method: POST
+              description: Add Flex Group Participant
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexgroups-flexgroupid-participants-participantid
+          path: /api/v1/flexgroups/{flexGroupId}/participants/{participantId}
+          operations:
+            - name: getparticipant
+              method: GET
+              description: Get Flex Group Participant
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: deleteparticipant
+              method: DELETE
+              description: Delete Flex Group Participant
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexgroups-flexgroupid-participants-bulk
+          path: /api/v1/flexgroups/{flexGroupId}/participants/bulk
+          operations:
+            - name: createbulkaction
+              method: POST
+              description: Create Bulk Participants Action
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: flexgroups-flexgroupid-participants-bulk-bulkid
+          path: /api/v1/flexgroups/{flexGroupId}/participants/bulk/{bulkId}
+          operations:
+            - name: getbulkaction
+              method: GET
+              description: Get Bulk Participants Action
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+      authentication:
+        type: bearer
+        value: '{{env.GRIDSHARE_ACCESS_TOKEN}}'
+        placement: header
+  exposes:
+    - type: mcp
+      namespace: partner-flex-groups-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Gridshare Partner Flex Groups.
+      tools:
+        - name: gridshare-partner-list-flex-groups
+          description: List Flex Groups
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-flex-groups.listflexgroups
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-get-flex-group
+          description: Get Flex Group
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-flex-groups.getflexgroup
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-create-flex-group
+          description: Create Flex Group
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-flex-groups.createflexgroup
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-list-participants
+          description: List Flex Group Participants
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: partner-flex-groups.listparticipants
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-add-participant
+          description: Add Flex Group Participant
+          hints: { readOnly: false, destructive: false, idempotent: false }
+          call: partner-flex-groups.addparticipant
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-delete-participant
+          description: Delete Flex Group Participant
+          hints: { readOnly: false, destructive: true, idempotent: true }
+          call: partner-flex-groups.deleteparticipant
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-partner-bulk-participants
+          description: Create Bulk Participants Action
+          hints: { readOnly: false, destructive: true, idempotent: false }
+          call: partner-flex-groups.createbulkaction
+          outputParameters: [{ type: object, mapping: $. }]

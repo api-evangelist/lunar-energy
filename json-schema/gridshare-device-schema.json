@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lunar-energy/main/json-schema/gridshare-device-schema.json",
+  "title": "Gridshare Device",
+  "description": "A distributed energy resource managed by the Gridshare DERMS platform. Devices are identified by a synthId (synthetic identifier) and have a kind drawn from Gridshare's standard device taxonomy.",
+  "type": "object",
+  "required": ["synthId"],
+  "properties": {
+    "synthId": {
+      "type": "string",
+      "description": "Synthetic identifier — the canonical ID used across telemetry, topology, and operation-mode endpoints."
+    },
+    "deviceId": {
+      "type": "string",
+      "description": "Manufacturer or installation-time device identifier (when distinct from synthId)."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["inverter", "battery_pack", "PV", "EV", "meter", "load_control_relay"],
+      "description": "Broad device category. Each kind defines a corresponding telemetry schema."
+    },
+    "type": {
+      "type": "string",
+      "description": "Finer-grained device type used in Partner topology and inventory endpoints."
+    },
+    "siteId": {
+      "type": "string",
+      "description": "Identifier of the site this device belongs to."
+    },
+    "manufacturer": { "type": "string" },
+    "model": { "type": "string" },
+    "serialNumber": { "type": "string" },
+    "properties": {
+      "type": "object",
+      "description": "Static, vendor-specific properties surfaced by the device.",
+      "additionalProperties": true
+    }
+  }
+}

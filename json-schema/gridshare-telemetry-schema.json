@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/lunar-energy/main/json-schema/gridshare-telemetry-schema.json",
+  "title": "Gridshare Telemetry",
+  "description": "Time-bucketed telemetry for a Gridshare device or sensor. energy_Wh_increment / energy_Wh_decrement are lifetime cumulative values populated only when include=energy is requested.",
+  "type": "object",
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "power_W": { "type": "number", "description": "Instantaneous active power, watts." },
+          "voltage_V": { "type": "number" },
+          "current_A": { "type": "number" },
+          "stateOfCharge_pct": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Battery state of charge percent (battery_pack devices only)."
+          },
+          "frequency_Hz": { "type": "number" },
+          "energy_Wh_increment": {
+            "type": "number",
+            "description": "Lifetime cumulative energy flowing INTO the device (positive). Populated when include=energy."
+          },
+          "energy_Wh_decrement": {
+            "type": "number",
+            "description": "Lifetime cumulative energy flowing OUT of the device (negative). Populated when include=energy."
+          }
+        }
+      }
+    },
+    "nextToken": { "type": "string" }
+  }
+}

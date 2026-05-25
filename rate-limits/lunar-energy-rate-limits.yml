@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Lunar Energy
+providerId: lunar-energy
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Energy
+  - DERMS
+  - VPP
+  - Rate Limiting
+description: >-
+  Gridshare does not publish a public rate-limit table for its Partner or
+  Customer APIs. Limits are negotiated as part of partner onboarding via
+  developers@gridshare.com. Two structural ceilings are documented in
+  ReadMe-rendered docs and worth recording for FinOps planning.
+sources:
+  - https://developers.gridshare.com/reference/authentication
+  - https://developers.gridshare.com/reference/get_api-v1-dynamictariffs-tariffid.md
+  - https://developers.gridshare.com/reference/authentication-customer.md
+authentication:
+  partner:
+    type: oauth2
+    grantType: client_credentials
+    tokenLifetime: 3600
+    note: Access tokens expire after 1 hour and must be refreshed against the partner Cognito user pool.
+  customer:
+    type: oauth2
+    grantType: authorization_code
+    tokenLifetime: 3600
+    refreshFlow: true
+    note: Authorization Code flow against lunar-customer Cognito pool; refresh tokens supported.
+responseCodes:
+  unauthorized: 401
+  forbidden: 403
+  malformed: 400
+  unprocessable: 422
+limits:
+  - api: Gridshare Customer API
+    scope: per-token
+    description: Per-bearer-token quotas are issued during onboarding.
+    documented: false
+  - api: Gridshare Partner API
+    scope: per-client
+    description: Per-client_id quotas are issued during onboarding. Operators with large fleets are scaled up case by case.
+    documented: false
+  - api: Gridshare Partner API
+    scope: pagination
+    description: Dynamic tariff timeseries responses are paginated in fixed 7-day pages; clients must follow `nextToken` to walk history beyond the most recent week.
+    documented: true
+notes:
+  - Tokens are short-lived (1 hour). Long-running fleet workloads must refresh frequently.
+  - 422 Unprocessable is returned for tariff PATCH operations that would leave a gap in pricing periods; ensure new periods butt up against the previous open-ended period.
+  - WebSocket streams are available for low-latency telemetry consumption; rate-limit semantics for socket connections are negotiated per partner.

@@ -1,0 +1,106 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gridshare Customer API — Devices
+  description: 'Gridshare Customer API v2 — Devices, Telemetry, Operation Mode (read-and-write on user behalf via OAuth Authorization Code).'
+  tags:
+    - Lunar Energy
+    - Gridshare
+    - Customer
+    - Devices
+    - Telemetry
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      GRIDSHARE_CUSTOMER_ACCESS_TOKEN: GRIDSHARE_CUSTOMER_ACCESS_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: customer-devices
+      baseUri: https://developer-api.customer.mygridshare.com
+      description: Gridshare Customer Devices resource family.
+      resources:
+        - name: devices
+          path: /api/v2/devices
+          operations:
+            - name: listdevices
+              method: GET
+              description: List Devices
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: devices-synthid
+          path: /api/v2/devices/{synthId}
+          operations:
+            - name: getdevice
+              method: GET
+              description: Get Device
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: patchdevice
+              method: PATCH
+              description: Partially Update Device
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: devices-synthid-telemetry
+          path: /api/v2/devices/{synthId}/telemetry
+          operations:
+            - name: getdevicetelemetry
+              method: GET
+              description: Get Device Telemetry
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+        - name: devices-synthid-operationmode
+          path: /api/v2/devices/{synthId}/operationmode
+          operations:
+            - name: getoperationmode
+              method: GET
+              description: Get Device Operation Mode
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+            - name: setoperationmode
+              method: PUT
+              description: Change Device Operation Mode
+              outputRawFormat: json
+              outputParameters: [{ name: result, type: object, value: $. }]
+      authentication:
+        type: bearer
+        value: '{{env.GRIDSHARE_CUSTOMER_ACCESS_TOKEN}}'
+        placement: header
+  exposes:
+    - type: mcp
+      namespace: customer-devices-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Gridshare Customer Devices.
+      tools:
+        - name: gridshare-customer-list-devices
+          description: List Devices
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: customer-devices.listdevices
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-customer-get-device
+          description: Get Device
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: customer-devices.getdevice
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-customer-patch-device
+          description: Partially Update Device
+          hints: { readOnly: false, destructive: true, idempotent: false }
+          call: customer-devices.patchdevice
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-customer-get-device-telemetry
+          description: Get Device Telemetry
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: customer-devices.getdevicetelemetry
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-customer-get-operation-mode
+          description: Get Device Operation Mode
+          hints: { readOnly: true, destructive: false, idempotent: true }
+          call: customer-devices.getoperationmode
+          outputParameters: [{ type: object, mapping: $. }]
+        - name: gridshare-customer-set-operation-mode
+          description: Change Device Operation Mode
+          hints: { readOnly: false, destructive: true, idempotent: true }
+          call: customer-devices.setoperationmode
+          outputParameters: [{ type: object, mapping: $. }]
