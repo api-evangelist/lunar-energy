@@ -1,0 +1,267 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/sites"
+          },
+          "docs": "List the siteIds the authenticated customer has access to. v2 is\nthe lightweight external endpoint — pair it with\n`GET /api/v2/sites/{siteId}/topology` and `GET /api/v2/devices` to\ndrill into a site's structure or devices.\n"
+        },
+        {
+          "info": {
+            "name": "Get Site Topology",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/sites/:siteId/topology",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the electrical topology of a site the authenticated customer\nhas access to. Nodes with `\"kind\": \"sensor\"` expose an `id` that may\nbe passed to `GET /api/v2/devices/{synthId}/telemetry` and a\n`channels` array listing available streams. See the Topology key\nconcepts page for worked examples.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices"
+          },
+          "docs": "List all devices the authenticated customer has access to."
+        },
+        {
+          "info": {
+            "name": "Get Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get a device by ID along with its static properties."
+        },
+        {
+          "info": {
+            "name": "Partially Update Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a device."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Telemetry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/telemetry",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Time-bucketed telemetry for a single device sensor stream.\n`synthId` must be a **sensor ID** from the site topology — any node\nwith `\"kind\": \"sensor\"`. On most installations telemetry streams\nare keyed by derived sensor IDs such as\n`<deviceId>__GRID_METER_DERIVED`, `<deviceId>__bb_agg`, and\n`<deviceId>__PV_DERIVED`.\n\n`energy_Wh_increment` and `energy_Wh_decrement` are populated only\nwhen `include=energy` (or `include=default,energy`):\n  - `energy_Wh_increment` — lifetime cumulative energy flowin"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Operation Mode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Operation Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/operationmode",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get the current Gridshare operation mode of a device. Valid modes:\n- `Simple` — follow the simplest plan possible for the device kind\n- `Schedule` — follow a periodical plan\n- `Smart` — AI-optimized smart plan\n- `Unknown` — operation mode cannot be determined\n"
+        },
+        {
+          "info": {
+            "name": "Change Device Operation Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/operationmode",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the Gridshare operation mode of a device."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get the current overlay plan for the device."
+        },
+        {
+          "info": {
+            "name": "Set Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

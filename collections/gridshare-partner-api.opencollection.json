@@ -1,0 +1,966 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Partner API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/sites"
+          },
+          "docs": "List all sites the authenticated partner can access."
+        },
+        {
+          "info": {
+            "name": "Create Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/sites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new site in the partner fleet."
+        },
+        {
+          "info": {
+            "name": "Get Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/sites/:siteId",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a site by ID."
+        },
+        {
+          "info": {
+            "name": "Replace Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/sites/:siteId",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Override a site with new attributes."
+        },
+        {
+          "info": {
+            "name": "Get Site Topology",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/sites/:siteId/topology",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the electrical topology tree of a site. Nodes with\n`\"kind\": \"sensor\"` expose an `id` that may be passed to the\ndevice telemetry endpoint and a `channels` array of available\ndata streams.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices"
+          },
+          "docs": "List all devices in the partner fleet."
+        },
+        {
+          "info": {
+            "name": "Create Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new device."
+        },
+        {
+          "info": {
+            "name": "Get Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get a device by ID with its static properties."
+        },
+        {
+          "info": {
+            "name": "Replace Or Create Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Override an existing device with new properties or create one if it does not yet exist."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Telemetry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices/:synthId/telemetry",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated set of telemetry fields. `energy` is opt-in."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Time-bucket size (e.g. `PT1H`)."
+              }
+            ]
+          },
+          "docs": "Get time-bucketed telemetry for a device or sensor. `synthId` can be\na device ID or a sensor ID from the site topology. Supported device\nkinds: `inverter`, `battery_pack`, `PV`, `EV`, `meter`,\n`load_control_relay`. Include `energy_Wh_increment` and\n`energy_Wh_decrement` by passing `include=default,energy`.\n"
+        },
+        {
+          "info": {
+            "name": "Get Counterfactual Telemetry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/counterfactuals/:counterfactualName/devices/:deviceId/telemetry",
+            "params": [
+              {
+                "name": "counterfactualName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Counterfactual telemetry — what the device would have done if it had\nnot been smartly controlled. Availability depends on the\ncounterfactuals enabled for your partner account.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Operation Mode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Operation Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices/:synthId/operationmode",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get the current Gridshare operation mode of a device. Valid modes:\n- `Simple` — follow the simplest plan possible for the device kind\n- `Schedule` — follow a periodical plan\n- `Smart` — AI-optimized smart plan\n- `Unknown` — operation mode cannot be determined\n"
+        },
+        {
+          "info": {
+            "name": "Change Device Operation Mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices/:synthId/operationmode",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the Gridshare operation mode for a device."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get the current overlay plan for the device."
+        },
+        {
+          "info": {
+            "name": "Set Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Periodical Tariffs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Periodical Tariffs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/periodicaltariffs"
+          },
+          "docs": "List all periodical tariffs."
+        },
+        {
+          "info": {
+            "name": "Create Periodical Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/periodicaltariffs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Periodical Tariff"
+        },
+        {
+          "info": {
+            "name": "Get Periodical Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/periodicaltariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Periodical Tariff"
+        },
+        {
+          "info": {
+            "name": "Update Periodical Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/periodicaltariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing periodical tariff. Append or\nrewrite pricing periods. Tariffs may have an open-ended latest\nperiod; PATCH-ing in a later period closes it automatically.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Dynamic Tariffs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Dynamic Tariffs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/dynamictariffs"
+          },
+          "docs": "List all dynamic tariffs for the calling partner account."
+        },
+        {
+          "info": {
+            "name": "Create Dynamic Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/dynamictariffs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a dynamic tariff with an optional initial set of timeseries values."
+        },
+        {
+          "info": {
+            "name": "Get Dynamic Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/dynamictariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return metadata for a dynamic tariff together with a single page of\ntimeseries values covering a 7-day window. Paginate via `nextToken`.\n"
+        },
+        {
+          "info": {
+            "name": "Update Dynamic Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/dynamictariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Append or override periods of a dynamic tariff. Existing values are not deleted."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flex Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Flex Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups"
+          },
+          "docs": "List Flex Groups"
+        },
+        {
+          "info": {
+            "name": "Create Flex Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Flex Group"
+        },
+        {
+          "info": {
+            "name": "Get Flex Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flex Group"
+        },
+        {
+          "info": {
+            "name": "List Flex Group Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Flex Group Participants"
+        },
+        {
+          "info": {
+            "name": "Add Flex Group Participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Flex Group Participant"
+        },
+        {
+          "info": {
+            "name": "Get Flex Group Participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/:participantId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "participantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flex Group Participant"
+        },
+        {
+          "info": {
+            "name": "Delete Flex Group Participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/:participantId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "participantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Flex Group Participant"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Participants Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/bulk",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Overwrite the participants of a flex group by sending a full\nreplacement list. This action is irreversible.\n"
+        },
+        {
+          "info": {
+            "name": "Get Bulk Participants Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/bulk/:bulkId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bulkId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the status of a bulk participants update."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flex Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Flex Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexevent",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all flex events within a time range, optionally filtered by group."
+        },
+        {
+          "info": {
+            "name": "Create Flex Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexevent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a flex event for a defined flex group. Supports flat-dispatch\nevents that target a flat power profile across a specified window.\n"
+        },
+        {
+          "info": {
+            "name": "Update Flex Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexevents/:flexEventId",
+            "params": [
+              {
+                "name": "flexEventId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update or cancel an existing flex event."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flex Dispatches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Opt Out Of Flex Dispatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexdispatches/:flexDispatchId/optout",
+            "params": [
+              {
+                "name": "flexDispatchId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Opt a participant out of a flex dispatch. Participants may be\nidentified by site ID or participant ID. Idempotent — repeat opt-outs\nreturn the original opt-out details.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Prognoses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Prognoses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/flexgroups/:flexGroupId/prognoses",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List prognoses for a specific flex group. A new prognosis is generated\nwhen the group forecast changes due to prediction updates or\nexplicit flex actions.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Diff Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Prognosis Diff Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/prognoses/:prognosisId/prognosisdiffrequests",
+            "params": [
+              {
+                "name": "prognosisId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a modification to a prognosis profile. Allows charging or\ndischarging to the network in a coordinated manner by submitting a\ndifferential profile over the original prognosis. Asynchronous —\npoll the Diff Request endpoint for status.\n"
+        },
+        {
+          "info": {
+            "name": "Get Prognosis Diff Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/prognosisdiffrequests/:prognosisDiffRequestId",
+            "params": [
+              {
+                "name": "prognosisDiffRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Poll status and feasible offer for a prognosis diff request."
+        },
+        {
+          "info": {
+            "name": "Create Prognosis Diff Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/prognosisdiffrequests/:prognosisDiffRequestId/prognosisdifforders",
+            "params": [
+              {
+                "name": "prognosisDiffRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm and commit to the offer associated with a prognosis diff\nrequest. Commands are dispatched to the underlying devices.\n"
+        },
+        {
+          "info": {
+            "name": "Get Prognosis Diff Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/prognosisdifforders/:prognosisDiffOrderId",
+            "params": [
+              {
+                "name": "prognosisDiffOrderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a committed flex offer order including price and power profile."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Visits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Visits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/visits"
+          },
+          "docs": "List Visits"
+        },
+        {
+          "info": {
+            "name": "Create Visit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/visits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Visit"
+        },
+        {
+          "info": {
+            "name": "Get Visit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.partner.us.mygridshare.com/api/v1/visits/:visitId",
+            "params": [
+              {
+                "name": "visitId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Visit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

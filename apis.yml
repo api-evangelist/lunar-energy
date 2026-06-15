@@ -1,24 +1,17 @@
 aid: lunar-energy
 name: Lunar Energy
 description: >-
-  Lunar Energy is a Mountain View, California-based residential clean-energy
-  company founded in August 2020 by former Tesla Energy executive Kunal
-  Girotra. The company designs and manufactures the Lunar System — a
-  modular home battery (15–30 kWh, 9.6 kW continuous / 15 kW peak), Lunar
-  Inverter, Lunar Maximizers (module-level power optimizers), Lunar Bridge
-  meter socket adapter, and Eaton AbleEdge smart-breaker integration —
-  controlled by the Lunar App with Lunar AI optimization. Its Gridshare
-  platform is a grid-edge DERMS (Distributed Energy Resource Management
-  System) and virtual power plant engine that manages 130,000+ residential
-  distributed energy resources representing 1.2 GWh of connected storage
-  across multiple manufacturers and third-party operators. Gridshare powers
-  utility demand response and VPP programs through flex groups, flex
-  dispatches, prognoses, dynamic and periodical tariffs, and per-device
-  remote operation-mode control. Lunar Energy is backed by SunPower and
-  Sunrun partnerships; SoftBank Energy is a major investor. The Gridshare
-  Partner API and Customer API are gated behind business onboarding —
-  credentials are issued by Lunar Energy after contacting
-  developers@gridshare.com.
+  Lunar Energy is a Mountain View, California-based residential clean-energy company founded in August 2020 by former
+  Tesla Energy executive Kunal Girotra. The company designs and manufactures the Lunar System — a modular home battery
+  (15–30 kWh, 9.6 kW continuous / 15 kW peak), Lunar Inverter, Lunar Maximizers (module-level power optimizers), Lunar
+  Bridge meter socket adapter, and Eaton AbleEdge smart-breaker integration — controlled by the Lunar App with Lunar AI
+  optimization. Its Gridshare platform is a grid-edge DERMS (Distributed Energy Resource Management System) and virtual
+  power plant engine that manages 130,000+ residential distributed energy resources representing 1.2 GWh of connected
+  storage across multiple manufacturers and third-party operators. Gridshare powers utility demand response and VPP
+  programs through flex groups, flex dispatches, prognoses, dynamic and periodical tariffs, and per-device remote
+  operation-mode control. Lunar Energy is backed by SunPower and Sunrun partnerships; SoftBank Energy is a major
+  investor. The Gridshare Partner API and Customer API are gated behind business onboarding — credentials are issued by
+  Lunar Energy after contacting developers@gridshare.com.
 type: Index
 position: Provider
 access: 3rd-Party
@@ -66,29 +59,13 @@ apis:
         url: https://developers.gridshare.com/reference/vpp
       - type: OpenAPI
         url: openapi/gridshare-partner-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-partner-sites.yaml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-partner-devices.yaml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-partner-flex-groups.yaml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-partner-flex-events.yaml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-partner-tariffs.yaml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-partner-visits.yaml
     description: >-
-      The Gridshare Partner API is the operator-facing surface for utilities,
-      DER aggregators, and energy retailers to manage residential distributed
-      energy resources at fleet scale. v1 endpoints cover Sites, Devices,
-      Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
-      Tariffs, Flex Groups (participants and bulk membership), Flex Events
-      and Flex Dispatch opt-outs, Prognoses with Diff Requests and Diff
-      Orders, Counterfactuals, and on-site Visits. Authenticated via OAuth
-      2.0 client-credentials against Amazon Cognito; tokens expire after 1
-      hour. Regional production servers are
-      developer-api.partner.us.mygridshare.com (US) and
+      The Gridshare Partner API is the operator-facing surface for utilities, DER aggregators, and energy retailers to
+      manage residential distributed energy resources at fleet scale. v1 endpoints cover Sites, Devices, Telemetry,
+      Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic Tariffs, Flex Groups (participants and bulk
+      membership), Flex Events and Flex Dispatch opt-outs, Prognoses with Diff Requests and Diff Orders,
+      Counterfactuals, and on-site Visits. Authenticated via OAuth 2.0 client-credentials against Amazon Cognito; tokens
+      expire after 1 hour. Regional production servers are developer-api.partner.us.mygridshare.com (US) and
       developer-api.partner.mygridshare.com (rest of world).
   - aid: lunar-energy:gridshare-customer-api
     name: Gridshare Customer API
@@ -112,25 +89,14 @@ apis:
         url: https://developers.gridshare.com/reference/energy-management
       - type: OpenAPI
         url: openapi/gridshare-customer-api-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-customer-devices.yaml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-customer-sites.yaml
-      - type: NaftikoCapability
-        url: capabilities/gridshare-customer-plans.yaml
     description: >-
-      The Gridshare Customer API is the homeowner-delegated surface for
-      partners that need to read or control devices on behalf of a specific
-      Lunar Energy customer. It implements OAuth 2.0 Authorization Code
-      flow against the lunar-customer Amazon Cognito user pool with four
-      scopes — `lunar/device.read`, `lunar/device.write`, `lunar/plan.read`,
-      `lunar/plan.write`. v2 endpoints expose lightweight Site listing,
-      Site Topology (a sensor tree usable to drive telemetry queries),
-      Device listing and retrieval, Telemetry (per-sensor time-bucketed
-      readings with energy_Wh_increment / energy_Wh_decrement when
-      include=energy), Operation Mode (Simple / Schedule / Smart),
-      Overlay Plans for short-term device control, and partial device
-      updates. Production servers
+      The Gridshare Customer API is the homeowner-delegated surface for partners that need to read or control devices on
+      behalf of a specific Lunar Energy customer. It implements OAuth 2.0 Authorization Code flow against the
+      lunar-customer Amazon Cognito user pool with four scopes — `lunar/device.read`, `lunar/device.write`,
+      `lunar/plan.read`, `lunar/plan.write`. v2 endpoints expose lightweight Site listing, Site Topology (a sensor tree
+      usable to drive telemetry queries), Device listing and retrieval, Telemetry (per-sensor time-bucketed readings
+      with energy_Wh_increment / energy_Wh_decrement when include=energy), Operation Mode (Simple / Schedule / Smart),
+      Overlay Plans for short-term device control, and partial device updates. Production servers
       developer-api.customer.mygridshare.com.
   - aid: lunar-energy:gridshare-remote-mcp
     name: Gridshare Remote MCP Server
@@ -145,9 +111,8 @@ apis:
       - type: Documentation
         url: https://developers.gridshare.com/reference/customer-remote-mcp
     description: >-
-      Gridshare publishes a remote Model Context Protocol (MCP) server
-      that exposes the Customer API as MCP tools for AI agents. Authenticated
-      with the same Cognito-issued bearer tokens as the Customer API.
+      Gridshare publishes a remote Model Context Protocol (MCP) server that exposes the Customer API as MCP tools for AI
+      agents. Authenticated with the same Cognito-issued bearer tokens as the Customer API.
 common:
   - type: Website
     url: https://www.lunarenergy.com

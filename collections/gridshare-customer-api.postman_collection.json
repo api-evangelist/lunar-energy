@@ -1,0 +1,1546 @@
+{
+  "item": [
+    {
+      "id": "730f73aa-b01d-4e46-bff7-276609ad2b02",
+      "name": "Sites",
+      "description": {
+        "content": "List sites and read site topology",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8bd69fe0-ad38-4d32-a9e4-aa789f940257",
+          "name": "List Sites",
+          "request": {
+            "name": "List Sites",
+            "description": {
+              "content": "List the siteIds the authenticated customer has access to. v2 is\nthe lightweight external endpoint — pair it with\n`GET /api/v2/sites/{siteId}/topology` and `GET /api/v2/devices` to\ndrill into a site's structure or devices.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "sites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c123991-ea48-4be9-9d52-becb823db0a6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"siteId\": \"string\"\n    },\n    {\n      \"siteId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd3f09ed-e598-4355-956b-c42873d540e5",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d0ba6ba-f230-4c99-bbf0-a43b6908f5a2",
+              "name": "403 Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "189d8ac9-472d-45f0-9dc3-872460d6e94c",
+          "name": "Get Site Topology",
+          "request": {
+            "name": "Get Site Topology",
+            "description": {
+              "content": "Return the electrical topology of a site the authenticated customer\nhas access to. Nodes with `\"kind\": \"sensor\"` expose an `id` that may\nbe passed to `GET /api/v2/devices/{synthId}/telemetry` and a\n`channels` array listing available streams. See the Topology key\nconcepts page for worked examples.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "sites",
+                ":siteId",
+                "topology"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "siteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "340952ad-9143-4c51-beae-e5a197c3d27c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "sites",
+                    ":siteId",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"root\": {\n    \"id\": \"string\",\n    \"kind\": \"device\",\n    \"channels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TopologyNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TopologyNode detected>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7509aee7-a6d7-449a-be31-dc407cfa751b",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "sites",
+                    ":siteId",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87a7341e-1723-4861-b582-d6ac4f1ed0db",
+              "name": "403 Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "sites",
+                    ":siteId",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ee8657c4-b9ec-4d6e-9990-80da13c15da8",
+      "name": "Devices",
+      "description": {
+        "content": "List, get, and partially update customer devices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5bc0bd6d-c976-4023-be19-987851d94ae4",
+          "name": "List Devices",
+          "request": {
+            "name": "List Devices",
+            "description": {
+              "content": "List all devices the authenticated customer has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d05a297-4b54-40d7-964e-a2949a44452e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"synthId\": \"string\"\n    },\n    {\n      \"synthId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1739b430-6096-457b-a5b4-c4189bd77f5c",
+              "name": "400 Malformed Input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d70e6b72-2a29-4f1c-90b8-f350c09180b0",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb00c982-752d-4570-9bf2-f93052bbd22d",
+              "name": "403 Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fecf20f6-35f4-44e8-8de9-930950bbda01",
+              "name": "422 Unprocessable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a49c4386-1eb0-4976-8681-59ee52088405",
+          "name": "Get Device",
+          "request": {
+            "name": "Get Device",
+            "description": {
+              "content": "Get a device by ID along with its static properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ef4d6ea-c87a-458a-a53b-8734c7f23d8b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"synthId\": \"string\",\n  \"kind\": \"PV\",\n  \"siteId\": \"string\",\n  \"manufacturer\": \"string\",\n  \"model\": \"string\",\n  \"serialNumber\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc2c5e24-e914-4320-99ad-bd1a5cbc16db",
+          "name": "Partially Update Device",
+          "request": {
+            "name": "Partially Update Device",
+            "description": {
+              "content": "Update a device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"synthId\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"model\": \"<string>\",\n  \"serialNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c84c531d-f93e-460a-ad72-0e3f53a8aa62",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"synthId\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"model\": \"<string>\",\n  \"serialNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6045c065-13b8-42ed-8780-f3c6189e7985",
+      "name": "Telemetry",
+      "description": {
+        "content": "Time-bucketed per-sensor telemetry readings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eac41e6d-6fe6-4ccf-b325-92d57b155722",
+          "name": "Get Device Telemetry",
+          "request": {
+            "name": "Get Device Telemetry",
+            "description": {
+              "content": "Time-bucketed telemetry for a single device sensor stream.\n`synthId` must be a **sensor ID** from the site topology — any node\nwith `\"kind\": \"sensor\"`. On most installations telemetry streams\nare keyed by derived sensor IDs such as\n`<deviceId>__GRID_METER_DERIVED`, `<deviceId>__bb_agg`, and\n`<deviceId>__PV_DERIVED`.\n\n`energy_Wh_increment` and `energy_Wh_decrement` are populated only\nwhen `include=energy` (or `include=default,energy`):\n  - `energy_Wh_increment` — lifetime cumulative energy flowing **into** the device (positive)\n  - `energy_Wh_decrement` — lifetime cumulative energy flowing **out of** the device (negative)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "telemetry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cb19664-cbaa-446c-9549-e7e0bd23e2b1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "telemetry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"timestamp\": \"1984-03-16T23:17:17.955Z\",\n      \"power_W\": 9152.752306643355,\n      \"voltage_V\": 8882.996063125536,\n      \"current_A\": 7711.2371881875215,\n      \"stateOfCharge_pct\": 6048.165149957598,\n      \"energy_Wh_increment\": 9996.030665971653,\n      \"energy_Wh_decrement\": 5531.524594811525\n    },\n    {\n      \"timestamp\": \"1985-03-11T18:23:35.655Z\",\n      \"power_W\": 9392.548067035941,\n      \"voltage_V\": 4869.709982058872,\n      \"current_A\": 1222.266493265486,\n      \"stateOfCharge_pct\": 4068.593063965823,\n      \"energy_Wh_increment\": 4354.498469063188,\n      \"energy_Wh_decrement\": 6614.204180381475\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "857b8642-4a75-45a3-a69a-153469708937",
+      "name": "Operation Mode",
+      "description": {
+        "content": "Read or change the Gridshare operation mode of a device",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "06ee9d39-3bfd-46b6-afe4-26ccbe45ae7a",
+          "name": "Get Device Operation Mode",
+          "request": {
+            "name": "Get Device Operation Mode",
+            "description": {
+              "content": "Get the current Gridshare operation mode of a device. Valid modes:\n- `Simple` — follow the simplest plan possible for the device kind\n- `Schedule` — follow a periodical plan\n- `Smart` — AI-optimized smart plan\n- `Unknown` — operation mode cannot be determined\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33ce085d-45d0-413c-816d-a6c6e3a83bba",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Smart\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78bfd991-5c96-495b-ade6-e1f329adafa5",
+          "name": "Change Device Operation Mode",
+          "request": {
+            "name": "Change Device Operation Mode",
+            "description": {
+              "content": "Set the Gridshare operation mode of a device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51d5d5dd-f3bb-461c-b4ed-5c7d0cd7b6ec",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Smart\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "60a55dcc-791f-4016-9f44-4f32dcad5607",
+      "name": "Plans",
+      "description": {
+        "content": "Read or set overlay plans for short-term device dispatch",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5100f96-df27-4b3d-8f83-8044554d110d",
+          "name": "Get Device Overlay Plan",
+          "request": {
+            "name": "Get Device Overlay Plan",
+            "description": {
+              "content": "Get the current overlay plan for the device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bacff4e4-3ce9-40ea-a048-08dc3352cf1c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commands\": [\n    {\n      \"start\": \"1948-01-19T03:33:55.746Z\",\n      \"end\": \"2013-12-20T05:43:12.401Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 501.3117390485089\n    },\n    {\n      \"start\": \"1953-08-14T08:42:14.211Z\",\n      \"end\": \"1988-06-26T01:14:01.256Z\",\n      \"action\": \"follow\",\n      \"powerLimit_W\": 8331.31002527866\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84e2d36c-c3e0-4d17-b76f-fc12a8eba445",
+          "name": "Set Device Overlay Plan",
+          "request": {
+            "name": "Set Device Overlay Plan",
+            "description": {
+              "content": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30ccbb36-1249-4193-9009-6bf7ad2b5f61",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"1968-01-15T10:50:46.955Z\",\n      \"end\": \"1962-07-09T02:41:54.627Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 9544.848379956937\n    },\n    {\n      \"start\": \"2009-04-07T01:20:11.840Z\",\n      \"end\": \"1998-05-06T07:51:19.734Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 2587.4489539832266\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c97fec6-04d4-4bda-847f-3bc4e58afd68",
+    "name": "Gridshare Customer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}

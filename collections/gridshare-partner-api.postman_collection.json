@@ -1,0 +1,4839 @@
+{
+  "item": [
+    {
+      "id": "c6c9b5b6-43f9-412d-872e-5ab7ba0cc857",
+      "name": "Sites",
+      "description": {
+        "content": "List, get, create, and replace sites in the partner fleet",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01a599b8-91fc-4c58-a6d3-1ed0dc66492c",
+          "name": "List Sites",
+          "request": {
+            "name": "List Sites",
+            "description": {
+              "content": "List all sites the authenticated partner can access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e206aff-9624-4afc-83f5-823c9bfb559e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"siteId\": \"string\"\n    },\n    {\n      \"siteId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0f987df-bdee-4fd3-8f20-7d628880c478",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b262760-650d-45b5-9988-80a0079237fe",
+              "name": "403 Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74410d2c-a007-4373-999a-d75a079904e6",
+          "name": "Create Site",
+          "request": {
+            "name": "Create Site",
+            "description": {
+              "content": "Create a new site in the partner fleet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"address\": {\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"city\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"line1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5826e206-0be1-4135-83bb-b0112eaf5b25",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"siteId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"address\": {\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"city\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"line1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"siteId\": \"string\",\n  \"name\": \"string\",\n  \"timezone\": \"string\",\n  \"address\": {\n    \"country\": \"string\",\n    \"region\": \"string\",\n    \"city\": \"string\",\n    \"postalCode\": \"string\",\n    \"line1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53bc047f-13c9-438a-ae96-e111ac8b135e",
+          "name": "Get Site",
+          "request": {
+            "name": "Get Site",
+            "description": {
+              "content": "Get a site by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sites",
+                ":siteId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "siteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5bb4fcaf-9e85-4eaf-a5bb-e700a878a407",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sites",
+                    ":siteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"siteId\": \"string\",\n  \"name\": \"string\",\n  \"timezone\": \"string\",\n  \"address\": {\n    \"country\": \"string\",\n    \"region\": \"string\",\n    \"city\": \"string\",\n    \"postalCode\": \"string\",\n    \"line1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c175efe8-c615-4d0c-8190-7c8943890674",
+          "name": "Replace Site",
+          "request": {
+            "name": "Replace Site",
+            "description": {
+              "content": "Override a site with new attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sites",
+                ":siteId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "siteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"address\": {\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"city\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"line1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea9fa0d2-5459-4818-89d5-d4827e53d9d6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sites",
+                    ":siteId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"siteId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"address\": {\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"city\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"line1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"siteId\": \"string\",\n  \"name\": \"string\",\n  \"timezone\": \"string\",\n  \"address\": {\n    \"country\": \"string\",\n    \"region\": \"string\",\n    \"city\": \"string\",\n    \"postalCode\": \"string\",\n    \"line1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00a401dc-d658-4738-8f1d-914874065ff5",
+          "name": "Get Site Topology",
+          "request": {
+            "name": "Get Site Topology",
+            "description": {
+              "content": "Return the electrical topology tree of a site. Nodes with\n`\"kind\": \"sensor\"` expose an `id` that may be passed to the\ndevice telemetry endpoint and a `channels` array of available\ndata streams.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sites",
+                ":siteId",
+                "topology"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "siteId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42176c59-b408-405f-9216-b0a321c87902",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sites",
+                    ":siteId",
+                    "topology"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "siteId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"root\": {\n    \"id\": \"string\",\n    \"kind\": \"site\",\n    \"channels\": [\n      \"string\",\n      \"string\"\n    ],\n    \"children\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TopologyNode detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/TopologyNode detected>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "02d5d041-f5fc-4f70-af98-4c3569a60bb5",
+      "name": "Devices",
+      "description": {
+        "content": "List, get, create, replace, and patch DER devices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "417739eb-f53c-42ea-9f2c-7ee11072b3b6",
+          "name": "List Devices",
+          "request": {
+            "name": "List Devices",
+            "description": {
+              "content": "List all devices in the partner fleet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbb99986-7f38-4b72-8ba0-30f49187a1d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"synthId\": \"string\"\n    },\n    {\n      \"synthId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f358ae3-4586-43f3-831d-dd37f7257f9c",
+          "name": "Create Device",
+          "request": {
+            "name": "Create Device",
+            "description": {
+              "content": "Create a new device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"synthId\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"type\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"model\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c2fbb73-0fad-4f44-84bc-aea59c154a7d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"synthId\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"type\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"model\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"properties\": {\n    \"key_0\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"synthId\": \"string\",\n  \"deviceId\": \"string\",\n  \"kind\": \"meter\",\n  \"type\": \"string\",\n  \"siteId\": \"string\",\n  \"manufacturer\": \"string\",\n  \"model\": \"string\",\n  \"serialNumber\": \"string\",\n  \"properties\": {\n    \"key_0\": 6945,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22808472-d590-4fc9-9f40-c1e93c561e12",
+          "name": "Get Device",
+          "request": {
+            "name": "Get Device",
+            "description": {
+              "content": "Get a device by ID with its static properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17d4c609-d2ed-4e9d-922f-e7dc8bd62703",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"synthId\": \"string\",\n  \"deviceId\": \"string\",\n  \"kind\": \"meter\",\n  \"type\": \"string\",\n  \"siteId\": \"string\",\n  \"manufacturer\": \"string\",\n  \"model\": \"string\",\n  \"serialNumber\": \"string\",\n  \"properties\": {\n    \"key_0\": 6945,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ace9744e-ff64-4de1-912c-eced43088d71",
+          "name": "Replace Or Create Device",
+          "request": {
+            "name": "Replace Or Create Device",
+            "description": {
+              "content": "Override an existing device with new properties or create one if it does not yet exist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"synthId\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"type\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"model\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "651f9e20-6f44-42cf-b2ee-3037e85950b8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"synthId\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"kind\": \"<string>\",\n  \"type\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"manufacturer\": \"<string>\",\n  \"model\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"properties\": {\n    \"key_0\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"synthId\": \"string\",\n  \"deviceId\": \"string\",\n  \"kind\": \"meter\",\n  \"type\": \"string\",\n  \"siteId\": \"string\",\n  \"manufacturer\": \"string\",\n  \"model\": \"string\",\n  \"serialNumber\": \"string\",\n  \"properties\": {\n    \"key_0\": 6945,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "de080b75-02d3-43ba-a759-3f2c59cb5e2e",
+      "name": "Telemetry",
+      "description": {
+        "content": "Retrieve time-bucketed device telemetry and counterfactuals",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94d167ed-c78b-43e6-9712-759758ffb296",
+          "name": "Get Device Telemetry",
+          "request": {
+            "name": "Get Device Telemetry",
+            "description": {
+              "content": "Get time-bucketed telemetry for a device or sensor. `synthId` can be\na device ID or a sensor ID from the site topology. Supported device\nkinds: `inverter`, `battery_pack`, `PV`, `EV`, `meter`,\n`load_control_relay`. Include `energy_Wh_increment` and\n`energy_Wh_decrement` by passing `include=default,energy`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "telemetry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated set of telemetry fields. `energy` is opt-in."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket",
+                  "value": "<string>",
+                  "description": "Time-bucket size (e.g. `PT1H`)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccded06a-21dd-4633-9fd2-7ff6da92bb14",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "telemetry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"timestamp\": \"1980-11-11T11:15:36.574Z\",\n      \"power_W\": 8255.124070240201,\n      \"voltage_V\": 3157.2157502786226,\n      \"current_A\": 8891.24382460787,\n      \"stateOfCharge_pct\": 8230.309885766286,\n      \"energy_Wh_increment\": 9291.376671838587,\n      \"energy_Wh_decrement\": 7838.663783525516\n    },\n    {\n      \"timestamp\": \"2009-04-26T20:14:08.086Z\",\n      \"power_W\": 3515.383371734506,\n      \"voltage_V\": 6102.476588378181,\n      \"current_A\": 7389.479264348763,\n      \"stateOfCharge_pct\": 5100.0118119626395,\n      \"energy_Wh_increment\": 8191.764880946301,\n      \"energy_Wh_decrement\": 6725.527897862153\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "311ea7b3-6ba5-4bdc-81ee-6e7ef3bf0536",
+          "name": "Get Counterfactual Telemetry",
+          "request": {
+            "name": "Get Counterfactual Telemetry",
+            "description": {
+              "content": "Counterfactual telemetry — what the device would have done if it had\nnot been smartly controlled. Availability depends on the\ncounterfactuals enabled for your partner account.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "counterfactuals",
+                ":counterfactualName",
+                "devices",
+                ":deviceId",
+                "telemetry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "counterfactualName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "391f0005-2711-4667-bb8d-ec0c94066c35",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "counterfactuals",
+                    ":counterfactualName",
+                    "devices",
+                    ":deviceId",
+                    "telemetry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "counterfactualName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"timestamp\": \"1980-11-11T11:15:36.574Z\",\n      \"power_W\": 8255.124070240201,\n      \"voltage_V\": 3157.2157502786226,\n      \"current_A\": 8891.24382460787,\n      \"stateOfCharge_pct\": 8230.309885766286,\n      \"energy_Wh_increment\": 9291.376671838587,\n      \"energy_Wh_decrement\": 7838.663783525516\n    },\n    {\n      \"timestamp\": \"2009-04-26T20:14:08.086Z\",\n      \"power_W\": 3515.383371734506,\n      \"voltage_V\": 6102.476588378181,\n      \"current_A\": 7389.479264348763,\n      \"stateOfCharge_pct\": 5100.0118119626395,\n      \"energy_Wh_increment\": 8191.764880946301,\n      \"energy_Wh_decrement\": 6725.527897862153\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ab58630f-5eca-42a8-a0e2-8c6c77d9ca48",
+      "name": "Operation Mode",
+      "description": {
+        "content": "Read or change the Gridshare operation mode of a device",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a058466b-69bc-4ec3-a3c1-45506004c763",
+          "name": "Get Device Operation Mode",
+          "request": {
+            "name": "Get Device Operation Mode",
+            "description": {
+              "content": "Get the current Gridshare operation mode of a device. Valid modes:\n- `Simple` — follow the simplest plan possible for the device kind\n- `Schedule` — follow a periodical plan\n- `Smart` — AI-optimized smart plan\n- `Unknown` — operation mode cannot be determined\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5afe6ed4-43f1-46b5-bfd0-2b2ae4aec462",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Simple\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68acdc94-8932-45fe-8f61-7dae4065889e",
+          "name": "Change Device Operation Mode",
+          "request": {
+            "name": "Change Device Operation Mode",
+            "description": {
+              "content": "Set the Gridshare operation mode for a device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7d065e8-2193-45d0-b69a-079acbc49683",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Simple\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e8683f4d-31ab-4f34-9829-7270ed791471",
+      "name": "Plans",
+      "description": {
+        "content": "Read or set overlay plans for short-term device dispatch",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0fc0f437-9fbd-4b5f-b623-f74d211b3a1e",
+          "name": "Get Device Overlay Plan",
+          "request": {
+            "name": "Get Device Overlay Plan",
+            "description": {
+              "content": "Get the current overlay plan for the device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd9da6c6-f3b4-45d9-898e-90d6942c8343",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commands\": [\n    {\n      \"start\": \"1964-04-03T00:41:34.118Z\",\n      \"end\": \"1949-07-02T02:51:27.502Z\",\n      \"action\": \"charge\",\n      \"powerLimit_W\": 7734.440829989291\n    },\n    {\n      \"start\": \"1984-07-06T03:47:27.632Z\",\n      \"end\": \"1991-09-13T09:47:53.527Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 559.6801061701162\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f6e0347-7283-4dfe-bdc5-aff3942ead83",
+          "name": "Set Device Overlay Plan",
+          "request": {
+            "name": "Set Device Overlay Plan",
+            "description": {
+              "content": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bf87e15-fbb6-4d53-afbc-3b34eb40ad1f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"1985-03-25T05:37:42.073Z\",\n      \"end\": \"1997-05-06T06:43:11.757Z\",\n      \"action\": \"follow\",\n      \"powerLimit_W\": 7086.748100206944\n    },\n    {\n      \"start\": \"1978-10-28T00:28:13.224Z\",\n      \"end\": \"1958-03-02T07:22:47.158Z\",\n      \"action\": \"charge\",\n      \"powerLimit_W\": 9891.269317816565\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e2626df5-4ec2-41fd-a2b1-2d567f963f88",
+      "name": "Periodical Tariffs",
+      "description": {
+        "content": "Manage periodical (recurring) tariffs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "393faf01-0740-4a23-9aae-73080e419093",
+          "name": "List Periodical Tariffs",
+          "request": {
+            "name": "List Periodical Tariffs",
+            "description": {
+              "content": "List all periodical tariffs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecb42e45-2b63-4b1c-a894-4e3bdb485f59",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"name\": \"string\",\n      \"companyName\": \"string\",\n      \"tariffId\": \"string\",\n      \"currency\": \"string\",\n      \"pricingPeriods\": [\n        {\n          \"start\": \"1996-02-19\",\n          \"end\": \"2010-10-15\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 9674.321712987567\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 20.251122732579674\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"start\": \"1973-06-25\",\n          \"end\": \"1947-02-13\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 7222.005627423897\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 1406.2690081309993\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"companyName\": \"string\",\n      \"tariffId\": \"string\",\n      \"currency\": \"string\",\n      \"pricingPeriods\": [\n        {\n          \"start\": \"1956-10-25\",\n          \"end\": \"1958-03-31\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 8266.44016607928\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 1353.8280498139\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"start\": \"2000-06-30\",\n          \"end\": \"2014-12-04\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 4333.989035346919\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 4362.721172077216\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b921550-980d-4409-a3f7-f38e2dd95183",
+          "name": "Create Periodical Tariff",
+          "request": {
+            "name": "Create Periodical Tariff",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    },\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4915d4a-9b16-4b19-9e9c-8398378f2463",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"2003-07-17\",\n      \"end\": \"2011-02-19\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 6824.24730048201\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 8735.714043798085\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1999-06-08\",\n          \"end\": \"1975-01-02\",\n          \"rate\": 7702.136940409786\n        },\n        {\n          \"start\": \"1959-05-26\",\n          \"end\": \"1992-03-25\",\n          \"rate\": 2935.8251474827102\n        }\n      ]\n    },\n    {\n      \"start\": \"1986-12-19\",\n      \"end\": \"1987-06-16\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 9079.185576041804\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 9974.529993493228\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1989-06-02\",\n          \"end\": \"1999-10-15\",\n          \"rate\": 3269.5880987719606\n        },\n        {\n          \"start\": \"1947-12-29\",\n          \"end\": \"1949-04-26\",\n          \"rate\": 3361.0465552573355\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44d26bfe-9eb0-47cc-8c3b-f0ddaa853b61",
+          "name": "Get Periodical Tariff",
+          "request": {
+            "name": "Get Periodical Tariff",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44c11b17-2f39-48d1-ab04-cae82ab19723",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"tariffId\": \"string\",\n  \"currency\": \"string\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"1985-03-22\",\n      \"end\": \"2013-06-12\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 3851.2643312449336\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 4721.3844002750275\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1994-07-24\",\n          \"end\": \"2004-02-05\",\n          \"rate\": 1468.8107758296665\n        },\n        {\n          \"start\": \"1966-05-12\",\n          \"end\": \"2013-08-04\",\n          \"rate\": 3320.7649963817453\n        }\n      ]\n    },\n    {\n      \"start\": \"1970-11-06\",\n      \"end\": \"1958-10-20\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 6271.950604354074\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 2060.00218700795\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"2021-06-03\",\n          \"end\": \"1956-12-03\",\n          \"rate\": 2130.881066121825\n        },\n        {\n          \"start\": \"1997-01-31\",\n          \"end\": \"1973-08-02\",\n          \"rate\": 9751.26512806985\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfd299d4-e22a-4477-90e4-7b0836e8ebf4",
+          "name": "Update Periodical Tariff",
+          "request": {
+            "name": "Update Periodical Tariff",
+            "description": {
+              "content": "Update properties of an existing periodical tariff. Append or\nrewrite pricing periods. Tariffs may have an open-ended latest\nperiod; PATCH-ing in a later period closes it automatically.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    },\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "852b25a0-b97a-4b07-8d84-8f45f2235e66",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"2003-07-17\",\n      \"end\": \"2011-02-19\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 6824.24730048201\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 8735.714043798085\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1999-06-08\",\n          \"end\": \"1975-01-02\",\n          \"rate\": 7702.136940409786\n        },\n        {\n          \"start\": \"1959-05-26\",\n          \"end\": \"1992-03-25\",\n          \"rate\": 2935.8251474827102\n        }\n      ]\n    },\n    {\n      \"start\": \"1986-12-19\",\n      \"end\": \"1987-06-16\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 9079.185576041804\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 9974.529993493228\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1989-06-02\",\n          \"end\": \"1999-10-15\",\n          \"rate\": 3269.5880987719606\n        },\n        {\n          \"start\": \"1947-12-29\",\n          \"end\": \"1949-04-26\",\n          \"rate\": 3361.0465552573355\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9338ca58-1eab-491f-be3f-81762c40f710",
+      "name": "Dynamic Tariffs",
+      "description": {
+        "content": "Manage dynamic time-series tariffs with 7-day pagination",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b51e69e-3d1b-4cc6-b5ad-e3a24a6a4887",
+          "name": "List Dynamic Tariffs",
+          "request": {
+            "name": "List Dynamic Tariffs",
+            "description": {
+              "content": "List all dynamic tariffs for the calling partner account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba001035-cc20-40b6-bb2e-267ace80d2f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"tariffId\": \"string\",\n      \"name\": \"string\",\n      \"currency\": \"string\",\n      \"values\": [\n        {\n          \"timestamp\": \"1960-03-11T04:36:20.555Z\",\n          \"price\": 2633.984591514763\n        },\n        {\n          \"timestamp\": \"2020-08-15T16:15:54.237Z\",\n          \"price\": 4771.59766436843\n        }\n      ],\n      \"nextToken\": \"string\"\n    },\n    {\n      \"tariffId\": \"string\",\n      \"name\": \"string\",\n      \"currency\": \"string\",\n      \"values\": [\n        {\n          \"timestamp\": \"1986-06-12T15:42:08.515Z\",\n          \"price\": 3780.0503719323874\n        },\n        {\n          \"timestamp\": \"1946-07-22T19:10:57.275Z\",\n          \"price\": 6321.576186540527\n        }\n      ],\n      \"nextToken\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "367b2a40-c191-4494-938d-d02a03184397",
+          "name": "Create Dynamic Tariff",
+          "request": {
+            "name": "Create Dynamic Tariff",
+            "description": {
+              "content": "Create a dynamic tariff with an optional initial set of timeseries values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b31c8284-a4a7-4cd6-a29e-d164c158597b",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"1995-09-20T01:13:14.885Z\",\n      \"price\": 5892.699768914737\n    },\n    {\n      \"timestamp\": \"2024-08-26T17:08:38.008Z\",\n      \"price\": 2160.751588112174\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "566d078a-c2f2-4c17-8278-3690bde55403",
+          "name": "Get Dynamic Tariff",
+          "request": {
+            "name": "Get Dynamic Tariff",
+            "description": {
+              "content": "Return metadata for a dynamic tariff together with a single page of\ntimeseries values covering a 7-day window. Paginate via `nextToken`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c061e8b1-2eb6-49dc-b9aa-befa442b494e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tariffId\": \"string\",\n  \"name\": \"string\",\n  \"currency\": \"string\",\n  \"values\": [\n    {\n      \"timestamp\": \"1987-01-13T21:43:39.909Z\",\n      \"price\": 6283.585786343806\n    },\n    {\n      \"timestamp\": \"1975-12-21T00:23:49.970Z\",\n      \"price\": 3943.375473483819\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df065e62-979c-49dc-a574-f9d488addda0",
+          "name": "Update Dynamic Tariff",
+          "request": {
+            "name": "Update Dynamic Tariff",
+            "description": {
+              "content": "Append or override periods of a dynamic tariff. Existing values are not deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "566d2250-e445-4fad-84a3-f21077615a23",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"1995-09-20T01:13:14.885Z\",\n      \"price\": 5892.699768914737\n    },\n    {\n      \"timestamp\": \"2024-08-26T17:08:38.008Z\",\n      \"price\": 2160.751588112174\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "df6c6c23-ae98-47ac-83c8-d8bebf992657",
+      "name": "Flex Groups",
+      "description": {
+        "content": "Define and manage groups of DERs participating in flex programs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "45587a3b-e321-46d4-ae4a-3d221c421b9f",
+          "name": "List Flex Groups",
+          "request": {
+            "name": "List Flex Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "512732e6-ce00-484a-b984-37eddd5a0fc5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"flexGroupId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"settlementPoint\": \"string\"\n    },\n    {\n      \"flexGroupId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"settlementPoint\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "423e76d8-f409-4c74-a5bf-4ccb1fd33a4d",
+          "name": "Create Flex Group",
+          "request": {
+            "name": "Create Flex Group",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flexGroupId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settlementPoint\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f7d5ec8-3ea0-4f7c-bfbd-a2f739c23108",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flexGroupId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settlementPoint\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d693a74-a49f-4bd3-a692-d20cbdb0dd61",
+          "name": "Get Flex Group",
+          "request": {
+            "name": "Get Flex Group",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e590b08-10e9-4bd3-bd6c-b2ed451792b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flexGroupId\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"settlementPoint\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "639db610-3f26-4b1c-8fae-f4e64c7e0655",
+          "name": "List Flex Group Participants",
+          "request": {
+            "name": "List Flex Group Participants",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "participants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c890946e-62f0-4ab8-9ff6-1a44403fa3a9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "participants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"participantId\": \"string\",\n      \"siteId\": \"string\",\n      \"deviceIds\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"participantId\": \"string\",\n      \"siteId\": \"string\",\n      \"deviceIds\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dabb4cd-0921-48c1-ba0a-b06f2b4e5a8c",
+          "name": "Add Flex Group Participant",
+          "request": {
+            "name": "Add Flex Group Participant",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "participants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"participantId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"deviceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "018dd9bb-c60b-4c0d-8d27-bea1832475b3",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "participants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"participantId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"deviceIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9286d86f-5983-435e-bcd1-6504d6c3eaf9",
+          "name": "Get Flex Group Participant",
+          "request": {
+            "name": "Get Flex Group Participant",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "participants",
+                ":participantId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "participantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9923f89-1ff6-4b54-a340-3707b2950dd9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "participants",
+                    ":participantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "participantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"participantId\": \"string\",\n  \"siteId\": \"string\",\n  \"deviceIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "591adcc7-dd63-479e-98ac-47fd3ecd8387",
+          "name": "Delete Flex Group Participant",
+          "request": {
+            "name": "Delete Flex Group Participant",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "participants",
+                ":participantId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "participantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbddc60c-d7ee-459f-a861-5833e455e887",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "participants",
+                    ":participantId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "participantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "892b8c0f-a8b7-4218-9dcb-7cf1dbec0091",
+          "name": "Create Bulk Participants Action",
+          "request": {
+            "name": "Create Bulk Participants Action",
+            "description": {
+              "content": "Overwrite the participants of a flex group by sending a full\nreplacement list. This action is irreversible.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "participants",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entries\": [\n    {\n      \"participantId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"deviceIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"participantId\": \"<string>\",\n      \"siteId\": \"<string>\",\n      \"deviceIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42e34747-bc09-4033-adbb-268a3e65dd7b",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "participants",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entries\": [\n    {\n      \"participantId\": \"string\",\n      \"siteId\": \"string\",\n      \"deviceIds\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"participantId\": \"string\",\n      \"siteId\": \"string\",\n      \"deviceIds\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f197870-9a2e-4465-ba3d-e10d22149dc7",
+          "name": "Get Bulk Participants Action",
+          "request": {
+            "name": "Get Bulk Participants Action",
+            "description": {
+              "content": "Retrieve the status of a bulk participants update.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "participants",
+                "bulk",
+                ":bulkId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bulkId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7820473-c4c6-45c4-821a-9f59c34f1a0b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "participants",
+                    "bulk",
+                    ":bulkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bulkId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "aa73f01e-81d9-487c-befb-b5e1a2abd32d",
+      "name": "Flex Events",
+      "description": {
+        "content": "Schedule and update flex events for a flex group",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f654dfa5-0124-4bb5-93cf-1d0af663c8da",
+          "name": "List Flex Events",
+          "request": {
+            "name": "List Flex Events",
+            "description": {
+              "content": "List all flex events within a time range, optionally filtered by group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexevent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "flexGroupId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5661afc-b4d5-4724-9560-564c86d78a7c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexevent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "flexGroupId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"flexEventId\": \"string\",\n      \"flexGroupId\": \"string\",\n      \"type\": \"flatDispatch\",\n      \"start\": \"1969-08-28T00:16:26.669Z\",\n      \"end\": \"1990-03-24T08:16:51.667Z\",\n      \"powerProfile_W\": 1286.10811607636,\n      \"status\": \"pending\"\n    },\n    {\n      \"flexEventId\": \"string\",\n      \"flexGroupId\": \"string\",\n      \"type\": \"ramp\",\n      \"start\": \"1957-08-28T19:47:30.677Z\",\n      \"end\": \"2022-06-20T14:58:10.689Z\",\n      \"powerProfile_W\": 9849.115581941467,\n      \"status\": \"scheduled\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6a6bd06-3e25-4553-99ad-7f1fb5d94cc2",
+          "name": "Create Flex Event",
+          "request": {
+            "name": "Create Flex Event",
+            "description": {
+              "content": "Create a flex event for a defined flex group. Supports flat-dispatch\nevents that target a flat power profile across a specified window.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexevent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flexEventId\": \"<string>\",\n  \"flexGroupId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"powerProfile_W\": \"<number>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2e0f952-c096-4881-9100-2e56928e1d60",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexevent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flexEventId\": \"<string>\",\n  \"flexGroupId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"powerProfile_W\": \"<number>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f3850f5-5f58-4151-ba7e-77a6a1426f8e",
+          "name": "Update Flex Event",
+          "request": {
+            "name": "Update Flex Event",
+            "description": {
+              "content": "Update or cancel an existing flex event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexevents",
+                ":flexEventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexEventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flexEventId\": \"<string>\",\n  \"flexGroupId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"powerProfile_W\": \"<number>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1fef95e-7da1-4315-b4a2-0ad66c282f9a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexevents",
+                    ":flexEventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexEventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flexEventId\": \"<string>\",\n  \"flexGroupId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"powerProfile_W\": \"<number>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4034dbe9-2e64-4a83-ae95-3529588c9149",
+      "name": "Flex Dispatches",
+      "description": {
+        "content": "Opt participants out of an active flex dispatch",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e9ceb09a-2047-400e-a31a-1d8360396045",
+          "name": "Opt Out Of Flex Dispatch",
+          "request": {
+            "name": "Opt Out Of Flex Dispatch",
+            "description": {
+              "content": "Opt a participant out of a flex dispatch. Participants may be\nidentified by site ID or participant ID. Idempotent — repeat opt-outs\nreturn the original opt-out details.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexdispatches",
+                ":flexDispatchId",
+                "optout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexDispatchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteId\": \"<string>\",\n  \"participantId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1aa78bfc-a8e2-4f6d-b08c-47d5b02045f1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexdispatches",
+                    ":flexDispatchId",
+                    "optout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexDispatchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"siteId\": \"<string>\",\n  \"participantId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "08689dcd-e84b-4acc-b578-3edbbcc9707d",
+      "name": "Prognoses",
+      "description": {
+        "content": "Forecasted aggregate power profiles for flex groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f54759a-9d2c-48ce-8e62-09641827bcb2",
+          "name": "List Prognoses",
+          "request": {
+            "name": "List Prognoses",
+            "description": {
+              "content": "List prognoses for a specific flex group. A new prognosis is generated\nwhen the group forecast changes due to prediction updates or\nexplicit flex actions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "prognoses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ee19cb4-28b8-4c3d-aecc-857eaef5aa1d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "prognoses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"prognosisId\": \"string\",\n      \"flexGroupId\": \"string\",\n      \"generatedAt\": \"1960-01-03T23:11:09.955Z\",\n      \"intervals\": [\n        {\n          \"start\": \"1978-08-11T14:14:04.120Z\",\n          \"end\": \"1956-09-11T20:12:13.996Z\",\n          \"power_W\": 9831.085688569156\n        },\n        {\n          \"start\": \"1985-06-07T14:05:11.901Z\",\n          \"end\": \"1986-08-29T05:07:11.404Z\",\n          \"power_W\": 5738.497669322042\n        }\n      ]\n    },\n    {\n      \"prognosisId\": \"string\",\n      \"flexGroupId\": \"string\",\n      \"generatedAt\": \"2005-03-31T09:55:31.747Z\",\n      \"intervals\": [\n        {\n          \"start\": \"1953-10-03T22:35:14.431Z\",\n          \"end\": \"1990-05-23T18:44:21.277Z\",\n          \"power_W\": 1098.985753503694\n        },\n        {\n          \"start\": \"1954-06-07T21:16:56.985Z\",\n          \"end\": \"1984-05-01T21:39:00.722Z\",\n          \"power_W\": 92.49114196787423\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8c19e3e4-b194-4a78-8f43-2f3f55ce2d24",
+      "name": "Diff Requests",
+      "description": {
+        "content": "Request and commit differential adjustments to a prognosis",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cc61b8a-1921-4960-9d42-337fed88868e",
+          "name": "Create Prognosis Diff Request",
+          "request": {
+            "name": "Create Prognosis Diff Request",
+            "description": {
+              "content": "Request a modification to a prognosis profile. Allows charging or\ndischarging to the network in a coordinated manner by submitting a\ndifferential profile over the original prognosis. Asynchronous —\npoll the Diff Request endpoint for status.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognoses",
+                ":prognosisId",
+                "prognosisdiffrequests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"prognosisId\": \"<string>\",\n  \"diffProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    }\n  ],\n  \"status\": \"<string>\",\n  \"offer\": {\n    \"feasiblePower_W\": \"<number>\",\n    \"price\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91787abe-549b-465f-b6f3-a6a6349f95ba",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognoses",
+                    ":prognosisId",
+                    "prognosisdiffrequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"prognosisId\": \"<string>\",\n  \"diffProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    }\n  ],\n  \"status\": \"<string>\",\n  \"offer\": {\n    \"feasiblePower_W\": \"<number>\",\n    \"price\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "438e651b-03f0-4311-914e-8e54733c4bc2",
+          "name": "Get Prognosis Diff Request",
+          "request": {
+            "name": "Get Prognosis Diff Request",
+            "description": {
+              "content": "Poll status and feasible offer for a prognosis diff request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognosisdiffrequests",
+                ":prognosisDiffRequestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisDiffRequestId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd1b6e9e-9f8a-45d6-82cd-c1c7575ab3cf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognosisdiffrequests",
+                    ":prognosisDiffRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisDiffRequestId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"prognosisDiffRequestId\": \"string\",\n  \"prognosisId\": \"string\",\n  \"diffProfile\": [\n    {\n      \"start\": \"1995-01-28T04:05:15.053Z\",\n      \"end\": \"2002-02-03T10:17:38.271Z\",\n      \"deltaPower_W\": 5453.828798903014\n    },\n    {\n      \"start\": \"2013-05-08T23:46:38.330Z\",\n      \"end\": \"2002-08-26T20:29:00.357Z\",\n      \"deltaPower_W\": 6743.670556471786\n    }\n  ],\n  \"status\": \"rejected\",\n  \"offer\": {\n    \"feasiblePower_W\": 5420.02123136939,\n    \"price\": 933.2448905876233,\n    \"currency\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17ee1efa-7497-4f59-8625-1b662e734549",
+          "name": "Create Prognosis Diff Order",
+          "request": {
+            "name": "Create Prognosis Diff Order",
+            "description": {
+              "content": "Confirm and commit to the offer associated with a prognosis diff\nrequest. Commands are dispatched to the underlying devices.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognosisdiffrequests",
+                ":prognosisDiffRequestId",
+                "prognosisdifforders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisDiffRequestId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prognosisDiffOrderId\": \"<string>\",\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"acceptedAt\": \"<dateTime>\",\n  \"powerProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    }\n  ],\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf2147ec-fa45-4c77-839f-457010a1f83c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognosisdiffrequests",
+                    ":prognosisDiffRequestId",
+                    "prognosisdifforders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisDiffRequestId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prognosisDiffOrderId\": \"<string>\",\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"acceptedAt\": \"<dateTime>\",\n  \"powerProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    }\n  ],\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "950a8c20-df5c-4f7f-9b03-f985e900569d",
+          "name": "Get Prognosis Diff Order",
+          "request": {
+            "name": "Get Prognosis Diff Order",
+            "description": {
+              "content": "Retrieve a committed flex offer order including price and power profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognosisdifforders",
+                ":prognosisDiffOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisDiffOrderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0d428aa-c417-486a-b9e0-4c74e6349be9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognosisdifforders",
+                    ":prognosisDiffOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisDiffOrderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"prognosisDiffOrderId\": \"string\",\n  \"prognosisDiffRequestId\": \"string\",\n  \"acceptedAt\": \"1998-02-25T02:12:30.930Z\",\n  \"powerProfile\": [\n    {\n      \"start\": \"1962-09-06T19:25:10.467Z\",\n      \"end\": \"1949-12-14T03:25:59.051Z\",\n      \"power_W\": 3982.9758258643733\n    },\n    {\n      \"start\": \"1985-07-01T12:01:10.584Z\",\n      \"end\": \"1982-01-03T04:08:02.087Z\",\n      \"power_W\": 1479.0066889661991\n    }\n  ],\n  \"price\": 5027.492110486859,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "165f5755-ce66-4484-b31d-22539358cede",
+      "name": "Visits",
+      "description": {
+        "content": "Record on-site visits for installation or service",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97c7ef99-b411-4f41-bdad-bbf46c7d0b58",
+          "name": "List Visits",
+          "request": {
+            "name": "List Visits",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "671919dc-7b2c-4fd3-8f9b-bfae2c1c2eec",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"visitId\": \"string\",\n      \"siteId\": \"string\",\n      \"type\": \"string\",\n      \"scheduledAt\": \"1954-03-03T02:50:52.597Z\",\n      \"completedAt\": \"1990-05-17T21:27:16.953Z\",\n      \"notes\": \"string\"\n    },\n    {\n      \"visitId\": \"string\",\n      \"siteId\": \"string\",\n      \"type\": \"string\",\n      \"scheduledAt\": \"1959-08-27T04:02:59.906Z\",\n      \"completedAt\": \"1952-12-26T08:20:17.641Z\",\n      \"notes\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c56a2cf-ecb8-4050-9645-d419ae669051",
+          "name": "Create Visit",
+          "request": {
+            "name": "Create Visit",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4ad6d3c-2217-438b-9a14-adbac11c8c28",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visitId\": \"<string>\",\n  \"siteId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"completedAt\": \"<dateTime>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e2ce973-f58a-461f-bb46-ec727784d148",
+          "name": "Get Visit",
+          "request": {
+            "name": "Get Visit",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visits",
+                ":visitId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "visitId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cc3a62a-9d06-4d5e-8f57-a6798bc1661b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visits",
+                    ":visitId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "visitId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visitId\": \"string\",\n  \"siteId\": \"string\",\n  \"type\": \"string\",\n  \"scheduledAt\": \"2023-10-12T04:22:12.996Z\",\n  \"completedAt\": \"1976-03-20T13:20:26.464Z\",\n  \"notes\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.partner.us.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9d2a706c-86a0-4c4a-8377-34a2e74d7f93",
+    "name": "Gridshare Partner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Partner API is Lunar Energy's operator-facing surface for\nutilities, retailers, and DER aggregators managing residential\ndistributed energy resources at fleet scale. Covers Sites, Devices,\nTelemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic\nTariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with\nDiff Requests and Diff Orders, Counterfactuals, and on-site Visits.\n\nAuthentication is OAuth 2.0 client-credentials against an Amazon Cognito\nuser pool. Tokens expire after 1 hour and are sent as\n`Authorization: Bearer <access_token>` on every request.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}
