@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.lunarenergy.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  4 05:50:21 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.gridshare.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  2 13:47:11 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: developers.gridshare.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 10 06:18:19 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: lunarenergy.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: gridshare.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

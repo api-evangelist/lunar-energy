@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gridshare-customer-api-openapi.yml, openapi/gridshare-partner-api-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: bearerAuth
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+    tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+    scopes: 4
+  description: |-
+    OAuth 2.0 Authorization Code flow against the lunar-customer
+    Amazon Cognito user pool.
+  sources:
+  - openapi/gridshare-customer-api-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: |-
+    OAuth 2.0 client-credentials access token obtained from the
+    Gridshare partner Cognito authentication endpoint.
+  sources:
+  - openapi/gridshare-partner-api-openapi.yml

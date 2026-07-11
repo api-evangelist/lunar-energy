@@ -114,6 +114,12 @@ apis:
       Gridshare publishes a remote Model Context Protocol (MCP) server that exposes the Customer API as MCP tools for AI
       agents. Authenticated with the same Cognito-issued bearer tokens as the Customer API.
 common:
+  - type: TrustCenter
+    url: security/lunar-energy-trust-center.yml
+  - type: DomainSecurity
+    url: security/lunar-energy-domain-security.yml
+  - type: Authentication
+    url: authentication/lunar-energy-authentication.yml
   - type: OAuthScopes
     url: scopes/lunar-energy-scopes.yml
   - type: Website
