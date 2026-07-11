@@ -1,0 +1,38 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gridshare-customer-api-openapi.yml
+schemes:
+- name: bearerAuth
+  source: openapi/gridshare-customer-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+    tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+  description: |-
+    OAuth 2.0 Authorization Code flow against the lunar-customer
+    Amazon Cognito user pool.
+scopes:
+- scope: lunar/device.read
+  description: Read device metadata and telemetry (excluding plans)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gridshare-customer-api-openapi.yml
+- scope: lunar/device.write
+  description: Modify devices including operation mode
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gridshare-customer-api-openapi.yml
+- scope: lunar/plan.read
+  description: Read existing device plans
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gridshare-customer-api-openapi.yml
+- scope: lunar/plan.write
+  description: Send plans to a device
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gridshare-customer-api-openapi.yml
