@@ -1,0 +1,312 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Devices
+  description: List, get, and partially update customer devices
+paths:
+  /api/v2/devices:
+    get:
+      operationId: listDevices
+      summary: List Devices
+      description: List all devices the authenticated customer has access to.
+      tags:
+      - Devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceList'
+        '400':
+          $ref: '#/components/responses/Malformed'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+  /api/v2/devices/{synthId}:
+    parameters:
+    - $ref: '#/components/parameters/SynthId'
+    get:
+      operationId: getDevice
+      summary: Get Device
+      description: Get a device by ID along with its static properties.
+      tags:
+      - Devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+    patch:
+      operationId: patchDevice
+      summary: Partially Update Device
+      description: Update a device.
+      tags:
+      - Devices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+      responses:
+        '200':
+          description: OK
+  /api/v1/devices:
+    get:
+      operationId: listDevices
+      summary: List Devices
+      description: List all devices in the partner fleet.
+      tags:
+      - Devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceList'
+    post:
+      operationId: createDevice
+      summary: Create Device
+      description: Create a new device.
+      tags:
+      - Devices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device_2'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device_2'
+  /api/v1/devices/{synthId}:
+    parameters:
+    - $ref: '#/components/parameters/SynthId'
+    get:
+      operationId: getDevice
+      summary: Get Device
+      description: Get a device by ID with its static properties.
+      tags:
+      - Devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device_2'
+    put:
+      operationId: replaceOrCreateDevice
+      summary: Replace Or Create Device
+      description: Override an existing device with new properties or create one if it does not yet exist.
+      tags:
+      - Devices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device_2'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device_2'
+components:
+  responses:
+    Forbidden:
+      description: 403 Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenResponse'
+    Unauthorized:
+      description: 401 Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedResponse'
+    Malformed:
+      description: 400 Malformed Input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MalformedInputResponse'
+    Unprocessable:
+      description: 422 Unprocessable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnprocessableResponse'
+  schemas:
+    Device:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
+          type: string
+        kind:
+          type: string
+          enum:
+          - inverter
+          - battery_pack
+          - PV
+          - EV
+          - meter
+          - load_control_relay
+        siteId:
+          type: string
+        manufacturer:
+          type: string
+        model:
+          type: string
+        serialNumber:
+          type: string
+    DeviceListItem:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
+          type: string
+    UnprocessableResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    Device_2:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
+          type: string
+        deviceId:
+          type: string
+        kind:
+          type: string
+          enum:
+          - inverter
+          - battery_pack
+          - PV
+          - EV
+          - meter
+          - load_control_relay
+        type:
+          type: string
+        siteId:
+          type: string
+        manufacturer:
+          type: string
+        model:
+          type: string
+        serialNumber:
+          type: string
+        properties:
+          type: object
+          additionalProperties: true
+    ForbiddenResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    MalformedInputResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    UnauthorizedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    DeviceList:
+      type: object
+      required:
+      - entries
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceListItem'
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

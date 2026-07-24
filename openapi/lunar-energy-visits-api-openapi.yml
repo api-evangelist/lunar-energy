@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Visits API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Visits
+  description: Record on-site visits for installation or service
+paths:
+  /api/v1/visits:
+    get:
+      operationId: listVisits
+      summary: List Visits
+      tags:
+      - Visits
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitList'
+    post:
+      operationId: createVisit
+      summary: Create Visit
+      tags:
+      - Visits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Visit'
+      responses:
+        '201':
+          description: Created
+  /api/v1/visits/{visitId}:
+    parameters:
+    - in: path
+      name: visitId
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getVisit
+      summary: Get Visit
+      tags:
+      - Visits
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visit'
+components:
+  schemas:
+    VisitList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Visit'
+    Visit:
+      type: object
+      properties:
+        visitId:
+          type: string
+        siteId:
+          type: string
+        type:
+          type: string
+        scheduledAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+        notes:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

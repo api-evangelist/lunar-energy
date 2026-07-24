@@ -1,0 +1,309 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Sites API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Sites
+  description: List sites and read site topology
+paths:
+  /api/v2/sites:
+    get:
+      operationId: listSites
+      summary: List Sites
+      description: 'List the siteIds the authenticated customer has access to. v2 is
+
+        the lightweight external endpoint — pair it with
+
+        `GET /api/v2/sites/{siteId}/topology` and `GET /api/v2/devices` to
+
+        drill into a site''s structure or devices.
+
+        '
+      tags:
+      - Sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /api/v2/sites/{siteId}/topology:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: getSiteTopology
+      summary: Get Site Topology
+      description: 'Return the electrical topology of a site the authenticated customer
+
+        has access to. Nodes with `"kind": "sensor"` expose an `id` that may
+
+        be passed to `GET /api/v2/devices/{synthId}/telemetry` and a
+
+        `channels` array listing available streams. See the Topology key
+
+        concepts page for worked examples.
+
+        '
+      tags:
+      - Sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topology'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /api/v1/sites:
+    get:
+      operationId: listSites
+      summary: List Sites
+      description: List all sites the authenticated partner can access.
+      tags:
+      - Sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createSite
+      summary: Create Site
+      description: Create a new site in the partner fleet.
+      tags:
+      - Sites
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Site'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+  /api/v1/sites/{siteId}:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: getSite
+      summary: Get Site
+      description: Get a site by ID.
+      tags:
+      - Sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+    put:
+      operationId: replaceSite
+      summary: Replace Site
+      description: Override a site with new attributes.
+      tags:
+      - Sites
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Site'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site'
+  /api/v1/sites/{siteId}/topology:
+    parameters:
+    - $ref: '#/components/parameters/SiteId'
+    get:
+      operationId: getSiteTopology
+      summary: Get Site Topology
+      description: 'Return the electrical topology tree of a site. Nodes with
+
+        `"kind": "sensor"` expose an `id` that may be passed to the
+
+        device telemetry endpoint and a `channels` array of available
+
+        data streams.
+
+        '
+      tags:
+      - Sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topology'
+components:
+  schemas:
+    Site:
+      type: object
+      required:
+      - siteId
+      properties:
+        siteId:
+          type: string
+        name:
+          type: string
+        timezone:
+          type: string
+        address:
+          type: object
+          properties:
+            country:
+              type: string
+            region:
+              type: string
+            city:
+              type: string
+            postalCode:
+              type: string
+            line1:
+              type: string
+    SiteList:
+      type: object
+      required:
+      - entries
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteListItem'
+    Topology:
+      type: object
+      properties:
+        root:
+          $ref: '#/components/schemas/TopologyNode'
+    ForbiddenResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    SiteListItem:
+      type: object
+      required:
+      - siteId
+      properties:
+        siteId:
+          type: string
+    TopologyNode:
+      type: object
+      properties:
+        id:
+          type: string
+        kind:
+          type: string
+          enum:
+          - site
+          - device
+          - sensor
+        channels:
+          type: array
+          items:
+            type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/TopologyNode'
+    UnauthorizedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+  responses:
+    Forbidden:
+      description: 403 Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenResponse'
+    Unauthorized:
+      description: 401 Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedResponse'
+  parameters:
+    SiteId:
+      in: path
+      name: siteId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

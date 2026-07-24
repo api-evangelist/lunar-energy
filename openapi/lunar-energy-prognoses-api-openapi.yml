@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Prognoses API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Prognoses
+  description: Forecasted aggregate power profiles for flex groups
+paths:
+  /api/v1/flexgroups/{flexGroupId}/prognoses:
+    parameters:
+    - $ref: '#/components/parameters/FlexGroupId'
+    get:
+      operationId: listPrognoses
+      summary: List Prognoses
+      description: 'List prognoses for a specific flex group. A new prognosis is generated
+
+        when the group forecast changes due to prediction updates or
+
+        explicit flex actions.
+
+        '
+      tags:
+      - Prognoses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrognosisList'
+components:
+  schemas:
+    PrognosisList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prognosis'
+    Prognosis:
+      type: object
+      properties:
+        prognosisId:
+          type: string
+        flexGroupId:
+          type: string
+        generatedAt:
+          type: string
+          format: date-time
+        intervals:
+          type: array
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                format: date-time
+              end:
+                type: string
+                format: date-time
+              power_W:
+                type: number
+  parameters:
+    FlexGroupId:
+      in: path
+      name: flexGroupId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

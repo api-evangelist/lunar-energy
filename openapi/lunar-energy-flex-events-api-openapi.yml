@@ -1,0 +1,164 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Flex Events API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Flex Events
+  description: Schedule and update flex events for a flex group
+paths:
+  /api/v1/flexevent:
+    get:
+      operationId: listFlexEvents
+      summary: List Flex Events
+      description: List all flex events within a time range, optionally filtered by group.
+      tags:
+      - Flex Events
+      parameters:
+      - in: query
+        name: start
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: end
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: flexGroupId
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlexEventList'
+    post:
+      operationId: createFlexEvent
+      summary: Create Flex Event
+      description: 'Create a flex event for a defined flex group. Supports flat-dispatch
+
+        events that target a flat power profile across a specified window.
+
+        '
+      tags:
+      - Flex Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlexEvent'
+      responses:
+        '201':
+          description: Created
+  /api/v1/flexevents/{flexEventId}:
+    parameters:
+    - in: path
+      name: flexEventId
+      required: true
+      schema:
+        type: string
+    patch:
+      operationId: updateFlexEvent
+      summary: Update Flex Event
+      description: Update or cancel an existing flex event.
+      tags:
+      - Flex Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlexEvent'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    FlexEventList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlexEvent'
+    FlexEvent:
+      type: object
+      properties:
+        flexEventId:
+          type: string
+        flexGroupId:
+          type: string
+        type:
+          type: string
+          enum:
+          - flatDispatch
+          - ramp
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        powerProfile_W:
+          type: number
+        status:
+          type: string
+          enum:
+          - pending
+          - scheduled
+          - active
+          - completed
+          - cancelled
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

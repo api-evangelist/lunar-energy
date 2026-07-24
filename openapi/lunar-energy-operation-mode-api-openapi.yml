@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Operation Mode API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Operation Mode
+  description: Read or change the Gridshare operation mode of a device
+paths:
+  /api/v2/devices/{synthId}/operationmode:
+    parameters:
+    - $ref: '#/components/parameters/SynthId'
+    get:
+      operationId: getDeviceOperationMode
+      summary: Get Device Operation Mode
+      description: 'Get the current Gridshare operation mode of a device. Valid modes:
+
+        - `Simple` — follow the simplest plan possible for the device kind
+
+        - `Schedule` — follow a periodical plan
+
+        - `Smart` — AI-optimized smart plan
+
+        - `Unknown` — operation mode cannot be determined
+
+        '
+      tags:
+      - Operation Mode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationMode'
+    put:
+      operationId: setDeviceOperationMode
+      summary: Change Device Operation Mode
+      description: Set the Gridshare operation mode of a device.
+      tags:
+      - Operation Mode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationMode'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationMode'
+  /api/v1/devices/{synthId}/operationmode:
+    parameters:
+    - $ref: '#/components/parameters/SynthId'
+    get:
+      operationId: getDeviceOperationMode
+      summary: Get Device Operation Mode
+      description: 'Get the current Gridshare operation mode of a device. Valid modes:
+
+        - `Simple` — follow the simplest plan possible for the device kind
+
+        - `Schedule` — follow a periodical plan
+
+        - `Smart` — AI-optimized smart plan
+
+        - `Unknown` — operation mode cannot be determined
+
+        '
+      tags:
+      - Operation Mode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationMode'
+    put:
+      operationId: setDeviceOperationMode
+      summary: Change Device Operation Mode
+      description: Set the Gridshare operation mode for a device.
+      tags:
+      - Operation Mode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationMode'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationMode'
+components:
+  schemas:
+    OperationMode:
+      type: object
+      required:
+      - mode
+      properties:
+        mode:
+          type: string
+          enum:
+          - Simple
+          - Schedule
+          - Smart
+          - Unknown
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

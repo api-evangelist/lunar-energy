@@ -1,0 +1,242 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Flex Groups API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Flex Groups
+  description: Define and manage groups of DERs participating in flex programs
+paths:
+  /api/v1/flexgroups:
+    get:
+      operationId: listFlexGroups
+      summary: List Flex Groups
+      tags:
+      - Flex Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlexGroupList'
+    post:
+      operationId: createFlexGroup
+      summary: Create Flex Group
+      tags:
+      - Flex Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlexGroup'
+      responses:
+        '201':
+          description: Created
+  /api/v1/flexgroups/{flexGroupId}:
+    parameters:
+    - $ref: '#/components/parameters/FlexGroupId'
+    get:
+      operationId: getFlexGroup
+      summary: Get Flex Group
+      tags:
+      - Flex Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlexGroup'
+  /api/v1/flexgroups/{flexGroupId}/participants:
+    parameters:
+    - $ref: '#/components/parameters/FlexGroupId'
+    get:
+      operationId: listFlexGroupParticipants
+      summary: List Flex Group Participants
+      tags:
+      - Flex Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParticipantList'
+    post:
+      operationId: addFlexGroupParticipant
+      summary: Add Flex Group Participant
+      tags:
+      - Flex Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Participant'
+      responses:
+        '201':
+          description: Created
+  /api/v1/flexgroups/{flexGroupId}/participants/{participantId}:
+    parameters:
+    - $ref: '#/components/parameters/FlexGroupId'
+    - $ref: '#/components/parameters/ParticipantId'
+    get:
+      operationId: getFlexGroupParticipant
+      summary: Get Flex Group Participant
+      tags:
+      - Flex Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Participant'
+    delete:
+      operationId: deleteFlexGroupParticipant
+      summary: Delete Flex Group Participant
+      tags:
+      - Flex Groups
+      responses:
+        '204':
+          description: Deleted
+  /api/v1/flexgroups/{flexGroupId}/participants/bulk:
+    parameters:
+    - $ref: '#/components/parameters/FlexGroupId'
+    post:
+      operationId: createBulkParticipantsAction
+      summary: Create Bulk Participants Action
+      description: 'Overwrite the participants of a flex group by sending a full
+
+        replacement list. This action is irreversible.
+
+        '
+      tags:
+      - Flex Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParticipantList'
+      responses:
+        '202':
+          description: Accepted
+  /api/v1/flexgroups/{flexGroupId}/participants/bulk/{bulkId}:
+    parameters:
+    - $ref: '#/components/parameters/FlexGroupId'
+    - in: path
+      name: bulkId
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getBulkParticipantsAction
+      summary: Get Bulk Participants Action
+      description: Retrieve the status of a bulk participants update.
+      tags:
+      - Flex Groups
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    FlexGroup:
+      type: object
+      properties:
+        flexGroupId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        settlementPoint:
+          type: string
+    ParticipantList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+    Participant:
+      type: object
+      properties:
+        participantId:
+          type: string
+        siteId:
+          type: string
+        deviceIds:
+          type: array
+          items:
+            type: string
+    FlexGroupList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlexGroup'
+  parameters:
+    FlexGroupId:
+      in: path
+      name: flexGroupId
+      required: true
+      schema:
+        type: string
+    ParticipantId:
+      in: path
+      name: participantId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

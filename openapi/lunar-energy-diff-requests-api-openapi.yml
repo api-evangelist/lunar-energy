@@ -1,0 +1,219 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Diff Requests API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Diff Requests
+  description: Request and commit differential adjustments to a prognosis
+paths:
+  /api/v1/prognoses/{prognosisId}/prognosisdiffrequests:
+    parameters:
+    - in: path
+      name: prognosisId
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: createPrognosisDiffRequest
+      summary: Create Prognosis Diff Request
+      description: 'Request a modification to a prognosis profile. Allows charging or
+
+        discharging to the network in a coordinated manner by submitting a
+
+        differential profile over the original prognosis. Asynchronous —
+
+        poll the Diff Request endpoint for status.
+
+        '
+      tags:
+      - Diff Requests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrognosisDiffRequest'
+      responses:
+        '202':
+          description: Accepted
+  /api/v1/prognosisdiffrequests/{prognosisDiffRequestId}:
+    parameters:
+    - in: path
+      name: prognosisDiffRequestId
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPrognosisDiffRequest
+      summary: Get Prognosis Diff Request
+      description: Poll status and feasible offer for a prognosis diff request.
+      tags:
+      - Diff Requests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrognosisDiffRequest'
+  /api/v1/prognosisdiffrequests/{prognosisDiffRequestId}/prognosisdifforders:
+    parameters:
+    - in: path
+      name: prognosisDiffRequestId
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: createPrognosisDiffOrder
+      summary: Create Prognosis Diff Order
+      description: 'Confirm and commit to the offer associated with a prognosis diff
+
+        request. Commands are dispatched to the underlying devices.
+
+        '
+      tags:
+      - Diff Requests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrognosisDiffOrder'
+      responses:
+        '201':
+          description: Created
+  /api/v1/prognosisdifforders/{prognosisDiffOrderId}:
+    parameters:
+    - in: path
+      name: prognosisDiffOrderId
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPrognosisDiffOrder
+      summary: Get Prognosis Diff Order
+      description: Retrieve a committed flex offer order including price and power profile.
+      tags:
+      - Diff Requests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrognosisDiffOrder'
+components:
+  schemas:
+    PrognosisDiffRequest:
+      type: object
+      properties:
+        prognosisDiffRequestId:
+          type: string
+        prognosisId:
+          type: string
+        diffProfile:
+          type: array
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                format: date-time
+              end:
+                type: string
+                format: date-time
+              deltaPower_W:
+                type: number
+        status:
+          type: string
+          enum:
+          - pending
+          - offered
+          - expired
+          - rejected
+          - committed
+        offer:
+          type: object
+          properties:
+            feasiblePower_W:
+              type: number
+            price:
+              type: number
+            currency:
+              type: string
+    PrognosisDiffOrder:
+      type: object
+      properties:
+        prognosisDiffOrderId:
+          type: string
+        prognosisDiffRequestId:
+          type: string
+        acceptedAt:
+          type: string
+          format: date-time
+        powerProfile:
+          type: array
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                format: date-time
+              end:
+                type: string
+                format: date-time
+              power_W:
+                type: number
+        price:
+          type: number
+        currency:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device

@@ -1,0 +1,169 @@
+openapi: 3.1.0
+info:
+  title: Gridshare Customer Devices Dynamic Tariffs API
+  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+
+    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+
+    installers, retailers — to read or control devices on behalf of a
+
+    specific Lunar Energy customer once that customer has granted
+
+    consent via OAuth 2.0 Authorization Code flow against the
+
+    lunar-customer Amazon Cognito user pool.
+
+
+    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+
+    `lunar/plan.read`, `lunar/plan.write`.
+
+    '
+  version: v1.0
+  contact:
+    name: Lunar Energy
+    url: https://www.gridshare.com
+    email: developers@gridshare.com
+  x-logo:
+    url: https://www.lunarenergy.com/favicon.ico
+servers:
+- url: https://developer-api.customer.mygridshare.com
+  description: Production server
+- url: https://developer-api.customer.dev0.mygridshare.com
+  description: Development server
+security:
+- bearerAuth: []
+tags:
+- name: Dynamic Tariffs
+  description: Manage dynamic time-series tariffs with 7-day pagination
+paths:
+  /api/v1/dynamictariffs:
+    get:
+      operationId: listDynamicTariffs
+      summary: List Dynamic Tariffs
+      description: List all dynamic tariffs for the calling partner account.
+      tags:
+      - Dynamic Tariffs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicTariffList'
+    post:
+      operationId: createDynamicTariff
+      summary: Create Dynamic Tariff
+      description: Create a dynamic tariff with an optional initial set of timeseries values.
+      tags:
+      - Dynamic Tariffs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicTariff'
+      responses:
+        '201':
+          description: Created
+  /api/v1/dynamictariffs/{tariffId}:
+    parameters:
+    - $ref: '#/components/parameters/TariffId'
+    get:
+      operationId: getDynamicTariff
+      summary: Get Dynamic Tariff
+      description: 'Return metadata for a dynamic tariff together with a single page of
+
+        timeseries values covering a 7-day window. Paginate via `nextToken`.
+
+        '
+      tags:
+      - Dynamic Tariffs
+      parameters:
+      - in: query
+        name: interval
+        schema:
+          type: string
+      - in: query
+        name: nextToken
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DynamicTariff'
+    patch:
+      operationId: updateDynamicTariff
+      summary: Update Dynamic Tariff
+      description: Append or override periods of a dynamic tariff. Existing values are not deleted.
+      tags:
+      - Dynamic Tariffs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicTariff'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    DynamicTariff:
+      type: object
+      properties:
+        tariffId:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicTariffValue'
+        nextToken:
+          type: string
+    DynamicTariffValue:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        price:
+          type: number
+    DynamicTariffList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicTariff'
+  parameters:
+    TariffId:
+      in: path
+      name: tariffId
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: oauth2
+      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+
+        Amazon Cognito user pool.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
+          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
+          scopes:
+            lunar/device.read: Read device metadata and telemetry (excluding plans)
+            lunar/device.write: Modify devices including operation mode
+            lunar/plan.read: Read existing device plans
+            lunar/plan.write: Send plans to a device
