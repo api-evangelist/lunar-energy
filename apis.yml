@@ -13,9 +13,22 @@ description: >-
   investor. The Gridshare Partner API and Customer API are gated behind business onboarding — credentials are issued by
   Lunar Energy after contacting developers@gridshare.com.
 type: Index
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lunar-energy.png
 tags:
   - Energy
   - Home Battery
@@ -38,81 +51,321 @@ created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.20'
 apis:
-  - aid: lunar-energy:gridshare-partner-api
-    name: Gridshare Partner API
-    tags:
-      - Partner
-      - Fleet Management
-      - Virtual Power Plant
-      - Flex Groups
-      - Flex Events
-      - Tariffs
-      - Devices
-      - Sites
-    humanURL: https://developers.gridshare.com/reference/authentication
-    properties:
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/authentication
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/fleet-management
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/vpp
-      - type: OpenAPI
-        url: openapi/gridshare-partner-api-openapi.yml
-    description: >-
-      The Gridshare Partner API is the operator-facing surface for utilities, DER aggregators, and energy retailers to
-      manage residential distributed energy resources at fleet scale. v1 endpoints cover Sites, Devices, Telemetry,
-      Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic Tariffs, Flex Groups (participants and bulk
-      membership), Flex Events and Flex Dispatch opt-outs, Prognoses with Diff Requests and Diff Orders,
-      Counterfactuals, and on-site Visits. Authenticated via OAuth 2.0 client-credentials against Amazon Cognito; tokens
-      expire after 1 hour. Regional production servers are developer-api.partner.us.mygridshare.com (US) and
-      developer-api.partner.mygridshare.com (rest of world).
-  - aid: lunar-energy:gridshare-customer-api
-    name: Gridshare Customer API
-    tags:
-      - Customer
-      - Home Energy Management
-      - Devices
-      - Telemetry
-      - Topology
-      - Operation Mode
-      - Overlay Plans
-    humanURL: https://developers.gridshare.com/reference/authentication-customer
-    properties:
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/authentication-customer
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/topology-key-concepts
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/telemetry-key-concepts
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/energy-management
-      - type: OpenAPI
-        url: openapi/gridshare-customer-api-openapi.yml
-    description: >-
-      The Gridshare Customer API is the homeowner-delegated surface for partners that need to read or control devices on
-      behalf of a specific Lunar Energy customer. It implements OAuth 2.0 Authorization Code flow against the
-      lunar-customer Amazon Cognito user pool with four scopes — `lunar/device.read`, `lunar/device.write`,
-      `lunar/plan.read`, `lunar/plan.write`. v2 endpoints expose lightweight Site listing, Site Topology (a sensor tree
-      usable to drive telemetry queries), Device listing and retrieval, Telemetry (per-sensor time-bucketed readings
-      with energy_Wh_increment / energy_Wh_decrement when include=energy), Operation Mode (Simple / Schedule / Smart),
-      Overlay Plans for short-term device control, and partial device updates. Production servers
-      developer-api.customer.mygridshare.com.
-  - aid: lunar-energy:gridshare-remote-mcp
-    name: Gridshare Remote MCP Server
-    tags:
-      - MCP
-      - Model Context Protocol
-      - Remote MCP
-      - AI Agents
-      - Customer
-    humanURL: https://developers.gridshare.com/reference/customer-remote-mcp
-    properties:
-      - type: Documentation
-        url: https://developers.gridshare.com/reference/customer-remote-mcp
-    description: >-
-      Gridshare publishes a remote Model Context Protocol (MCP) server that exposes the Customer API as MCP tools for AI
-      agents. Authenticated with the same Cognito-issued bearer tokens as the Customer API.
+- aid: lunar-energy:gridshare-remote-mcp
+  name: Gridshare Remote MCP Server
+  tags:
+  - MCP
+  - Model Context Protocol
+  - Remote MCP
+  - AI Agents
+  - Customer
+  humanURL: https://developers.gridshare.com/reference/customer-remote-mcp
+  properties:
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/customer-remote-mcp
+  description: >-
+    Gridshare publishes a remote Model Context Protocol (MCP) server that exposes the Customer API as
+    MCP tools for AI agents. Authenticated with the same Cognito-issued bearer tokens as the Customer
+    API.
+- aid: lunar-energy:lunar-energy-devices-api
+  name: Lunar Energy Devices API
+  description: List, get, and partially update customer devices
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-devices-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-diff-requests-api
+  name: Lunar Energy Diff Requests API
+  description: Request and commit differential adjustments to a prognosis
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Diff Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-diff-requests-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-dynamic-tariffs-api
+  name: Lunar Energy Dynamic Tariffs API
+  description: Manage dynamic time-series tariffs with 7-day pagination
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Dynamic Tariffs
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-dynamic-tariffs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-flex-dispatches-api
+  name: Lunar Energy Flex Dispatches API
+  description: Opt participants out of an active flex dispatch
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Flex Dispatches
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-flex-dispatches-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-flex-events-api
+  name: Lunar Energy Flex Events API
+  description: Schedule and update flex events for a flex group
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Flex Events
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-flex-events-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-flex-groups-api
+  name: Lunar Energy Flex Groups API
+  description: Define and manage groups of DERs participating in flex programs
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Flex Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-flex-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-operation-mode-api
+  name: Lunar Energy Operation Mode API
+  description: Read or change the Gridshare operation mode of a device
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Operation Mode
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-operation-mode-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-periodical-tariffs-api
+  name: Lunar Energy Periodical Tariffs API
+  description: Manage periodical (recurring) tariffs
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Periodical Tariffs
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-periodical-tariffs-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-plans-api
+  name: Lunar Energy Plans API
+  description: Read or set overlay plans for short-term device dispatch
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-plans-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-prognoses-api
+  name: Lunar Energy Prognoses API
+  description: Forecasted aggregate power profiles for flex groups
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Prognoses
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-prognoses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-sites-api
+  name: Lunar Energy Sites API
+  description: List sites and read site topology
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-sites-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-telemetry-api
+  name: Lunar Energy Telemetry API
+  description: Time-bucketed per-sensor telemetry readings
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Telemetry
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-telemetry-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
+- aid: lunar-energy:lunar-energy-visits-api
+  name: Lunar Energy Visits API
+  description: Record on-site visits for installation or service
+  humanURL: https://developers.gridshare.com/reference/authentication
+  tags:
+  - Visits
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-energy-visits-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/fleet-management
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/vpp
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/authentication-customer
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/topology-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/telemetry-key-concepts
+  - type: Documentation
+    url: https://developers.gridshare.com/reference/energy-management
 common:
   - type: AgenticAccess
     url: agentic-access/lunar-energy-agentic-access.yml
