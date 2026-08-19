@@ -1,0 +1,459 @@
+{
+  "item": [
+    {
+      "id": "8d09a223-0a3b-4120-a83a-ad1ab1e7cd53",
+      "name": "Telemetry",
+      "description": {
+        "content": "Time-bucketed per-sensor telemetry readings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ddb8df5-aa90-4bae-bc54-fae886886c86",
+          "name": "Get Device Telemetry",
+          "request": {
+            "name": "Get Device Telemetry",
+            "description": {
+              "content": "Time-bucketed telemetry for a single device sensor stream.\n`synthId` must be a **sensor ID** from the site topology — any node\nwith `\"kind\": \"sensor\"`. On most installations telemetry streams\nare keyed by derived sensor IDs such as\n`<deviceId>__GRID_METER_DERIVED`, `<deviceId>__bb_agg`, and\n`<deviceId>__PV_DERIVED`.\n\n`energy_Wh_increment` and `energy_Wh_decrement` are populated only\nwhen `include=energy` (or `include=default,energy`):\n  - `energy_Wh_increment` — lifetime cumulative energy flowing **into** the device (positive)\n  - `energy_Wh_decrement` — lifetime cumulative energy flowing **out of** the device (negative)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "telemetry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e990bb8-934f-4f49-9eba-4e36fd60e603",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "telemetry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"timestamp\": \"2021-03-27T13:02:09.402Z\",\n      \"power_W\": 5309.883577568287,\n      \"voltage_V\": 707.6056412742005,\n      \"current_A\": 4847.79868416751,\n      \"stateOfCharge_pct\": 5606.068122091805,\n      \"energy_Wh_increment\": 5388.934687015737,\n      \"energy_Wh_decrement\": 4859.974195815442\n    },\n    {\n      \"timestamp\": \"2002-12-04T12:24:32.830Z\",\n      \"power_W\": 4847.09030272708,\n      \"voltage_V\": 5584.6822481734935,\n      \"current_A\": 6727.482263469044,\n      \"stateOfCharge_pct\": 6550.325166369637,\n      \"energy_Wh_increment\": 6581.508662662312,\n      \"energy_Wh_decrement\": 9307.93771613174\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05bfb643-eb8c-4b85-9507-d02cd03e148b",
+          "name": "Get Device Telemetry",
+          "request": {
+            "name": "Get Device Telemetry",
+            "description": {
+              "content": "Get time-bucketed telemetry for a device or sensor. `synthId` can be\na device ID or a sensor ID from the site topology. Supported device\nkinds: `inverter`, `battery_pack`, `PV`, `EV`, `meter`,\n`load_control_relay`. Include `energy_Wh_increment` and\n`energy_Wh_decrement` by passing `include=default,energy`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "telemetry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated set of telemetry fields. `energy` is opt-in."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bucket",
+                  "value": "<string>",
+                  "description": "Time-bucket size (e.g. `PT1H`)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57963125-dab3-439f-8c69-e8e96fc3f2ae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "telemetry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "bucket",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"timestamp\": \"2021-03-27T13:02:09.402Z\",\n      \"power_W\": 5309.883577568287,\n      \"voltage_V\": 707.6056412742005,\n      \"current_A\": 4847.79868416751,\n      \"stateOfCharge_pct\": 5606.068122091805,\n      \"energy_Wh_increment\": 5388.934687015737,\n      \"energy_Wh_decrement\": 4859.974195815442\n    },\n    {\n      \"timestamp\": \"2002-12-04T12:24:32.830Z\",\n      \"power_W\": 4847.09030272708,\n      \"voltage_V\": 5584.6822481734935,\n      \"current_A\": 6727.482263469044,\n      \"stateOfCharge_pct\": 6550.325166369637,\n      \"energy_Wh_increment\": 6581.508662662312,\n      \"energy_Wh_decrement\": 9307.93771613174\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ff47b89-4ad6-4739-8e4c-30c968135697",
+          "name": "Get Counterfactual Telemetry",
+          "request": {
+            "name": "Get Counterfactual Telemetry",
+            "description": {
+              "content": "Counterfactual telemetry — what the device would have done if it had\nnot been smartly controlled. Availability depends on the\ncounterfactuals enabled for your partner account.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "counterfactuals",
+                ":counterfactualName",
+                "devices",
+                ":deviceId",
+                "telemetry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "counterfactualName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9695cd7-30ff-4b82-95c2-39ad6f4c7816",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "counterfactuals",
+                    ":counterfactualName",
+                    "devices",
+                    ":deviceId",
+                    "telemetry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "counterfactualName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"timestamp\": \"2021-03-27T13:02:09.402Z\",\n      \"power_W\": 5309.883577568287,\n      \"voltage_V\": 707.6056412742005,\n      \"current_A\": 4847.79868416751,\n      \"stateOfCharge_pct\": 5606.068122091805,\n      \"energy_Wh_increment\": 5388.934687015737,\n      \"energy_Wh_decrement\": 4859.974195815442\n    },\n    {\n      \"timestamp\": \"2002-12-04T12:24:32.830Z\",\n      \"power_W\": 4847.09030272708,\n      \"voltage_V\": 5584.6822481734935,\n      \"current_A\": 6727.482263469044,\n      \"stateOfCharge_pct\": 6550.325166369637,\n      \"energy_Wh_increment\": 6581.508662662312,\n      \"energy_Wh_decrement\": 9307.93771613174\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9b350821-9cb0-4d57-bee5-19ec4f955036",
+    "name": "Gridshare Customer Devices Telemetry API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}

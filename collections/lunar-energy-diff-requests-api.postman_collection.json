@@ -1,0 +1,487 @@
+{
+  "item": [
+    {
+      "id": "ba34a1f4-28b4-4cb6-a86f-609a756a7fac",
+      "name": "Diff Requests",
+      "description": {
+        "content": "Request and commit differential adjustments to a prognosis",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e67363a6-bcd0-4456-9ad5-f737f6a3d83d",
+          "name": "Create Prognosis Diff Request",
+          "request": {
+            "name": "Create Prognosis Diff Request",
+            "description": {
+              "content": "Request a modification to a prognosis profile. Allows charging or\ndischarging to the network in a coordinated manner by submitting a\ndifferential profile over the original prognosis. Asynchronous —\npoll the Diff Request endpoint for status.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognoses",
+                ":prognosisId",
+                "prognosisdiffrequests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"prognosisId\": \"<string>\",\n  \"diffProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    }\n  ],\n  \"status\": \"<string>\",\n  \"offer\": {\n    \"feasiblePower_W\": \"<number>\",\n    \"price\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ac0f05a-5986-4f4c-9aa0-67ec26678ec6",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognoses",
+                    ":prognosisId",
+                    "prognosisdiffrequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"prognosisId\": \"<string>\",\n  \"diffProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"deltaPower_W\": \"<number>\"\n    }\n  ],\n  \"status\": \"<string>\",\n  \"offer\": {\n    \"feasiblePower_W\": \"<number>\",\n    \"price\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0beb6b39-4984-4ab5-8902-0421b79b31a9",
+          "name": "Get Prognosis Diff Request",
+          "request": {
+            "name": "Get Prognosis Diff Request",
+            "description": {
+              "content": "Poll status and feasible offer for a prognosis diff request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognosisdiffrequests",
+                ":prognosisDiffRequestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisDiffRequestId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f6897ad-c80f-47ea-96e8-c6f80e71611f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognosisdiffrequests",
+                    ":prognosisDiffRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisDiffRequestId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"prognosisDiffRequestId\": \"string\",\n  \"prognosisId\": \"string\",\n  \"diffProfile\": [\n    {\n      \"start\": \"1992-06-20T23:03:38.247Z\",\n      \"end\": \"1964-01-03T03:52:17.302Z\",\n      \"deltaPower_W\": 1065.239426080966\n    },\n    {\n      \"start\": \"1970-08-22T12:09:54.088Z\",\n      \"end\": \"1978-10-17T10:44:44.948Z\",\n      \"deltaPower_W\": 1516.850970325241\n    }\n  ],\n  \"status\": \"rejected\",\n  \"offer\": {\n    \"feasiblePower_W\": 2240.359057613277,\n    \"price\": 1810.183239881007,\n    \"currency\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d62cd42a-8025-483f-8f5b-2d785cdfe893",
+          "name": "Create Prognosis Diff Order",
+          "request": {
+            "name": "Create Prognosis Diff Order",
+            "description": {
+              "content": "Confirm and commit to the offer associated with a prognosis diff\nrequest. Commands are dispatched to the underlying devices.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognosisdiffrequests",
+                ":prognosisDiffRequestId",
+                "prognosisdifforders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisDiffRequestId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prognosisDiffOrderId\": \"<string>\",\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"acceptedAt\": \"<dateTime>\",\n  \"powerProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    }\n  ],\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "156d58b2-57a3-4b5e-be55-4e0fb4a04ddb",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognosisdiffrequests",
+                    ":prognosisDiffRequestId",
+                    "prognosisdifforders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisDiffRequestId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prognosisDiffOrderId\": \"<string>\",\n  \"prognosisDiffRequestId\": \"<string>\",\n  \"acceptedAt\": \"<dateTime>\",\n  \"powerProfile\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"power_W\": \"<number>\"\n    }\n  ],\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfd3122d-0da9-46f1-aa4b-ab612ca47758",
+          "name": "Get Prognosis Diff Order",
+          "request": {
+            "name": "Get Prognosis Diff Order",
+            "description": {
+              "content": "Retrieve a committed flex offer order including price and power profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "prognosisdifforders",
+                ":prognosisDiffOrderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "prognosisDiffOrderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a7ee870-bff8-4ecd-8539-9c3ae8aa1536",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "prognosisdifforders",
+                    ":prognosisDiffOrderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "prognosisDiffOrderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"prognosisDiffOrderId\": \"string\",\n  \"prognosisDiffRequestId\": \"string\",\n  \"acceptedAt\": \"1996-04-22T03:10:42.305Z\",\n  \"powerProfile\": [\n    {\n      \"start\": \"1985-11-22T15:04:38.541Z\",\n      \"end\": \"1978-01-02T19:24:15.955Z\",\n      \"power_W\": 5960.376457421408\n    },\n    {\n      \"start\": \"1950-09-26T18:12:33.607Z\",\n      \"end\": \"1978-12-25T14:55:36.271Z\",\n      \"power_W\": 7481.959289048709\n    }\n  ],\n  \"price\": 4063.6562547549793,\n  \"currency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5cf88a9b-12cd-4790-8842-c74900a87ac7",
+    "name": "Gridshare Customer Devices Diff Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}

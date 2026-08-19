@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices"
+          },
+          "docs": "List all devices the authenticated customer has access to."
+        },
+        {
+          "info": {
+            "name": "Get Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get a device by ID along with its static properties."
+        },
+        {
+          "info": {
+            "name": "Partially Update Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a device."
+        },
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/devices"
+          },
+          "docs": "List all devices in the partner fleet."
+        },
+        {
+          "info": {
+            "name": "Create Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new device."
+        },
+        {
+          "info": {
+            "name": "Get Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get a device by ID with its static properties."
+        },
+        {
+          "info": {
+            "name": "Replace Or Create Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/devices/:synthId",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Override an existing device with new properties or create one if it does not yet exist."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

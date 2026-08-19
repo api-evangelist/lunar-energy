@@ -1,0 +1,507 @@
+{
+  "item": [
+    {
+      "id": "9a5a95c8-150a-464e-b2ce-63ea5e707774",
+      "name": "Operation Mode",
+      "description": {
+        "content": "Read or change the Gridshare operation mode of a device",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1352309-68ac-4a7e-99d6-82c9a7298f3f",
+          "name": "Get Device Operation Mode",
+          "request": {
+            "name": "Get Device Operation Mode",
+            "description": {
+              "content": "Get the current Gridshare operation mode of a device. Valid modes:\n- `Simple` — follow the simplest plan possible for the device kind\n- `Schedule` — follow a periodical plan\n- `Smart` — AI-optimized smart plan\n- `Unknown` — operation mode cannot be determined\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "908bce97-2909-47bf-9fd7-c3cfce6ffc1b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Unknown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd9c9505-fff3-4b88-a73e-f5d93174abdf",
+          "name": "Change Device Operation Mode",
+          "request": {
+            "name": "Change Device Operation Mode",
+            "description": {
+              "content": "Set the Gridshare operation mode of a device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25937b52-cea4-4d07-86c2-392016c517bd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Unknown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1297af6-e5bb-4f05-be61-87b2172caa08",
+          "name": "Get Device Operation Mode",
+          "request": {
+            "name": "Get Device Operation Mode",
+            "description": {
+              "content": "Get the current Gridshare operation mode of a device. Valid modes:\n- `Simple` — follow the simplest plan possible for the device kind\n- `Schedule` — follow a periodical plan\n- `Smart` — AI-optimized smart plan\n- `Unknown` — operation mode cannot be determined\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4504604c-4fb6-478a-baff-1dcfe51eda55",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Unknown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdb98b3d-f9da-496e-9f9f-e3dac92847b1",
+          "name": "Change Device Operation Mode",
+          "request": {
+            "name": "Change Device Operation Mode",
+            "description": {
+              "content": "Set the Gridshare operation mode for a device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "operationmode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "56e00142-9da5-4141-88ec-cc66b7617d62",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "operationmode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": \"Unknown\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc31bbd3-3a12-468e-ad13-7016d2a4ad7b",
+    "name": "Gridshare Customer Devices Operation Mode API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}

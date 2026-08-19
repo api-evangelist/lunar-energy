@@ -1,0 +1,467 @@
+{
+  "item": [
+    {
+      "id": "6393ca36-89f9-4b96-b6b8-7b7683761660",
+      "name": "Dynamic Tariffs",
+      "description": {
+        "content": "Manage dynamic time-series tariffs with 7-day pagination",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f2b77dd-7054-47d8-80a0-3dcba6cec0b1",
+          "name": "List Dynamic Tariffs",
+          "request": {
+            "name": "List Dynamic Tariffs",
+            "description": {
+              "content": "List all dynamic tariffs for the calling partner account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a654600-d3f9-48c8-883d-c57f646a3859",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"tariffId\": \"string\",\n      \"name\": \"string\",\n      \"currency\": \"string\",\n      \"values\": [\n        {\n          \"timestamp\": \"2019-04-28T16:10:40.958Z\",\n          \"price\": 9711.167289515646\n        },\n        {\n          \"timestamp\": \"1978-06-25T17:29:34.287Z\",\n          \"price\": 5360.014938765866\n        }\n      ],\n      \"nextToken\": \"string\"\n    },\n    {\n      \"tariffId\": \"string\",\n      \"name\": \"string\",\n      \"currency\": \"string\",\n      \"values\": [\n        {\n          \"timestamp\": \"1994-09-09T07:24:34.007Z\",\n          \"price\": 6136.322774118569\n        },\n        {\n          \"timestamp\": \"1983-10-31T14:18:55.041Z\",\n          \"price\": 2580.1949544855274\n        }\n      ],\n      \"nextToken\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17caa721-0fe2-45c3-b8c4-6aaebaebed81",
+          "name": "Create Dynamic Tariff",
+          "request": {
+            "name": "Create Dynamic Tariff",
+            "description": {
+              "content": "Create a dynamic tariff with an optional initial set of timeseries values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "abf36a0d-6f29-4072-8448-dd4fce13de1f",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"1975-10-07T19:22:46.052Z\",\n      \"price\": 5888.018666509969\n    },\n    {\n      \"timestamp\": \"2026-07-12T06:55:52.635Z\",\n      \"price\": 935.737839011922\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca03e7cf-4065-400a-8384-e53b3c4bcc61",
+          "name": "Get Dynamic Tariff",
+          "request": {
+            "name": "Get Dynamic Tariff",
+            "description": {
+              "content": "Return metadata for a dynamic tariff together with a single page of\ntimeseries values covering a 7-day window. Paginate via `nextToken`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d634364-be96-462a-82f6-dfea64d430c4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tariffId\": \"string\",\n  \"name\": \"string\",\n  \"currency\": \"string\",\n  \"values\": [\n    {\n      \"timestamp\": \"2016-06-20T17:07:04.682Z\",\n      \"price\": 5765.054707274675\n    },\n    {\n      \"timestamp\": \"1957-01-13T00:13:27.950Z\",\n      \"price\": 6739.471015189463\n    }\n  ],\n  \"nextToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74bf8687-6ed4-4571-9811-71357dad0aed",
+          "name": "Update Dynamic Tariff",
+          "request": {
+            "name": "Update Dynamic Tariff",
+            "description": {
+              "content": "Append or override periods of a dynamic tariff. Existing values are not deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "dynamictariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"price\": \"<number>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ca31a1d-7b50-40cc-8935-22c6c2910162",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "dynamictariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tariffId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"values\": [\n    {\n      \"timestamp\": \"1975-10-07T19:22:46.052Z\",\n      \"price\": 5888.018666509969\n    },\n    {\n      \"timestamp\": \"2026-07-12T06:55:52.635Z\",\n      \"price\": 935.737839011922\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "eaacbba5-a965-43ad-aa12-acd30972fbeb",
+    "name": "Gridshare Customer Devices Dynamic Tariffs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}

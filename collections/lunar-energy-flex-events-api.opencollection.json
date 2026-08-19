@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Flex Events API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flex Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Flex Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexevent",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all flex events within a time range, optionally filtered by group."
+        },
+        {
+          "info": {
+            "name": "Create Flex Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexevent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a flex event for a defined flex group. Supports flat-dispatch\nevents that target a flat power profile across a specified window.\n"
+        },
+        {
+          "info": {
+            "name": "Update Flex Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexevents/:flexEventId",
+            "params": [
+              {
+                "name": "flexEventId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update or cancel an existing flex event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Visits API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Visits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/visits"
+          },
+          "docs": "List Visits"
+        },
+        {
+          "info": {
+            "name": "Create Visit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/visits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Visit"
+        },
+        {
+          "info": {
+            "name": "Get Visit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/visits/:visitId",
+            "params": [
+              {
+                "name": "visitId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Visit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Diff Requests API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diff Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Prognosis Diff Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/prognoses/:prognosisId/prognosisdiffrequests",
+            "params": [
+              {
+                "name": "prognosisId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request a modification to a prognosis profile. Allows charging or\ndischarging to the network in a coordinated manner by submitting a\ndifferential profile over the original prognosis. Asynchronous —\npoll the Diff Request endpoint for status.\n"
+        },
+        {
+          "info": {
+            "name": "Get Prognosis Diff Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/prognosisdiffrequests/:prognosisDiffRequestId",
+            "params": [
+              {
+                "name": "prognosisDiffRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Poll status and feasible offer for a prognosis diff request."
+        },
+        {
+          "info": {
+            "name": "Create Prognosis Diff Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/prognosisdiffrequests/:prognosisDiffRequestId/prognosisdifforders",
+            "params": [
+              {
+                "name": "prognosisDiffRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm and commit to the offer associated with a prognosis diff\nrequest. Commands are dispatched to the underlying devices.\n"
+        },
+        {
+          "info": {
+            "name": "Get Prognosis Diff Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/prognosisdifforders/:prognosisDiffOrderId",
+            "params": [
+              {
+                "name": "prognosisDiffOrderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a committed flex offer order including price and power profile."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

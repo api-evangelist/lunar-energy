@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Sites API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/sites"
+          },
+          "docs": "List the siteIds the authenticated customer has access to. v2 is\nthe lightweight external endpoint — pair it with\n`GET /api/v2/sites/{siteId}/topology` and `GET /api/v2/devices` to\ndrill into a site's structure or devices.\n"
+        },
+        {
+          "info": {
+            "name": "Get Site Topology",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/sites/:siteId/topology",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the electrical topology of a site the authenticated customer\nhas access to. Nodes with `\"kind\": \"sensor\"` expose an `id` that may\nbe passed to `GET /api/v2/devices/{synthId}/telemetry` and a\n`channels` array listing available streams. See the Topology key\nconcepts page for worked examples.\n"
+        },
+        {
+          "info": {
+            "name": "List Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/sites"
+          },
+          "docs": "List all sites the authenticated partner can access."
+        },
+        {
+          "info": {
+            "name": "Create Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/sites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new site in the partner fleet."
+        },
+        {
+          "info": {
+            "name": "Get Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/sites/:siteId",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a site by ID."
+        },
+        {
+          "info": {
+            "name": "Replace Site",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/sites/:siteId",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Override a site with new attributes."
+        },
+        {
+          "info": {
+            "name": "Get Site Topology",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/sites/:siteId/topology",
+            "params": [
+              {
+                "name": "siteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the electrical topology tree of a site. Nodes with\n`\"kind\": \"sensor\"` expose an `id` that may be passed to the\ndevice telemetry endpoint and a `channels` array of available\ndata streams.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

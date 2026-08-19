@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Flex Groups API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flex Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Flex Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups"
+          },
+          "docs": "List Flex Groups"
+        },
+        {
+          "info": {
+            "name": "Create Flex Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Flex Group"
+        },
+        {
+          "info": {
+            "name": "Get Flex Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flex Group"
+        },
+        {
+          "info": {
+            "name": "List Flex Group Participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Flex Group Participants"
+        },
+        {
+          "info": {
+            "name": "Add Flex Group Participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Flex Group Participant"
+        },
+        {
+          "info": {
+            "name": "Get Flex Group Participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/:participantId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "participantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Flex Group Participant"
+        },
+        {
+          "info": {
+            "name": "Delete Flex Group Participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/:participantId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "participantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Flex Group Participant"
+        },
+        {
+          "info": {
+            "name": "Create Bulk Participants Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/bulk",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Overwrite the participants of a flex group by sending a full\nreplacement list. This action is irreversible.\n"
+        },
+        {
+          "info": {
+            "name": "Get Bulk Participants Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId/participants/bulk/:bulkId",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bulkId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the status of a bulk participants update."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

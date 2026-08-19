@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Periodical Tariffs API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Periodical Tariffs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Periodical Tariffs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/periodicaltariffs"
+          },
+          "docs": "List all periodical tariffs."
+        },
+        {
+          "info": {
+            "name": "Create Periodical Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/periodicaltariffs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Periodical Tariff"
+        },
+        {
+          "info": {
+            "name": "Get Periodical Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/periodicaltariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Periodical Tariff"
+        },
+        {
+          "info": {
+            "name": "Update Periodical Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/periodicaltariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update properties of an existing periodical tariff. Append or\nrewrite pricing periods. Tariffs may have an open-ended latest\nperiod; PATCH-ing in a later period closes it automatically.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

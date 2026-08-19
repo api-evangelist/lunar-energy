@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Dynamic Tariffs API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dynamic Tariffs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Dynamic Tariffs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/dynamictariffs"
+          },
+          "docs": "List all dynamic tariffs for the calling partner account."
+        },
+        {
+          "info": {
+            "name": "Create Dynamic Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/dynamictariffs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a dynamic tariff with an optional initial set of timeseries values."
+        },
+        {
+          "info": {
+            "name": "Get Dynamic Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/dynamictariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return metadata for a dynamic tariff together with a single page of\ntimeseries values covering a 7-day window. Paginate via `nextToken`.\n"
+        },
+        {
+          "info": {
+            "name": "Update Dynamic Tariff",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/dynamictariffs/:tariffId",
+            "params": [
+              {
+                "name": "tariffId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Append or override periods of a dynamic tariff. Existing values are not deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

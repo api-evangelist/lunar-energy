@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Prognoses API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Prognoses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Prognoses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexgroups/:flexGroupId/prognoses",
+            "params": [
+              {
+                "name": "flexGroupId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List prognoses for a specific flex group. A new prognosis is generated\nwhen the group forecast changes due to prediction updates or\nexplicit flex actions.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

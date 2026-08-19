@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Flex Dispatches API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flex Dispatches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Opt Out Of Flex Dispatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/flexdispatches/:flexDispatchId/optout",
+            "params": [
+              {
+                "name": "flexDispatchId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Opt a participant out of a flex dispatch. Participants may be\nidentified by site ID or participant ID. Idempotent — repeat opt-outs\nreturn the original opt-out details.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

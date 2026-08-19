@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Telemetry API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Telemetry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/telemetry",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Time-bucketed telemetry for a single device sensor stream.\n`synthId` must be a **sensor ID** from the site topology — any node\nwith `\"kind\": \"sensor\"`. On most installations telemetry streams\nare keyed by derived sensor IDs such as\n`<deviceId>__GRID_METER_DERIVED`, `<deviceId>__bb_agg`, and\n`<deviceId>__PV_DERIVED`.\n\n`energy_Wh_increment` and `energy_Wh_decrement` are populated only\nwhen `include=energy` (or `include=default,energy`):\n  - `energy_Wh_increment` — lifetime cumulative energy flowin"
+        },
+        {
+          "info": {
+            "name": "Get Device Telemetry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/devices/:synthId/telemetry",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated set of telemetry fields. `energy` is opt-in."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Time-bucket size (e.g. `PT1H`)."
+              }
+            ]
+          },
+          "docs": "Get time-bucketed telemetry for a device or sensor. `synthId` can be\na device ID or a sensor ID from the site topology. Supported device\nkinds: `inverter`, `battery_pack`, `PV`, `EV`, `meter`,\n`load_control_relay`. Include `energy_Wh_increment` and\n`energy_Wh_decrement` by passing `include=default,energy`.\n"
+        },
+        {
+          "info": {
+            "name": "Get Counterfactual Telemetry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/counterfactuals/:counterfactualName/devices/:deviceId/telemetry",
+            "params": [
+              {
+                "name": "counterfactualName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Counterfactual telemetry — what the device would have done if it had\nnot been smartly controlled. Availability depends on the\ncounterfactuals enabled for your partner account.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,441 @@
+{
+  "item": [
+    {
+      "id": "881175b9-e4f8-45ca-bce8-c625d193c844",
+      "name": "Periodical Tariffs",
+      "description": {
+        "content": "Manage periodical (recurring) tariffs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc90b134-87e6-4a22-9dcd-99c61478b577",
+          "name": "List Periodical Tariffs",
+          "request": {
+            "name": "List Periodical Tariffs",
+            "description": {
+              "content": "List all periodical tariffs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c99796a1-bd43-4828-ba21-778eb5cb3d4c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"name\": \"string\",\n      \"companyName\": \"string\",\n      \"tariffId\": \"string\",\n      \"currency\": \"string\",\n      \"pricingPeriods\": [\n        {\n          \"start\": \"1969-07-11\",\n          \"end\": \"1986-02-06\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 658.7734582835126\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 4357.649031626567\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"start\": \"2012-07-31\",\n          \"end\": \"2004-01-12\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 4107.16515946083\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 6002.710886752547\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"companyName\": \"string\",\n      \"tariffId\": \"string\",\n      \"currency\": \"string\",\n      \"pricingPeriods\": [\n        {\n          \"start\": \"1970-04-16\",\n          \"end\": \"1971-01-01\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 4032.6161393256675\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 9053.155044529609\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"start\": \"2005-05-27\",\n          \"end\": \"1954-12-18\",\n          \"rates\": [\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 2908.316126736874\n            },\n            {\n              \"dayOfWeek\": \"string\",\n              \"from\": \"string\",\n              \"to\": \"string\",\n              \"price\": 5249.4386095998725\n            }\n          ],\n          \"exceptions\": [\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d3b0f9c-066e-41d9-8a84-18120bb0e822",
+          "name": "Create Periodical Tariff",
+          "request": {
+            "name": "Create Periodical Tariff",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    },\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ebde6a50-928b-4039-89fd-cdafb4583b35",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"1953-02-11\",\n      \"end\": \"1997-10-10\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 5532.37957251173\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 7258.558392632893\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1980-05-20\",\n          \"end\": \"1958-10-13\",\n          \"rate\": 8403.374656576663\n        },\n        {\n          \"start\": \"2013-05-22\",\n          \"end\": \"1975-10-02\",\n          \"rate\": 6926.801997039851\n        }\n      ]\n    },\n    {\n      \"start\": \"2010-10-05\",\n      \"end\": \"2006-06-17\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 2583.891468870749\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 5849.052219811565\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1999-05-11\",\n          \"end\": \"1968-12-30\",\n          \"rate\": 4003.925242787789\n        },\n        {\n          \"start\": \"1969-02-05\",\n          \"end\": \"1979-01-07\",\n          \"rate\": 2541.8811536770213\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a3799b5-4906-4e59-8609-f28a6cdb6a4b",
+          "name": "Get Periodical Tariff",
+          "request": {
+            "name": "Get Periodical Tariff",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a73284ef-e142-4c7f-8026-7392d976c1ae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"companyName\": \"string\",\n  \"tariffId\": \"string\",\n  \"currency\": \"string\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"2022-09-21\",\n      \"end\": \"1998-01-25\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 1819.9111686329938\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 6135.372037561882\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1965-07-23\",\n          \"end\": \"1995-04-13\",\n          \"rate\": 755.2044252354829\n        },\n        {\n          \"start\": \"2016-12-11\",\n          \"end\": \"1967-06-04\",\n          \"rate\": 730.8648509727756\n        }\n      ]\n    },\n    {\n      \"start\": \"1956-03-08\",\n      \"end\": \"1961-07-03\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 8397.088566434762\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 763.0894447629233\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1964-09-06\",\n          \"end\": \"1998-12-05\",\n          \"rate\": 3494.5683803035977\n        },\n        {\n          \"start\": \"2015-01-01\",\n          \"end\": \"1956-09-11\",\n          \"rate\": 2402.0082552516196\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41f0063c-980e-4f74-93c7-690eb63cb7d5",
+          "name": "Update Periodical Tariff",
+          "request": {
+            "name": "Update Periodical Tariff",
+            "description": {
+              "content": "Update properties of an existing periodical tariff. Append or\nrewrite pricing periods. Tariffs may have an open-ended latest\nperiod; PATCH-ing in a later period closes it automatically.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "periodicaltariffs",
+                ":tariffId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tariffId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    },\n    {\n      \"start\": \"<date>\",\n      \"end\": \"<date>\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        },\n        {\n          \"dayOfWeek\": \"<string>\",\n          \"from\": \"<string>\",\n          \"to\": \"<string>\",\n          \"price\": \"<number>\"\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        },\n        {\n          \"start\": \"<date>\",\n          \"end\": \"<date>\",\n          \"rate\": \"<number>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84c1b553-f5f2-423d-b392-4c5ebc7e4b47",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "periodicaltariffs",
+                    ":tariffId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tariffId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"tariffId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"pricingPeriods\": [\n    {\n      \"start\": \"1953-02-11\",\n      \"end\": \"1997-10-10\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 5532.37957251173\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 7258.558392632893\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1980-05-20\",\n          \"end\": \"1958-10-13\",\n          \"rate\": 8403.374656576663\n        },\n        {\n          \"start\": \"2013-05-22\",\n          \"end\": \"1975-10-02\",\n          \"rate\": 6926.801997039851\n        }\n      ]\n    },\n    {\n      \"start\": \"2010-10-05\",\n      \"end\": \"2006-06-17\",\n      \"rates\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 2583.891468870749\n        },\n        {\n          \"dayOfWeek\": \"string\",\n          \"from\": \"string\",\n          \"to\": \"string\",\n          \"price\": 5849.052219811565\n        }\n      ],\n      \"exceptions\": [\n        {\n          \"start\": \"1999-05-11\",\n          \"end\": \"1968-12-30\",\n          \"rate\": 4003.925242787789\n        },\n        {\n          \"start\": \"1969-02-05\",\n          \"end\": \"1979-01-07\",\n          \"rate\": 2541.8811536770213\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f7cd84d7-81a8-44f1-8abd-9235a845cbce",
+    "name": "Gridshare Customer Devices Periodical Tariffs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}

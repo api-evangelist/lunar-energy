@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gridshare Customer Devices Plans API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize",
+      "accessTokenUrl": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get the current overlay plan for the device."
+        },
+        {
+          "info": {
+            "name": "Set Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.customer.mygridshare.com/api/v2/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n"
+        },
+        {
+          "info": {
+            "name": "Get Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ]
+          },
+          "docs": "Get the current overlay plan for the device."
+        },
+        {
+          "info": {
+            "name": "Set Device Overlay Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://developer-api.customer.mygridshare.com/api/v1/devices/:synthId/plans/overlay",
+            "params": [
+              {
+                "name": "synthId",
+                "value": "",
+                "type": "path",
+                "description": "A device ID or a sensor ID from the site topology."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

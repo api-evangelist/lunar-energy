@@ -1,0 +1,499 @@
+{
+  "item": [
+    {
+      "id": "2df30b23-423f-43f3-b895-1940b6d95f50",
+      "name": "Plans",
+      "description": {
+        "content": "Read or set overlay plans for short-term device dispatch",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d00cff0-b521-4995-8b4e-0ca7248f0779",
+          "name": "Get Device Overlay Plan",
+          "request": {
+            "name": "Get Device Overlay Plan",
+            "description": {
+              "content": "Get the current overlay plan for the device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f54c2b9-f7a5-4f53-9be1-40e80798f12e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commands\": [\n    {\n      \"start\": \"1958-12-11T09:19:25.188Z\",\n      \"end\": \"1949-08-16T15:08:33.744Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 8699.904994317823\n    },\n    {\n      \"start\": \"1967-04-16T18:39:17.325Z\",\n      \"end\": \"1977-05-04T06:16:42.094Z\",\n      \"action\": \"charge\",\n      \"powerLimit_W\": 7891.196041801887\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4075cc1d-c5f6-475f-be31-0db4a24a6037",
+          "name": "Set Device Overlay Plan",
+          "request": {
+            "name": "Set Device Overlay Plan",
+            "description": {
+              "content": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f57b3e99-4748-4457-861d-661038364607",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"2021-12-22T01:34:04.493Z\",\n      \"end\": \"1960-09-05T22:19:50.336Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 4057.1266168988273\n    },\n    {\n      \"start\": \"1979-07-27T06:43:24.982Z\",\n      \"end\": \"2017-01-16T17:20:48.914Z\",\n      \"action\": \"follow\",\n      \"powerLimit_W\": 7756.356149734172\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c33ec483-3ac1-4a52-a4b7-e114db00fdb3",
+          "name": "Get Device Overlay Plan",
+          "request": {
+            "name": "Get Device Overlay Plan",
+            "description": {
+              "content": "Get the current overlay plan for the device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "445d803b-2e2f-43ad-8d26-4cc37da33cd4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commands\": [\n    {\n      \"start\": \"1958-12-11T09:19:25.188Z\",\n      \"end\": \"1949-08-16T15:08:33.744Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 8699.904994317823\n    },\n    {\n      \"start\": \"1967-04-16T18:39:17.325Z\",\n      \"end\": \"1977-05-04T06:16:42.094Z\",\n      \"action\": \"charge\",\n      \"powerLimit_W\": 7891.196041801887\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8373578-4455-4b41-afa1-8fff148d9105",
+          "name": "Set Device Overlay Plan",
+          "request": {
+            "name": "Set Device Overlay Plan",
+            "description": {
+              "content": "Set an overlay plan for the device. To delete an overlay plan,\nsend an empty `commands` array in the request body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                ":synthId",
+                "plans",
+                "overlay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "synthId",
+                  "description": "(Required) A device ID or a sensor ID from the site topology."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    },\n    {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"action\": \"<string>\",\n      \"powerLimit_W\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8a0af58-cf53-4288-a5db-64d3703dd5a8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    ":synthId",
+                    "plans",
+                    "overlay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "synthId",
+                      "description": "(Required) A device ID or a sensor ID from the site topology."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commands\": [\n    {\n      \"start\": \"2021-12-22T01:34:04.493Z\",\n      \"end\": \"1960-09-05T22:19:50.336Z\",\n      \"action\": \"discharge\",\n      \"powerLimit_W\": 4057.1266168988273\n    },\n    {\n      \"start\": \"1979-07-27T06:43:24.982Z\",\n      \"end\": \"2017-01-16T17:20:48.914Z\",\n      \"action\": \"follow\",\n      \"powerLimit_W\": 7756.356149734172\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "83d06d66-f2ca-49dd-abec-a28a99c41771",
+    "name": "Gridshare Customer Devices Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}

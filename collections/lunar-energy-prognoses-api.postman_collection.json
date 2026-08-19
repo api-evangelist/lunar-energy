@@ -1,0 +1,159 @@
+{
+  "item": [
+    {
+      "id": "a87983dd-a115-4cdc-812c-7bb719083649",
+      "name": "Prognoses",
+      "description": {
+        "content": "Forecasted aggregate power profiles for flex groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d01b64fc-65e6-47aa-98ea-b923b16d745a",
+          "name": "List Prognoses",
+          "request": {
+            "name": "List Prognoses",
+            "description": {
+              "content": "List prognoses for a specific flex group. A new prognosis is generated\nwhen the group forecast changes due to prediction updates or\nexplicit flex actions.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "flexgroups",
+                ":flexGroupId",
+                "prognoses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "flexGroupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7f4115f-782b-43fb-ba91-28fa6d91fa53",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "flexgroups",
+                    ":flexGroupId",
+                    "prognoses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "flexGroupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"prognosisId\": \"string\",\n      \"flexGroupId\": \"string\",\n      \"generatedAt\": \"1986-04-09T00:50:02.521Z\",\n      \"intervals\": [\n        {\n          \"start\": \"1972-11-20T21:56:15.181Z\",\n          \"end\": \"1957-08-28T11:00:15.133Z\",\n          \"power_W\": 6959.276679468691\n        },\n        {\n          \"start\": \"1964-08-14T23:23:05.886Z\",\n          \"end\": \"1949-07-13T16:57:40.490Z\",\n          \"power_W\": 6786.851248550224\n        }\n      ]\n    },\n    {\n      \"prognosisId\": \"string\",\n      \"flexGroupId\": \"string\",\n      \"generatedAt\": \"1953-11-13T02:11:29.039Z\",\n      \"intervals\": [\n        {\n          \"start\": \"1974-05-06T04:59:03.319Z\",\n          \"end\": \"1951-03-02T00:45:09.959Z\",\n          \"power_W\": 4478.167883789867\n        },\n        {\n          \"start\": \"1980-02-05T02:32:49.084Z\",\n          \"end\": \"1986-05-02T12:56:18.374Z\",\n          \"power_W\": 9917.695042904284\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer-api.customer.mygridshare.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "lunar/device.read lunar/device.write lunar/plan.read lunar/plan.write"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d602241e-ae6d-4af8-be93-b3f8145678e3",
+    "name": "Gridshare Customer Devices Prognoses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gridshare Customer API is the homeowner-delegated surface of\nLunar Energy's Gridshare DERMS platform. It allows partners — apps,\ninstallers, retailers — to read or control devices on behalf of a\nspecific Lunar Energy customer once that customer has granted\nconsent via OAuth 2.0 Authorization Code flow against the\nlunar-customer Amazon Cognito user pool.\n\nFour scopes are available: `lunar/device.read`, `lunar/device.write`,\n`lunar/plan.read`, `lunar/plan.write`.\n\n\nContact Support:\n Name: Lunar Energy\n Email: developers@gridshare.com",
+      "type": "text/plain"
+    }
+  }
+}
