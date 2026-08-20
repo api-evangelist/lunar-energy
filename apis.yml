@@ -55,6 +55,11 @@ apis:
   name: Gridshare Remote MCP Server
   tags:
   - MCP
+  - Remote MCP
+  - AI Agents
+  - Customers
+  tags_raw:
+  - MCP
   - Model Context Protocol
   - Remote MCP
   - AI Agents
