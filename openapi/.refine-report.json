@@ -1,38 +1,50 @@
 {
   "provider": "lunar-energy",
   "sources": [
-    "lunar-energy-devices-api-openapi.yml",
-    "lunar-energy-diff-requests-api-openapi.yml",
-    "lunar-energy-dynamic-tariffs-api-openapi.yml",
-    "lunar-energy-flex-dispatches-api-openapi.yml",
-    "lunar-energy-flex-events-api-openapi.yml",
-    "lunar-energy-flex-groups-api-openapi.yml",
-    "lunar-energy-operation-mode-api-openapi.yml",
-    "lunar-energy-periodical-tariffs-api-openapi.yml",
-    "lunar-energy-plans-api-openapi.yml",
-    "lunar-energy-prognoses-api-openapi.yml",
-    "lunar-energy-sites-api-openapi.yml",
-    "lunar-energy-telemetry-api-openapi.yml",
-    "lunar-energy-visits-api-openapi.yml"
+    "_original/gridshare-customer-api-openapi.yml",
+    "_original/gridshare-partner-api-openapi.yml"
   ],
   "outputs": [
     "lunar-energy-devices-api-openapi.yml",
+    "lunar-energy-operation-mode-api-openapi.yml",
+    "lunar-energy-plans-api-openapi.yml",
+    "lunar-energy-sites-api-openapi.yml",
+    "lunar-energy-telemetry-api-openapi.yml",
     "lunar-energy-diff-requests-api-openapi.yml",
     "lunar-energy-dynamic-tariffs-api-openapi.yml",
     "lunar-energy-flex-dispatches-api-openapi.yml",
     "lunar-energy-flex-events-api-openapi.yml",
     "lunar-energy-flex-groups-api-openapi.yml",
-    "lunar-energy-operation-mode-api-openapi.yml",
     "lunar-energy-periodical-tariffs-api-openapi.yml",
-    "lunar-energy-plans-api-openapi.yml",
     "lunar-energy-prognoses-api-openapi.yml",
-    "lunar-energy-sites-api-openapi.yml",
-    "lunar-energy-telemetry-api-openapi.yml",
     "lunar-energy-visits-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gridshare-customer-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "gridshare-partner-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tag 'Devices' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
+    "tag 'Operation Mode' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
+    "tag 'Plans' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
+    "tag 'Sites' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
+    "tag 'Telemetry' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied"
+  ],
+  "skipped": [
+    "lunar-energy-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-diff-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-dynamic-tariffs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-flex-dispatches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-flex-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-flex-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-operation-mode-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-periodical-tariffs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-prognoses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-sites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-telemetry-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunar-energy-visits-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

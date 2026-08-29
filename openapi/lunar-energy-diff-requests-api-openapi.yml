@@ -1,22 +1,24 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gridshare Customer Devices Diff Requests API
-  description: 'The Gridshare Customer API is the homeowner-delegated surface of
+  title: Gridshare Partner Diff Requests API
+  description: 'The Gridshare Partner API is Lunar Energy''s operator-facing surface for
 
-    Lunar Energy''s Gridshare DERMS platform. It allows partners — apps,
+    utilities, retailers, and DER aggregators managing residential
 
-    installers, retailers — to read or control devices on behalf of a
+    distributed energy resources at fleet scale. Covers Sites, Devices,
 
-    specific Lunar Energy customer once that customer has granted
+    Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
 
-    consent via OAuth 2.0 Authorization Code flow against the
+    Tariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with
 
-    lunar-customer Amazon Cognito user pool.
+    Diff Requests and Diff Orders, Counterfactuals, and on-site Visits.
 
 
-    Four scopes are available: `lunar/device.read`, `lunar/device.write`,
+    Authentication is OAuth 2.0 client-credentials against an Amazon Cognito
 
-    `lunar/plan.read`, `lunar/plan.write`.
+    user pool. Tokens expire after 1 hour and are sent as
+
+    `Authorization: Bearer <access_token>` on every request.
 
     '
   version: v1.0
@@ -27,10 +29,14 @@ info:
   x-logo:
     url: https://www.lunarenergy.com/favicon.ico
 servers:
-- url: https://developer-api.customer.mygridshare.com
-  description: Production server
-- url: https://developer-api.customer.dev0.mygridshare.com
-  description: Development server
+- url: https://developer-api.partner.us.mygridshare.com
+  description: Production server (US)
+- url: https://developer-api.partner.mygridshare.com
+  description: Production server (Rest of World)
+- url: https://developer-api.partner.dev0.us.mygridshare.com
+  description: Development server (US)
+- url: https://developer-api.partner.dev0.mygridshare.com
+  description: Development server (Rest of World)
 security:
 - bearerAuth: []
 tags:
@@ -201,19 +207,11 @@ components:
           type: string
   securitySchemes:
     bearerAuth:
-      type: oauth2
-      description: 'OAuth 2.0 Authorization Code flow against the lunar-customer
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'OAuth 2.0 client-credentials access token obtained from the
 
-        Amazon Cognito user pool.
+        Gridshare partner Cognito authentication endpoint.
 
         '
-      flows:
-        authorizationCode:
-          authorizationUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/authorize
-          tokenUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
-          refreshUrl: https://lunar-customer-prod-us-west-1.auth.us-west-1.amazoncognito.com/oauth2/token
-          scopes:
-            lunar/device.read: Read device metadata and telemetry (excluding plans)
-            lunar/device.write: Modify devices including operation mode
-            lunar/plan.read: Read existing device plans
-            lunar/plan.write: Send plans to a device
