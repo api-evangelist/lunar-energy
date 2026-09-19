@@ -51,6 +51,23 @@ tags:
   - Grid Services
   - Demand Response
   - Storage
+  - Inverters
+  - Smart Home
+  - Energy Management
+  - Tariffs
+  - Telemetry
+  - VPP
+  - Flex Events
+tags_raw:
+  - Energy
+  - Home Battery
+  - Solar
+  - Virtual Power Plant
+  - DERMS
+  - Distributed Energy Resources
+  - Grid Services
+  - Demand Response
+  - Storage
   - Inverter
   - Smart Home
   - Energy Management
