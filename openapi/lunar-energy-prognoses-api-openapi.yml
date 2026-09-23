@@ -5,22 +5,7 @@ info:
 
     utilities, retailers, and DER aggregators managing residential
 
-    distributed energy resources at fleet scale. Covers Sites, Devices,
-
-    Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
-
-    Tariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with
-
-    Diff Requests and Diff Orders, Counterfactuals, and on-site Visits.
-
-
-    Authentication is OAuth 2.0 client-credentials against an Amazon Cognito
-
-    user pool. Tokens expire after 1 hour and are sent as
-
-    `Authorization: Bearer <access_token>` on every request.
-
-    '
+    distributed energy resources at fleet scale.'
   version: v1.0
   contact:
     name: Lunar Energy
@@ -53,9 +38,7 @@ paths:
 
         when the group forecast changes due to prediction updates or
 
-        explicit flex actions.
-
-        '
+        explicit flex actions.'
       tags:
       - Prognoses
       responses:
@@ -67,6 +50,13 @@ paths:
                 $ref: '#/components/schemas/PrognosisList'
 components:
   schemas:
+    PrognosisList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prognosis'
     Prognosis:
       type: object
       properties:
@@ -90,13 +80,6 @@ components:
                 format: date-time
               power_W:
                 type: number
-    PrognosisList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Prognosis'
   parameters:
     FlexGroupId:
       in: path

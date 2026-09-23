@@ -38,9 +38,7 @@ paths:
 
         `GET /api/v2/sites/{siteId}/topology` and `GET /api/v2/devices` to
 
-        drill into a site''s structure or devices.
-
-        '
+        drill into a site''s structure or devices.'
       tags:
       - Sites
       responses:
@@ -73,9 +71,7 @@ paths:
 
         `channels` array listing available streams. See the Topology key
 
-        concepts page for worked examples.
-
-        '
+        concepts page for worked examples.'
       tags:
       - Sites
       responses:
@@ -196,9 +192,7 @@ paths:
 
         device telemetry endpoint and a `channels` array of available
 
-        data streams.
-
-        '
+        data streams.'
       tags:
       - Sites
       responses:
@@ -219,6 +213,18 @@ paths:
       description: Development server (Rest of World)
 components:
   schemas:
+    UnauthorizedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    Topology:
+      type: object
+      properties:
+        root:
+          $ref: '#/components/schemas/TopologyNode'
     SiteListItem:
       type: object
       required:
@@ -254,18 +260,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TopologyNode'
-    UnauthorizedResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    Topology:
-      type: object
-      properties:
-        root:
-          $ref: '#/components/schemas/TopologyNode'
     ForbiddenResponse:
       type: object
       properties:

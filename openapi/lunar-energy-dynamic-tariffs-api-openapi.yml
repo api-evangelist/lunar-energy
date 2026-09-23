@@ -5,22 +5,7 @@ info:
 
     utilities, retailers, and DER aggregators managing residential
 
-    distributed energy resources at fleet scale. Covers Sites, Devices,
-
-    Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
-
-    Tariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with
-
-    Diff Requests and Diff Orders, Counterfactuals, and on-site Visits.
-
-
-    Authentication is OAuth 2.0 client-credentials against an Amazon Cognito
-
-    user pool. Tokens expire after 1 hour and are sent as
-
-    `Authorization: Bearer <access_token>` on every request.
-
-    '
+    distributed energy resources at fleet scale.'
   version: v1.0
   contact:
     name: Lunar Energy
@@ -80,9 +65,7 @@ paths:
       summary: Get Dynamic Tariff
       description: 'Return metadata for a dynamic tariff together with a single page of
 
-        timeseries values covering a 7-day window. Paginate via `nextToken`.
-
-        '
+        timeseries values covering a 7-day window. Paginate via `nextToken`.'
       tags:
       - Dynamic Tariffs
       parameters:
@@ -125,14 +108,6 @@ components:
       schema:
         type: string
   schemas:
-    DynamicTariffValue:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        price:
-          type: number
     DynamicTariff:
       type: object
       properties:
@@ -148,6 +123,14 @@ components:
             $ref: '#/components/schemas/DynamicTariffValue'
         nextToken:
           type: string
+    DynamicTariffValue:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        price:
+          type: number
     DynamicTariffList:
       type: object
       properties:

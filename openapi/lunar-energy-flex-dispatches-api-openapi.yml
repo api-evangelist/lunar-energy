@@ -5,22 +5,7 @@ info:
 
     utilities, retailers, and DER aggregators managing residential
 
-    distributed energy resources at fleet scale. Covers Sites, Devices,
-
-    Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
-
-    Tariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with
-
-    Diff Requests and Diff Orders, Counterfactuals, and on-site Visits.
-
-
-    Authentication is OAuth 2.0 client-credentials against an Amazon Cognito
-
-    user pool. Tokens expire after 1 hour and are sent as
-
-    `Authorization: Bearer <access_token>` on every request.
-
-    '
+    distributed energy resources at fleet scale.'
   version: v1.0
   contact:
     name: Lunar Energy
@@ -57,9 +42,7 @@ paths:
 
         identified by site ID or participant ID. Idempotent — repeat opt-outs
 
-        return the original opt-out details.
-
-        '
+        return the original opt-out details.'
       tags:
       - Flex Dispatches
       requestBody:

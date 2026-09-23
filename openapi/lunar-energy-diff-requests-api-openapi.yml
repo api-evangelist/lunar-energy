@@ -5,22 +5,7 @@ info:
 
     utilities, retailers, and DER aggregators managing residential
 
-    distributed energy resources at fleet scale. Covers Sites, Devices,
-
-    Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
-
-    Tariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with
-
-    Diff Requests and Diff Orders, Counterfactuals, and on-site Visits.
-
-
-    Authentication is OAuth 2.0 client-credentials against an Amazon Cognito
-
-    user pool. Tokens expire after 1 hour and are sent as
-
-    `Authorization: Bearer <access_token>` on every request.
-
-    '
+    distributed energy resources at fleet scale.'
   version: v1.0
   contact:
     name: Lunar Energy
@@ -59,9 +44,7 @@ paths:
 
         differential profile over the original prognosis. Asynchronous —
 
-        poll the Diff Request endpoint for status.
-
-        '
+        poll the Diff Request endpoint for status.'
       tags:
       - Diff Requests
       requestBody:
@@ -105,9 +88,7 @@ paths:
       summary: Create Prognosis Diff Order
       description: 'Confirm and commit to the offer associated with a prognosis diff
 
-        request. Commands are dispatched to the underlying devices.
-
-        '
+        request. Commands are dispatched to the underlying devices.'
       tags:
       - Diff Requests
       requestBody:
@@ -141,6 +122,33 @@ paths:
                 $ref: '#/components/schemas/PrognosisDiffOrder'
 components:
   schemas:
+    PrognosisDiffOrder:
+      type: object
+      properties:
+        prognosisDiffOrderId:
+          type: string
+        prognosisDiffRequestId:
+          type: string
+        acceptedAt:
+          type: string
+          format: date-time
+        powerProfile:
+          type: array
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                format: date-time
+              end:
+                type: string
+                format: date-time
+              power_W:
+                type: number
+        price:
+          type: number
+        currency:
+          type: string
     PrognosisDiffRequest:
       type: object
       properties:
@@ -178,33 +186,6 @@ components:
               type: number
             currency:
               type: string
-    PrognosisDiffOrder:
-      type: object
-      properties:
-        prognosisDiffOrderId:
-          type: string
-        prognosisDiffRequestId:
-          type: string
-        acceptedAt:
-          type: string
-          format: date-time
-        powerProfile:
-          type: array
-          items:
-            type: object
-            properties:
-              start:
-                type: string
-                format: date-time
-              end:
-                type: string
-                format: date-time
-              power_W:
-                type: number
-        price:
-          type: number
-        currency:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

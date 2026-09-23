@@ -49,9 +49,7 @@ paths:
       summary: Set Device Overlay Plan
       description: 'Set an overlay plan for the device. To delete an overlay plan,
 
-        send an empty `commands` array in the request body.
-
-        '
+        send an empty `commands` array in the request body.'
       tags:
       - Plans
       requestBody:
@@ -89,9 +87,7 @@ paths:
       summary: Set Device Overlay Plan
       description: 'Set an overlay plan for the device. To delete an overlay plan,
 
-        send an empty `commands` array in the request body.
-
-        '
+        send an empty `commands` array in the request body.'
       tags:
       - Plans
       requestBody:
@@ -113,14 +109,6 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
-  parameters:
-    SynthId:
-      in: path
-      name: synthId
-      required: true
-      schema:
-        type: string
-      description: A device ID or a sensor ID from the site topology.
   schemas:
     OverlayPlanCommand:
       type: object
@@ -149,6 +137,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OverlayPlanCommand'
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
   securitySchemes:
     bearerAuth:
       type: oauth2

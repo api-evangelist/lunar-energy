@@ -5,22 +5,7 @@ info:
 
     utilities, retailers, and DER aggregators managing residential
 
-    distributed energy resources at fleet scale. Covers Sites, Devices,
-
-    Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
-
-    Tariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with
-
-    Diff Requests and Diff Orders, Counterfactuals, and on-site Visits.
-
-
-    Authentication is OAuth 2.0 client-credentials against an Amazon Cognito
-
-    user pool. Tokens expire after 1 hour and are sent as
-
-    `Authorization: Bearer <access_token>` on every request.
-
-    '
+    distributed energy resources at fleet scale.'
   version: v1.0
   contact:
     name: Lunar Energy
@@ -146,9 +131,7 @@ paths:
       summary: Create Bulk Participants Action
       description: 'Overwrite the participants of a flex group by sending a full
 
-        replacement list. This action is irreversible.
-
-        '
+        replacement list. This action is irreversible.'
       tags:
       - Flex Groups
       requestBody:
@@ -178,6 +161,19 @@ paths:
         '200':
           description: OK
 components:
+  parameters:
+    FlexGroupId:
+      in: path
+      name: flexGroupId
+      required: true
+      schema:
+        type: string
+    ParticipantId:
+      in: path
+      name: participantId
+      required: true
+      schema:
+        type: string
   schemas:
     FlexGroupList:
       type: object
@@ -186,17 +182,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlexGroup'
-    FlexGroup:
+    ParticipantList:
       type: object
       properties:
-        flexGroupId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        settlementPoint:
-          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
     Participant:
       type: object
       properties:
@@ -208,26 +200,17 @@ components:
           type: array
           items:
             type: string
-    ParticipantList:
+    FlexGroup:
       type: object
       properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Participant'
-  parameters:
-    ParticipantId:
-      in: path
-      name: participantId
-      required: true
-      schema:
-        type: string
-    FlexGroupId:
-      in: path
-      name: flexGroupId
-      required: true
-      schema:
-        type: string
+        flexGroupId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        settlementPoint:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

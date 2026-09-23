@@ -179,6 +179,27 @@ paths:
       description: Development server (Rest of World)
 components:
   schemas:
+    UnauthorizedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    MalformedInputResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    DeviceListItem:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
+          type: string
     DeviceList:
       type: object
       required:
@@ -188,13 +209,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DeviceListItem'
-    MalformedInputResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
     Device:
       type: object
       required:
@@ -218,20 +232,6 @@ components:
         model:
           type: string
         serialNumber:
-          type: string
-    DeviceListItem:
-      type: object
-      required:
-      - synthId
-      properties:
-        synthId:
-          type: string
-    UnauthorizedResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
           type: string
     UnprocessableResponse:
       type: object
@@ -287,12 +287,6 @@ components:
         type: string
       description: A device ID or a sensor ID from the site topology.
   responses:
-    Unauthorized:
-      description: 401 Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnauthorizedResponse'
     Malformed:
       description: 400 Malformed Input
       content:
@@ -305,6 +299,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UnprocessableResponse'
+    Unauthorized:
+      description: 401 Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedResponse'
     Forbidden:
       description: 403 Forbidden
       content:

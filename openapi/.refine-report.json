@@ -30,7 +30,8 @@
     "tag 'Operation Mode' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
     "tag 'Plans' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
     "tag 'Sites' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
-    "tag 'Telemetry' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied"
+    "tag 'Telemetry' spans 2 source specs (gridshare-customer-api-openapi.yml, gridshare-partner-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "lunar-energy-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",

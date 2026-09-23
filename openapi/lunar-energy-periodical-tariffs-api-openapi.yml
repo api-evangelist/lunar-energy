@@ -5,22 +5,7 @@ info:
 
     utilities, retailers, and DER aggregators managing residential
 
-    distributed energy resources at fleet scale. Covers Sites, Devices,
-
-    Telemetry, Operation Mode, Overlay Plans, Periodical Tariffs, Dynamic
-
-    Tariffs, Flex Groups, Flex Events, Flex Dispatches, Prognoses with
-
-    Diff Requests and Diff Orders, Counterfactuals, and on-site Visits.
-
-
-    Authentication is OAuth 2.0 client-credentials against an Amazon Cognito
-
-    user pool. Tokens expire after 1 hour and are sent as
-
-    `Authorization: Bearer <access_token>` on every request.
-
-    '
+    distributed energy resources at fleet scale.'
   version: v1.0
   contact:
     name: Lunar Energy
@@ -93,9 +78,7 @@ paths:
 
         rewrite pricing periods. Tariffs may have an open-ended latest
 
-        period; PATCH-ing in a later period closes it automatically.
-
-        '
+        period; PATCH-ing in a later period closes it automatically.'
       tags:
       - Periodical Tariffs
       requestBody:
@@ -108,25 +91,14 @@ paths:
         '200':
           description: OK
 components:
+  parameters:
+    TariffId:
+      in: path
+      name: tariffId
+      required: true
+      schema:
+        type: string
   schemas:
-    PeriodicalTariff:
-      type: object
-      required:
-      - name
-      - companyName
-      properties:
-        tariffId:
-          type: string
-        name:
-          type: string
-        companyName:
-          type: string
-        currency:
-          type: string
-        pricingPeriods:
-          type: array
-          items:
-            $ref: '#/components/schemas/PricingPeriod'
     PeriodicalTariffList:
       type: object
       properties:
@@ -160,6 +132,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TariffExceptionPeriod'
+    PeriodicalTariff:
+      type: object
+      required:
+      - name
+      - companyName
+      properties:
+        tariffId:
+          type: string
+        name:
+          type: string
+        companyName:
+          type: string
+        currency:
+          type: string
+        pricingPeriods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingPeriod'
     TariffExceptionPeriod:
       type: object
       properties:
@@ -171,13 +161,6 @@ components:
           format: date
         rate:
           type: number
-  parameters:
-    TariffId:
-      in: path
-      name: tariffId
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
