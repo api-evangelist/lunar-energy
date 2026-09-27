@@ -91,7 +91,7 @@ paths:
     parameters:
     - $ref: '#/components/parameters/SynthId'
     get:
-      operationId: getDeviceTelemetry
+      operationId: getApiV1DevicesBySynthIdTelemetry
       summary: Get Device Telemetry
       description: 'Get time-bucketed telemetry for a device or sensor. `synthId` can be
 
@@ -132,6 +132,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Telemetry'
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeviceTelemetry
     servers:
     - url: https://developer-api.partner.us.mygridshare.com
       description: Production server (US)
@@ -180,6 +182,14 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
   schemas:
     Telemetry:
       type: object
@@ -204,14 +214,6 @@ components:
                 type: number
               energy_Wh_decrement:
                 type: number
-  parameters:
-    SynthId:
-      in: path
-      name: synthId
-      required: true
-      schema:
-        type: string
-      description: A device ID or a sensor ID from the site topology.
   securitySchemes:
     bearerAuth:
       type: oauth2

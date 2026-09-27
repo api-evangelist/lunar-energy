@@ -70,7 +70,7 @@ paths:
     parameters:
     - $ref: '#/components/parameters/SynthId'
     get:
-      operationId: getDeviceOverlayPlan
+      operationId: getApiV1DevicesBySynthIdPlansOverlay
       summary: Get Device Overlay Plan
       description: Get the current overlay plan for the device.
       tags:
@@ -82,8 +82,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OverlayPlan'
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeviceOverlayPlan
     put:
-      operationId: setDeviceOverlayPlan
+      operationId: putApiV1DevicesBySynthIdPlansOverlay
       summary: Set Device Overlay Plan
       description: 'Set an overlay plan for the device. To delete an overlay plan,
 
@@ -99,6 +101,8 @@ paths:
       responses:
         '200':
           description: OK
+      x-operation-id-source: normalized
+      x-operation-id-original: setDeviceOverlayPlan
     servers:
     - url: https://developer-api.partner.us.mygridshare.com
       description: Production server (US)
@@ -109,6 +113,14 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
   schemas:
     OverlayPlanCommand:
       type: object
@@ -137,14 +149,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OverlayPlanCommand'
-  parameters:
-    SynthId:
-      in: path
-      name: synthId
-      required: true
-      schema:
-        type: string
-      description: A device ID or a sensor ID from the site topology.
   securitySchemes:
     bearerAuth:
       type: oauth2

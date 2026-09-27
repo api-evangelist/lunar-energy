@@ -80,7 +80,7 @@ paths:
     parameters:
     - $ref: '#/components/parameters/SynthId'
     get:
-      operationId: getDeviceOperationMode
+      operationId: getApiV1DevicesBySynthIdOperationmode
       summary: Get Device Operation Mode
       description: 'Get the current Gridshare operation mode of a device. Valid modes:
 
@@ -100,8 +100,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OperationMode'
+      x-operation-id-source: normalized
+      x-operation-id-original: getDeviceOperationMode
     put:
-      operationId: setDeviceOperationMode
+      operationId: putApiV1DevicesBySynthIdOperationmode
       summary: Change Device Operation Mode
       description: Set the Gridshare operation mode for a device.
       tags:
@@ -119,6 +121,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OperationMode'
+      x-operation-id-source: normalized
+      x-operation-id-original: setDeviceOperationMode
     servers:
     - url: https://developer-api.partner.us.mygridshare.com
       description: Production server (US)
@@ -129,6 +133,14 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
   schemas:
     OperationMode:
       type: object
@@ -142,14 +154,6 @@ components:
           - Schedule
           - Smart
           - Unknown
-  parameters:
-    SynthId:
-      in: path
-      name: synthId
-      required: true
-      schema:
-        type: string
-      description: A device ID or a sensor ID from the site topology.
   securitySchemes:
     bearerAuth:
       type: oauth2

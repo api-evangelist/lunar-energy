@@ -162,15 +162,15 @@ paths:
           description: OK
 components:
   parameters:
-    FlexGroupId:
-      in: path
-      name: flexGroupId
-      required: true
-      schema:
-        type: string
     ParticipantId:
       in: path
       name: participantId
+      required: true
+      schema:
+        type: string
+    FlexGroupId:
+      in: path
+      name: flexGroupId
       required: true
       schema:
         type: string

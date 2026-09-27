@@ -108,6 +108,14 @@ components:
       schema:
         type: string
   schemas:
+    DynamicTariffValue:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        price:
+          type: number
     DynamicTariff:
       type: object
       properties:
@@ -123,14 +131,6 @@ components:
             $ref: '#/components/schemas/DynamicTariffValue'
         nextToken:
           type: string
-    DynamicTariffValue:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        price:
-          type: number
     DynamicTariffList:
       type: object
       properties:

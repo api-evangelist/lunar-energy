@@ -93,7 +93,7 @@ paths:
       description: Development server
   /api/v1/devices:
     get:
-      operationId: listDevices
+      operationId: getApiV1Devices
       summary: List Devices
       description: List all devices in the partner fleet.
       tags:
@@ -105,6 +105,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeviceList'
+      x-operation-id-source: normalized
+      x-operation-id-original: listDevices
     post:
       operationId: createDevice
       summary: Create Device
@@ -137,7 +139,7 @@ paths:
     parameters:
     - $ref: '#/components/parameters/SynthId'
     get:
-      operationId: getDevice
+      operationId: getApiV1DevicesBySynthId
       summary: Get Device
       description: Get a device by ID with its static properties.
       tags:
@@ -149,6 +151,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Device_2'
+      x-operation-id-source: normalized
+      x-operation-id-original: getDevice
     put:
       operationId: replaceOrCreateDevice
       summary: Replace Or Create Device
@@ -179,27 +183,6 @@ paths:
       description: Development server (Rest of World)
 components:
   schemas:
-    UnauthorizedResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    MalformedInputResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    DeviceListItem:
-      type: object
-      required:
-      - synthId
-      properties:
-        synthId:
-          type: string
     DeviceList:
       type: object
       required:
@@ -209,6 +192,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DeviceListItem'
+    UnprocessableResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
     Device:
       type: object
       required:
@@ -233,14 +223,28 @@ components:
           type: string
         serialNumber:
           type: string
-    UnprocessableResponse:
+    ForbiddenResponse:
       type: object
       properties:
         message:
           type: string
         code:
           type: string
-    ForbiddenResponse:
+    UnauthorizedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    DeviceListItem:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
+          type: string
+    MalformedInputResponse:
       type: object
       properties:
         message:
@@ -278,14 +282,6 @@ components:
         properties:
           type: object
           additionalProperties: true
-  parameters:
-    SynthId:
-      in: path
-      name: synthId
-      required: true
-      schema:
-        type: string
-      description: A device ID or a sensor ID from the site topology.
   responses:
     Malformed:
       description: 400 Malformed Input
@@ -293,12 +289,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/MalformedInputResponse'
-    Unprocessable:
-      description: 422 Unprocessable
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnprocessableResponse'
     Unauthorized:
       description: 401 Unauthorized
       content:
@@ -311,6 +301,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ForbiddenResponse'
+    Unprocessable:
+      description: 422 Unprocessable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnprocessableResponse'
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
   securitySchemes:
     bearerAuth:
       type: oauth2

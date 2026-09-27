@@ -122,33 +122,6 @@ paths:
                 $ref: '#/components/schemas/PrognosisDiffOrder'
 components:
   schemas:
-    PrognosisDiffOrder:
-      type: object
-      properties:
-        prognosisDiffOrderId:
-          type: string
-        prognosisDiffRequestId:
-          type: string
-        acceptedAt:
-          type: string
-          format: date-time
-        powerProfile:
-          type: array
-          items:
-            type: object
-            properties:
-              start:
-                type: string
-                format: date-time
-              end:
-                type: string
-                format: date-time
-              power_W:
-                type: number
-        price:
-          type: number
-        currency:
-          type: string
     PrognosisDiffRequest:
       type: object
       properties:
@@ -186,6 +159,33 @@ components:
               type: number
             currency:
               type: string
+    PrognosisDiffOrder:
+      type: object
+      properties:
+        prognosisDiffOrderId:
+          type: string
+        prognosisDiffRequestId:
+          type: string
+        acceptedAt:
+          type: string
+          format: date-time
+        powerProfile:
+          type: array
+          items:
+            type: object
+            properties:
+              start:
+                type: string
+                format: date-time
+              end:
+                type: string
+                format: date-time
+              power_W:
+                type: number
+        price:
+          type: number
+        currency:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

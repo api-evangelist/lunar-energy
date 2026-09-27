@@ -106,6 +106,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PeriodicalTariff'
+    PeriodicalTariff:
+      type: object
+      required:
+      - name
+      - companyName
+      properties:
+        tariffId:
+          type: string
+        name:
+          type: string
+        companyName:
+          type: string
+        currency:
+          type: string
+        pricingPeriods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingPeriod'
     PricingPeriod:
       type: object
       properties:
@@ -132,24 +150,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TariffExceptionPeriod'
-    PeriodicalTariff:
-      type: object
-      required:
-      - name
-      - companyName
-      properties:
-        tariffId:
-          type: string
-        name:
-          type: string
-        companyName:
-          type: string
-        currency:
-          type: string
-        pricingPeriods:
-          type: array
-          items:
-            $ref: '#/components/schemas/PricingPeriod'
     TariffExceptionPeriod:
       type: object
       properties:

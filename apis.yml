@@ -58,6 +58,7 @@ tags:
   - Telemetry
   - VPP
   - Flex Events
+  - Energy Storage
 tags_raw:
   - Energy
   - Home Battery
@@ -75,6 +76,7 @@ tags_raw:
   - Telemetry
   - VPP
   - Flex Events
+  - Energy Storage
 url: https://raw.githubusercontent.com/api-evangelist/lunar-energy/refs/heads/main/apis.yml
 created: '2026-05-25'
 modified: '2026-05-25'
