@@ -98,6 +98,13 @@ paths:
           description: OK
 components:
   schemas:
+    FlexEventList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlexEvent'
     FlexEvent:
       type: object
       properties:
@@ -126,13 +133,6 @@ components:
           - active
           - completed
           - cancelled
-    FlexEventList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlexEvent'
   securitySchemes:
     bearerAuth:
       type: http

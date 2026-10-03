@@ -182,7 +182,46 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
+  responses:
+    Unprocessable:
+      description: 422 Unprocessable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnprocessableResponse'
+    Unauthorized:
+      description: 401 Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedResponse'
+    Malformed:
+      description: 400 Malformed Input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MalformedInputResponse'
+    Forbidden:
+      description: 403 Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenResponse'
   schemas:
+    MalformedInputResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    DeviceListItem:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
+          type: string
     DeviceList:
       type: object
       required:
@@ -192,6 +231,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DeviceListItem'
+    UnauthorizedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    ForbiddenResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
     UnprocessableResponse:
       type: object
       properties:
@@ -222,34 +275,6 @@ components:
         model:
           type: string
         serialNumber:
-          type: string
-    ForbiddenResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    UnauthorizedResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    DeviceListItem:
-      type: object
-      required:
-      - synthId
-      properties:
-        synthId:
-          type: string
-    MalformedInputResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
           type: string
     Device_2:
       type: object
@@ -282,31 +307,6 @@ components:
         properties:
           type: object
           additionalProperties: true
-  responses:
-    Malformed:
-      description: 400 Malformed Input
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/MalformedInputResponse'
-    Unauthorized:
-      description: 401 Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnauthorizedResponse'
-    Forbidden:
-      description: 403 Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ForbiddenResponse'
-    Unprocessable:
-      description: 422 Unprocessable
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnprocessableResponse'
   parameters:
     SynthId:
       in: path

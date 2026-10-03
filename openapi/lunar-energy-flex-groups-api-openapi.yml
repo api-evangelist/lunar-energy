@@ -175,13 +175,6 @@ components:
       schema:
         type: string
   schemas:
-    FlexGroupList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlexGroup'
     ParticipantList:
       type: object
       properties:
@@ -211,6 +204,13 @@ components:
           type: string
         settlementPoint:
           type: string
+    FlexGroupList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlexGroup'
   securitySchemes:
     bearerAuth:
       type: http

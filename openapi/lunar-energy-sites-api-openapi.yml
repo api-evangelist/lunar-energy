@@ -216,25 +216,27 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
-  parameters:
-    SiteId:
-      in: path
-      name: siteId
-      required: true
-      schema:
-        type: string
   schemas:
     Topology:
       type: object
       properties:
         root:
           $ref: '#/components/schemas/TopologyNode'
-    ForbiddenResponse:
+    SiteList:
       type: object
+      required:
+      - entries
       properties:
-        message:
-          type: string
-        code:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteListItem'
+    SiteListItem:
+      type: object
+      required:
+      - siteId
+      properties:
+        siteId:
           type: string
     UnauthorizedResponse:
       type: object
@@ -262,21 +264,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TopologyNode'
-    SiteList:
+    ForbiddenResponse:
       type: object
-      required:
-      - entries
       properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/SiteListItem'
-    SiteListItem:
-      type: object
-      required:
-      - siteId
-      properties:
-        siteId:
+        message:
+          type: string
+        code:
           type: string
     Site:
       type: object
@@ -315,6 +308,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ForbiddenResponse'
+  parameters:
+    SiteId:
+      in: path
+      name: siteId
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: oauth2

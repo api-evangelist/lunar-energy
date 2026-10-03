@@ -113,15 +113,16 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
-  parameters:
-    SynthId:
-      in: path
-      name: synthId
-      required: true
-      schema:
-        type: string
-      description: A device ID or a sensor ID from the site topology.
   schemas:
+    OverlayPlan:
+      type: object
+      required:
+      - commands
+      properties:
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/OverlayPlanCommand'
     OverlayPlanCommand:
       type: object
       properties:
@@ -140,15 +141,14 @@ components:
           - follow
         powerLimit_W:
           type: number
-    OverlayPlan:
-      type: object
-      required:
-      - commands
-      properties:
-        commands:
-          type: array
-          items:
-            $ref: '#/components/schemas/OverlayPlanCommand'
+  parameters:
+    SynthId:
+      in: path
+      name: synthId
+      required: true
+      schema:
+        type: string
+      description: A device ID or a sensor ID from the site topology.
   securitySchemes:
     bearerAuth:
       type: oauth2
