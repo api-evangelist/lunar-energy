@@ -182,32 +182,14 @@ paths:
     - url: https://developer-api.partner.dev0.mygridshare.com
       description: Development server (Rest of World)
 components:
-  responses:
-    Unprocessable:
-      description: 422 Unprocessable
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnprocessableResponse'
-    Unauthorized:
-      description: 401 Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnauthorizedResponse'
-    Malformed:
-      description: 400 Malformed Input
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/MalformedInputResponse'
-    Forbidden:
-      description: 403 Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ForbiddenResponse'
   schemas:
+    ForbiddenResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
     MalformedInputResponse:
       type: object
       properties:
@@ -215,12 +197,12 @@ components:
           type: string
         code:
           type: string
-    DeviceListItem:
+    UnauthorizedResponse:
       type: object
-      required:
-      - synthId
       properties:
-        synthId:
+        message:
+          type: string
+        code:
           type: string
     DeviceList:
       type: object
@@ -231,20 +213,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DeviceListItem'
-    UnauthorizedResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    ForbiddenResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
     UnprocessableResponse:
       type: object
       properties:
@@ -275,6 +243,13 @@ components:
         model:
           type: string
         serialNumber:
+          type: string
+    DeviceListItem:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
           type: string
     Device_2:
       type: object
@@ -315,6 +290,31 @@ components:
       schema:
         type: string
       description: A device ID or a sensor ID from the site topology.
+  responses:
+    Malformed:
+      description: 400 Malformed Input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MalformedInputResponse'
+    Unprocessable:
+      description: 422 Unprocessable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnprocessableResponse'
+    Unauthorized:
+      description: 401 Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedResponse'
+    Forbidden:
+      description: 403 Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenResponse'
   securitySchemes:
     bearerAuth:
       type: oauth2

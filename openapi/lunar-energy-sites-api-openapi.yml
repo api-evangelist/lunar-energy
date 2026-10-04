@@ -217,20 +217,6 @@ paths:
       description: Development server (Rest of World)
 components:
   schemas:
-    Topology:
-      type: object
-      properties:
-        root:
-          $ref: '#/components/schemas/TopologyNode'
-    SiteList:
-      type: object
-      required:
-      - entries
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/SiteListItem'
     SiteListItem:
       type: object
       required:
@@ -238,7 +224,7 @@ components:
       properties:
         siteId:
           type: string
-    UnauthorizedResponse:
+    ForbiddenResponse:
       type: object
       properties:
         message:
@@ -264,13 +250,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TopologyNode'
-    ForbiddenResponse:
+    SiteList:
+      type: object
+      required:
+      - entries
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteListItem'
+    UnauthorizedResponse:
       type: object
       properties:
         message:
           type: string
         code:
           type: string
+    Topology:
+      type: object
+      properties:
+        root:
+          $ref: '#/components/schemas/TopologyNode'
     Site:
       type: object
       required:
@@ -295,6 +295,13 @@ components:
               type: string
             line1:
               type: string
+  parameters:
+    SiteId:
+      in: path
+      name: siteId
+      required: true
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: 401 Unauthorized
@@ -308,13 +315,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ForbiddenResponse'
-  parameters:
-    SiteId:
-      in: path
-      name: siteId
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: oauth2

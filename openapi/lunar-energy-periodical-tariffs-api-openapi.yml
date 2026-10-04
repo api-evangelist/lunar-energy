@@ -92,13 +92,6 @@ paths:
           description: OK
 components:
   schemas:
-    PeriodicalTariffList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/PeriodicalTariff'
     PricingPeriod:
       type: object
       properties:
@@ -125,6 +118,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TariffExceptionPeriod'
+    TariffExceptionPeriod:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date
+        end:
+          type: string
+          format: date
+        rate:
+          type: number
     PeriodicalTariff:
       type: object
       required:
@@ -143,17 +147,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PricingPeriod'
-    TariffExceptionPeriod:
+    PeriodicalTariffList:
       type: object
       properties:
-        start:
-          type: string
-          format: date
-        end:
-          type: string
-          format: date
-        rate:
-          type: number
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeriodicalTariff'
   parameters:
     TariffId:
       in: path

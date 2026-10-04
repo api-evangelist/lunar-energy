@@ -161,6 +161,43 @@ paths:
         '200':
           description: OK
 components:
+  schemas:
+    FlexGroupList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlexGroup'
+    Participant:
+      type: object
+      properties:
+        participantId:
+          type: string
+        siteId:
+          type: string
+        deviceIds:
+          type: array
+          items:
+            type: string
+    ParticipantList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+    FlexGroup:
+      type: object
+      properties:
+        flexGroupId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        settlementPoint:
+          type: string
   parameters:
     ParticipantId:
       in: path
@@ -174,43 +211,6 @@ components:
       required: true
       schema:
         type: string
-  schemas:
-    ParticipantList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Participant'
-    Participant:
-      type: object
-      properties:
-        participantId:
-          type: string
-        siteId:
-          type: string
-        deviceIds:
-          type: array
-          items:
-            type: string
-    FlexGroup:
-      type: object
-      properties:
-        flexGroupId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        settlementPoint:
-          type: string
-    FlexGroupList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/FlexGroup'
   securitySchemes:
     bearerAuth:
       type: http

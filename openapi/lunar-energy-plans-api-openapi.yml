@@ -114,15 +114,6 @@ paths:
       description: Development server (Rest of World)
 components:
   schemas:
-    OverlayPlan:
-      type: object
-      required:
-      - commands
-      properties:
-        commands:
-          type: array
-          items:
-            $ref: '#/components/schemas/OverlayPlanCommand'
     OverlayPlanCommand:
       type: object
       properties:
@@ -141,6 +132,15 @@ components:
           - follow
         powerLimit_W:
           type: number
+    OverlayPlan:
+      type: object
+      required:
+      - commands
+      properties:
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/OverlayPlanCommand'
   parameters:
     SynthId:
       in: path
