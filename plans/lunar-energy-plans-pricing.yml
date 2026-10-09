@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-25 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-25'
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
@@ -122,3 +127,47 @@ plans:
     elements:
       - name: Earn money by sharing stored energy with the grid during peak demand
       - name: Optional per-event opt-out via Customer or Partner API
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  - one-time
+  - revenue-share
+  units:
+  - message
+  - negotiated
+  - object
+  plans:
+  - name: Lunar System Hardware
+    access: other
+    model: one-time
+    model_how: stated
+    units:
+    - object
+    periods:
+    - per-use
+  - name: Gridshare Partner API
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
+  - name: Gridshare Customer API
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
+  - name: Virtual Power Plant Revenue Share
+    access: partner
+    model: revenue-share
+    model_how: stated
+    units:
+    - message
+    periods:
+    - other
