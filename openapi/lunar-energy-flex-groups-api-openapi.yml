@@ -169,17 +169,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FlexGroup'
-    Participant:
-      type: object
-      properties:
-        participantId:
-          type: string
-        siteId:
-          type: string
-        deviceIds:
-          type: array
-          items:
-            type: string
     ParticipantList:
       type: object
       properties:
@@ -198,16 +187,27 @@ components:
           type: string
         settlementPoint:
           type: string
+    Participant:
+      type: object
+      properties:
+        participantId:
+          type: string
+        siteId:
+          type: string
+        deviceIds:
+          type: array
+          items:
+            type: string
   parameters:
-    ParticipantId:
-      in: path
-      name: participantId
-      required: true
-      schema:
-        type: string
     FlexGroupId:
       in: path
       name: flexGroupId
+      required: true
+      schema:
+        type: string
+    ParticipantId:
+      in: path
+      name: participantId
       required: true
       schema:
         type: string

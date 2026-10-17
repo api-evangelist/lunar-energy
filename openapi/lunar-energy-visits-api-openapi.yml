@@ -76,6 +76,13 @@ paths:
                 $ref: '#/components/schemas/Visit'
 components:
   schemas:
+    VisitList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Visit'
     Visit:
       type: object
       properties:
@@ -93,13 +100,6 @@ components:
           format: date-time
         notes:
           type: string
-    VisitList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Visit'
   securitySchemes:
     bearerAuth:
       type: http

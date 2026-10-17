@@ -57,6 +57,13 @@ components:
       schema:
         type: string
   schemas:
+    PrognosisList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prognosis'
     Prognosis:
       type: object
       properties:
@@ -80,13 +87,6 @@ components:
                 format: date-time
               power_W:
                 type: number
-    PrognosisList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Prognosis'
   securitySchemes:
     bearerAuth:
       type: http

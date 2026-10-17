@@ -100,7 +100,21 @@ paths:
         '200':
           description: OK
 components:
+  parameters:
+    TariffId:
+      in: path
+      name: tariffId
+      required: true
+      schema:
+        type: string
   schemas:
+    DynamicTariffList:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicTariff'
     DynamicTariff:
       type: object
       properties:
@@ -124,20 +138,6 @@ components:
           format: date-time
         price:
           type: number
-    DynamicTariffList:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/DynamicTariff'
-  parameters:
-    TariffId:
-      in: path
-      name: tariffId
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

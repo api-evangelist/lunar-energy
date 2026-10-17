@@ -183,6 +183,30 @@ paths:
       description: Development server (Rest of World)
 components:
   schemas:
+    Device:
+      type: object
+      required:
+      - synthId
+      properties:
+        synthId:
+          type: string
+        kind:
+          type: string
+          enum:
+          - inverter
+          - battery_pack
+          - PV
+          - EV
+          - meter
+          - load_control_relay
+        siteId:
+          type: string
+        manufacturer:
+          type: string
+        model:
+          type: string
+        serialNumber:
+          type: string
     ForbiddenResponse:
       type: object
       properties:
@@ -219,30 +243,6 @@ components:
         message:
           type: string
         code:
-          type: string
-    Device:
-      type: object
-      required:
-      - synthId
-      properties:
-        synthId:
-          type: string
-        kind:
-          type: string
-          enum:
-          - inverter
-          - battery_pack
-          - PV
-          - EV
-          - meter
-          - load_control_relay
-        siteId:
-          type: string
-        manufacturer:
-          type: string
-        model:
-          type: string
-        serialNumber:
           type: string
     DeviceListItem:
       type: object
@@ -282,6 +282,31 @@ components:
         properties:
           type: object
           additionalProperties: true
+  responses:
+    Unauthorized:
+      description: 401 Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedResponse'
+    Unprocessable:
+      description: 422 Unprocessable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnprocessableResponse'
+    Malformed:
+      description: 400 Malformed Input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MalformedInputResponse'
+    Forbidden:
+      description: 403 Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenResponse'
   parameters:
     SynthId:
       in: path
@@ -290,31 +315,6 @@ components:
       schema:
         type: string
       description: A device ID or a sensor ID from the site topology.
-  responses:
-    Malformed:
-      description: 400 Malformed Input
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/MalformedInputResponse'
-    Unprocessable:
-      description: 422 Unprocessable
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnprocessableResponse'
-    Unauthorized:
-      description: 401 Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UnauthorizedResponse'
-    Forbidden:
-      description: 403 Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ForbiddenResponse'
   securitySchemes:
     bearerAuth:
       type: oauth2

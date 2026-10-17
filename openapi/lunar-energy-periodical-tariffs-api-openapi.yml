@@ -91,33 +91,14 @@ paths:
         '200':
           description: OK
 components:
+  parameters:
+    TariffId:
+      in: path
+      name: tariffId
+      required: true
+      schema:
+        type: string
   schemas:
-    PricingPeriod:
-      type: object
-      properties:
-        start:
-          type: string
-          format: date
-        end:
-          type: string
-          format: date
-        rates:
-          type: array
-          items:
-            type: object
-            properties:
-              dayOfWeek:
-                type: string
-              from:
-                type: string
-              to:
-                type: string
-              price:
-                type: number
-        exceptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/TariffExceptionPeriod'
     TariffExceptionPeriod:
       type: object
       properties:
@@ -147,6 +128,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PricingPeriod'
+    PricingPeriod:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date
+        end:
+          type: string
+          format: date
+        rates:
+          type: array
+          items:
+            type: object
+            properties:
+              dayOfWeek:
+                type: string
+              from:
+                type: string
+              to:
+                type: string
+              price:
+                type: number
+        exceptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffExceptionPeriod'
     PeriodicalTariffList:
       type: object
       properties:
@@ -154,13 +161,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PeriodicalTariff'
-  parameters:
-    TariffId:
-      in: path
-      name: tariffId
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
